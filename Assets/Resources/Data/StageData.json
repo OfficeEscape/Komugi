@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "prefab": "Locker",
+        "stageType": 1,
+        "door": [ "cabinet_door_close", "cabinet_door_open" ],
+        "openType": "item",
+        "itemId": 1,
+        "jumpTo": 2
+    },
+    {
+        "id": 2,
+        "prefab": "Kinko",
+        "stageType": 0,
+        "door": [ "kinko_door_close", "kinko_door_open" ],
+        "openType": "password",
+        "itemId": 1234,
+        "getItem": 2
+    },
+    {
+        "id": 3,
+        "prefab": "Desk",
+        "stageType": 1,
+        "getItem": 2
+    },
+    {
+        "id": 4,
+        "prefab": "Desk1",
+        "stageType": 1,
+        "changeBg": [ "UI_desk1_1", "UI_desk1_2" ]
+    },
+    {
+        "id": 5,
+        "prefab": "Desk1",
+        "stageType": 1,
+        "changeBg": [ "UI_desk2_1", "UI_desk2_2" ]
+    },
+    {
+        "id": 6,
+        "prefab": "Desk1",
+        "stageType": 1,
+        "changeBg": [ "UI_desk3_1", "UI_desk3_2" ]
+    },
+    {
+        "id": 7,
+        "prefab": "Desk1",
+        "stageType": 1,
+        "changeBg": [ "UI_desk5_1", "UI_desk5_2" ]
+    }
+]
