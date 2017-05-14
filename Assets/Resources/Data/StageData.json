@@ -7,7 +7,8 @@
         "openType": "item",
         "itemId": 1,
         "nextStage": 2,
-		"preiverStage": 1
+		"preiverStage": 1,
+		"jumpToStage": 8
     },
     {
         "id": 2,

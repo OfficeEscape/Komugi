@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -39,10 +40,10 @@ public class GameMain : MonoBehaviour {
 
 	#endregion
 
-	#region =============================== C#メソッド ===============================
+	#region =============================== C# private ===============================
 
 	// リソース非同期読み込み
-    public IEnumerator LoadAsyncStageCoroutine(string filePath)
+    private IEnumerator LoadAsyncStageCoroutine(string filePath)
     {
         // リソースの非同期読込開始
         ResourceRequest resReq = Resources.LoadAsync(filePath);
@@ -67,8 +68,19 @@ public class GameMain : MonoBehaviour {
 		currentViewObject.transform.localPosition = Vector3.zero;
 		currentViewObject.transform.localScale = Vector3.one;
 		currentViewObject.transform.SetAsFirstSibling();
+
+		Button[] buttons = currentViewObject.GetComponentsInChildren<Button> ();
+		foreach (Button btn in buttons) 
+		{
+			btn.onClick.AddListener (JumpView);
+		}
 	}
 
+	#endregion
+
+	#region =============================== C# private ===============================
+
+	// 次のステージへ
 	public void nextView(int next)
     {
 		int current = gameManager.currentView;
@@ -81,6 +93,18 @@ public class GameMain : MonoBehaviour {
 			ChangeView (gameManager.currentView);
 		}
     }
+
+	// 特定のステージへジャンプ
+	public void JumpView()
+	{
+		int jumpTo = gameManager.stageDictionary[gameManager.currentView].jumpToStage;
+
+		if (gameManager.stageDictionary.ContainsKey (jumpTo)) 
+		{
+			ChangeView (jumpTo);
+			gameManager.currentView = jumpTo;
+		}
+	}
 
     public void scaleView()
     {

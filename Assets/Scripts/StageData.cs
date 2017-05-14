@@ -27,6 +27,9 @@ public class StageData {
 	/** 前の場所 */
 	public int preiverStage;
 
+	/** ジャンプ先 */
+	public int jumpToStage;
+
     /** 入手できるアイテムのID */
     public int getItem;
 
