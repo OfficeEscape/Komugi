@@ -1,0 +1,14 @@
+[
+  {
+    "itemId": 1,
+    "itemName": "雑巾",
+    "itemDetail": "アイテム説明",
+    "itemImage": "画像のパス"
+  },
+  {
+    "itemId": 2,
+    "itemName": "キャビ鍵",
+    "itemDetail": "アイテム説明",
+    "itemImage": "画像のパス"
+  }
+]

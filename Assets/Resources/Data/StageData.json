@@ -7,8 +7,8 @@
         "openType": "item",
         "itemId": 1,
         "nextStage": 2,
-		"preiverStage": 1,
-		"jumpToStage": 8
+		    "preiverStage": 1,
+		    "jumpToStage": [8]
     },
     {
         "id": 2,
@@ -18,16 +18,16 @@
         "openType": "password",
         "itemId": 1234,
         "getItem": 2,
-		"nextStage": 3,
-		"preiverStage": 1
+		    "nextStage": 3,
+		    "preiverStage": 1
     },
     {
         "id": 3,
         "prefab": "office/Desk",
         "stageType": 1,
         "getItem": 2,
-		"nextStage": 4,
-		"preiverStage": 2
+		    "nextStage": 4,
+		    "preiverStage": 2
     },
     {
         "id": 4,
