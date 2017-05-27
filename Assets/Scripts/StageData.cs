@@ -22,7 +22,13 @@ public class StageData {
     public int itemId;
 
     /** 次の行先 */
-    public int jumpTo;
+    public int nextStage;
+
+	/** 前の場所 */
+	public int preiverStage;
+
+	/** ジャンプ先 */
+	public int jumpToStage;
 
     /** 入手できるアイテムのID */
     public int getItem;
