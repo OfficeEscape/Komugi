@@ -1,65 +1,48 @@
 [
-    {
-        "id": 1,
-        "prefab": "office/glassdoor",
-        "stageType": 1,
-        "door": [ "glassdoor_close", "glassdoor_open" ],
-        "openType": "item",
-        "itemId": 1,
-        "nextStage": 2,
-		    "preiverStage": 1,
-		    "jumpToStage": [8]
-    },
-    {
-        "id": 2,
-        "prefab": "office/Kinko",
-        "stageType": 0,
-        "door": [ "kinko_door_close", "kinko_door_open" ],
-        "openType": "password",
-        "itemId": 1234,
-        "getItem": 2,
-		    "nextStage": 3,
-		    "preiverStage": 1
-    },
-    {
-        "id": 3,
-        "prefab": "office/Desk",
-        "stageType": 1,
-        "getItem": 2,
-		    "nextStage": 4,
-		    "preiverStage": 2
-    },
+  {
+    "id": 1,
+    "prefab": "office/glassdoor",
+    "stageType": 1,
+    "gimmickId": 1,
+    "nextStage": 2,
+    "preiverStage": 1,
+    "jumpToStage": [ 8 ]
+  },
+  {
+    "id": 2,
+    "prefab": "office/whiteboard",
+    "gimmickId": 0,
+    "getItem": [ 1 ],
+    "nextStage": 3,
+    "preiverStage": 1
+  },
+  {
+    "id": 3,
+    "prefab": "office/Desk",
+    "getItem": [ 2 ],
+    "nextStage": 4,
+    "preiverStage": 2
+  },
     {
         "id": 4,
-        "prefab": "office/Desk1",
-        "stageType": 1,
-        "changeBg": [ "UI_desk1_1", "UI_desk1_2" ]
+        "prefab": "office/Desk1"
     },
     {
         "id": 5,
-        "prefab": "office/Desk2",
-        "stageType": 1,
-        "changeBg": [ "UI_desk2_1", "UI_desk2_2" ]
+        "prefab": "office/Desk2"
     },
     {
         "id": 6,
-        "prefab": "office/Desk3",
-        "stageType": 1,
-        "changeBg": [ "UI_desk3_1", "UI_desk3_2" ]
+        "prefab": "office/Desk3"
     },
     {
         "id": 7,
-        "prefab": "office/Desk5",
-        "stageType": 1,
-        "changeBg": [ "UI_desk5_1", "UI_desk5_2" ]
+        "prefab": "office/Desk5"
     },
-	{
-        "id": 8,
-        "prefab": "office/Locker",
-        "stageType": 1,
-        "door": [ "cabinet_door_close", "cabinet_door_open" ],
-        "openType": "item",
-        "itemId": 1,
-        "jumpTo": 2
-    }
+  {
+    "id": 8,
+    "prefab": "office/Locker",
+    "gimmickId": 1,
+    "jumpTo": 2
+  }
 ]

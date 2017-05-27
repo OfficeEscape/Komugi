@@ -52,7 +52,7 @@ namespace Komugi
 
 	    #endregion
 
-	    #region =============================== C# public ===============================
+	    #region =============================== イベントハンドラ ===============================
 
 	    // 次のステージへ
 	    public void nextView(int next)
@@ -78,7 +78,7 @@ namespace Komugi
 	    // 特定のステージへジャンプ
 	    public void JumpView(int buttonIndex, string buttonName)
 	    {
-            Debug.Log(" click " + buttonName);
+            Debug.Log(" Click Button " + buttonName);
             if (buttonIndex >= gameManager.stageDictionary[gameManager.currentView].jumpToStage.Length)
             {
                 Debug.Log(buttonName + "Has not jumpIndex");
@@ -94,6 +94,27 @@ namespace Komugi
                 }
 		    }
 	    }
+
+        // アイテムゲット
+        public void GetItem(int itemIndex, string ItemName)
+        {
+            Debug.Log(" Click Item" + ItemName);
+            if (itemIndex >= gameManager.stageDictionary[gameManager.currentView].getItem.Length)
+            {
+                Debug.Log(ItemName + "Has not Setting");
+                return;
+            }
+
+            int itemId = gameManager.stageDictionary[gameManager.currentView].getItem[itemIndex];
+            itemManager.AddItem(itemId);
+
+            GameObject itemObject = currentViewObject.transform.Find(ItemName).gameObject;
+
+            if (ItemName != null)
+            {
+                itemObject.SetActive(false);
+            }
+        }
 
         public void openDoor()
         {
@@ -176,6 +197,10 @@ namespace Komugi
 			    return;
 		    }
 
+            var builder = new StringBuilder();
+            builder.AppendFormat("{0}To{1}", tag, index);
+            button.name = builder.ToString();
+
             UnityAction<int, string> action = functionDictionary[tag];
             int arg1 = index;
             string arg2 = button.name;
@@ -184,9 +209,6 @@ namespace Komugi
                 action(arg1, arg2);
             }
             );
-            var builder = new StringBuilder();
-            builder.AppendFormat("{0}To{1}", tag, index);
-            button.name = builder.ToString();
         }
 
 	    // なんの名前のボタンになんの処理を走らせる関数
@@ -194,6 +216,7 @@ namespace Komugi
 	    private void InitButtonFunction()
 	    {
 		    functionDictionary.Add ("Jump", JumpView);
+            functionDictionary.Add("Item", GetItem);
 	    }
 
 	    #endregion
