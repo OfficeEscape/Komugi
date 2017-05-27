@@ -9,7 +9,7 @@ public class TitleMain : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        _canvas = transform.FindChild("Canvas").gameObject;
+        _canvas = transform.Find("Canvas").gameObject;
 	}
 	
 	// Update is called once per frame
