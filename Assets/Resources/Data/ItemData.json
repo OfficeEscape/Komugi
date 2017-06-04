@@ -2,8 +2,8 @@
   {
     "itemId": 1,
     "itemName": "雑巾",
-    "itemDetail": "アイテム説明",
-    "itemImage": "画像のパス"
+    "itemDetail": "雑巾の説明",
+    "itemImage": "whiteboard/item_s_zoukin1"
   },
   {
     "itemId": 2,

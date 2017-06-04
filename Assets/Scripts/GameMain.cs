@@ -7,7 +7,8 @@ using System.Collections.Generic;
 
 namespace Komugi
 { 
-    public class GameMain : MonoBehaviour {
+    public class GameMain : SingletonMonoBehaviour<GameMain>
+    {
 
         #region =============================== フィールド ===============================
         /** ゲームマネージャー */
@@ -26,12 +27,20 @@ namespace Komugi
 	    /** 現在表示しているビュー */
 	    private GameObject currentViewObject;
 
-	    #endregion
+        #endregion
 
-	    #region =============================== Unityメソッド ===============================
+        #region =============================== Unityメソッド ===============================
 
-	    // Use this for initialization
-	    void Start () 
+        override protected void Awake()
+        {
+            // 子クラスでAwakeを使う場合は
+            // 必ず親クラスのAwakeをCallして
+            // 複数のGameObjectにアタッチされないようにします.
+            base.Awake();
+        }
+
+        // Use this for initialization
+        void Start () 
 	    {
             gameManager = GameManager.Instance;
             itemManager = ItemManager.Instance;
