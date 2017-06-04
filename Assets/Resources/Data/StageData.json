@@ -17,14 +17,17 @@
   },
   {
     "id": 3,
-    "prefab": "office/Desk",
+    "prefab": "office/desk_zone",
     "getItem": [ 2 ],
     "nextStage": 4,
     "preiverStage": 2
   },
     {
-        "id": 4,
-        "prefab": "office/Desk1"
+    "id": 4,
+    "prefab": "office/sofa",
+    "getItem": [ 3 ],
+    "nextStage": 1,
+    "preiverStage": 2
     },
     {
         "id": 5,
