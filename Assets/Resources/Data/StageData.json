@@ -2,7 +2,6 @@
   {
     "id": 1,
     "prefab": "office/glassdoor",
-    "stageType": 1,
     "gimmickId": 1,
     "nextStage": 2,
     "preiverStage": 1,

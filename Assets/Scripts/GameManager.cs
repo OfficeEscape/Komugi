@@ -5,6 +5,7 @@ using LitJson;
 
 namespace Komugi
 {
+
     public class GameManager
     {
         
@@ -39,7 +40,7 @@ namespace Komugi
         }
 
 
-
+        // JsonDataをデシリアライズ
         public void OpenBinary()
         {
             if (stageDictionary.Count > 0) { return; }

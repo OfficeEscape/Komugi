@@ -181,15 +181,36 @@ namespace Komugi
                 }
 
 			    SetButtonAction (buttons[i].tag, ref buttons[i], indexDic[buttons[i].tag]);
-		    }
+                SetObjectVisible (buttons[i].tag, ref buttons[i], indexDic[buttons[i].tag], sceneId);
+
+            }
 
             Debug.Log("Change Scene to " + gameManager.stageDictionary[sceneId].prefab + "   SceneID : " + sceneId);
 
             return true;
 	    }
 
-	    // ボタンにクリックアクションを設定する
-	    private void SetButtonAction(string tag, ref Button button, int index)
+        // ボタンに可視性を設定する
+        private void SetObjectVisible(string tag, ref Button button, int index, int sceneId)
+        {
+            switch (tag)
+            {
+                case "Jump":
+                    break;
+                case "Item":
+
+                    int[] itemList = gameManager.stageDictionary[sceneId].getItem;
+                    if (index >= itemList.Length) { return; }
+
+                    bool visible = !itemManager.HasItemList.ContainsKey(itemList[index]);
+                    button.gameObject.SetActive(visible);
+                    Debug.Log("button.gameObject.SetActive " + visible);
+                    break;
+            }
+        }
+
+        // ボタンにクリックアクションを設定する
+        private void SetButtonAction(string tag, ref Button button, int index)
 	    {
 		    if (!functionDictionary.ContainsKey (tag)) 
 		    {
