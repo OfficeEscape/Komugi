@@ -123,6 +123,8 @@ namespace Komugi
             {
                 itemObject.SetActive(false);
             }
+
+            UIManager.Instance.AddItemToItemBar(itemId);
         }
 
         public void openDoor()
