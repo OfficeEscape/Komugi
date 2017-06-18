@@ -7,6 +7,12 @@
   },
   {
     "itemId": 2,
+    "itemName": "懐中電灯",
+    "itemDetail": "ブラックライトの懐中電灯だ。",
+    "itemImage": "shoescase/shoescase_item"
+  },
+    {
+    "itemId": 3,
     "itemName": "キャビ鍵",
     "itemDetail": "アイテムの説明",
     "itemImage": "画像パス"

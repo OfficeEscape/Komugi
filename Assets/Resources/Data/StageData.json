@@ -14,13 +14,14 @@
 		"getItem": [ 1 ],
 		"nextStage": 3,
 		"preiverStage": 1,
-		"jumpToStage": [ 7 ]
+		"jumpToStage": [ 7, 9, 10, 11, 12 ]
 	},
 	{
 		"id": 3,
 		"prefab": "office/desk_zone",
 		"nextStage": 4,
-		"preiverStage": 2
+		"preiverStage": 2,
+		"jumpToStage": [ 13, 14 ]
 	},
 	{
 		"id": 4,
@@ -45,5 +46,67 @@
 		"id": 8,
 		"prefab": "office/securitycardnum",
 		"nextStage": 7
+	},
+	{
+		"id": 9,
+		"prefab": "office/shoescase",
+		"getItem": [ 2 ],
+		"nextStage": 2
+	},
+	{
+		"id": 10,
+		"prefab": "office/monitor",
+		"nextStage": 2
+	},
+	{
+		"id": 11,
+		"prefab": "office/blackbox",
+		"nextStage": 2
+	},
+	{
+		"id": 12,
+		"prefab": "office/ottoman",
+		"nextStage": 2
+	},
+	{
+		"id": 13,
+		"prefab": "office/desk_all",
+		"nextStage": 3,
+		"jumpToStage": [ 15, 16, 17, 18, 19, 20 ]
+	},
+	{
+		"id": 14,
+		"prefab": "office/Locker",
+		"nextStage": 3
+	},
+		{
+		"id": 15,
+		"prefab": "office/Desk1",
+		"nextStage": 13
+	},
+		{
+		"id": 16,
+		"prefab": "office/Desk2",
+		"nextStage": 13
+	},
+		{
+		"id": 17,
+		"prefab": "office/Desk3",
+		"nextStage": 13
+	},
+		{
+		"id": 18,
+		"prefab": "office/Desk4",
+		"nextStage": 13
+	},
+		{
+		"id": 19,
+		"prefab": "office/Desk5",
+		"nextStage": 13
+	},
+		{
+		"id": 20,
+		"prefab": "office/Desk6",
+		"nextStage": 13
 	}
 	]
