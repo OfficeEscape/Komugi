@@ -36,17 +36,18 @@
 		"gimmickId": 4,
 		"nextStage": 1
 	},
-	{
-		"id": 7,
-		"prefab": "office/securitycard",
-		"nextStage": 2,
-		"jumpToStage": [ 8 ]
-	},
-	{
-		"id": 8,
-		"prefab": "office/securitycardnum",
-		"nextStage": 7
-	},
+  {
+    "id": 7,
+    "prefab": "office/securitycard",
+    "nextStage": 2,
+    "jumpToStage": [ 8 ],
+    "getItem": [ 2 ]
+  },
+  {
+    "id": 8,
+    "prefab": "office/securitycardnum",
+    "nextStage": 7
+  },
 	{
 		"id": 9,
 		"prefab": "office/shoescase",
