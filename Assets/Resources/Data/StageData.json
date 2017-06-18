@@ -30,12 +30,12 @@
 		"nextStage": 1,
 		"preiverStage": 3
 	},
-	{
-		"id": 6,
-		"prefab": "office/sensor",
-		"gimmickId": 4,
-		"nextStage": 1
-	},
+  {
+    "id": 6,
+    "prefab": "office/sensor",
+    "gimmickId": 4,
+    "preiverStage": 1
+  },
   {
     "id": 7,
     "prefab": "office/securitycard",

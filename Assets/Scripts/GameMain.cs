@@ -19,16 +19,10 @@ namespace Komugi
 
 	    /** 関数ディクショナリー */
 	    Dictionary<string, UnityAction<int, string>> functionDictionary = new Dictionary<string, UnityAction<int, string>>();
-
-        [SerializeField]
-        /** メインキャンパス */
-        private Canvas mainCanvas;
-
+        
 	    /** 現在表示しているビュー */
 	    private GameObject currentViewObject;
-
         
-
         #endregion
 
         #region =============================== Unityメソッド ===============================
@@ -54,12 +48,6 @@ namespace Komugi
             //リソースフォルダのデータを非同期に読み込む
             StartCoroutine(LoadAsyncStageCoroutine(""));
 	    }
-	
-	    // Update is called once per frame
-	    void Update () 
-	    {
-	
-	    }
 
 	    #endregion
 
@@ -68,14 +56,8 @@ namespace Komugi
 	    // 次のステージへ
 	    public void nextView(int next)
         {
-		    int current = gameManager.currentView;
-            int nextId = next > 0 ? gameManager.stageDictionary[current].nextStage : gameManager.stageDictionary[current].preiverStage;
-
-            if (nextId == 0)
-            {
-                Debug.Log(gameManager.stageDictionary[current].prefab + " Has Not Next Stage ID");
-                return; 
-            }
+            int nextId = gameManager.GetNextStageId(next);
+            if (nextId == 0) { return; }
 
             if (gameManager.currentView != nextId) 
 		    {
@@ -90,12 +72,7 @@ namespace Komugi
 	    public void JumpView(int buttonIndex, string buttonName)
 	    {
             Debug.Log(" Click Button " + buttonName);
-            if (buttonIndex >= gameManager.stageDictionary[gameManager.currentView].jumpToStage.Length)
-            {
-                Debug.Log(buttonName + "Has not jumpIndex");
-                return;
-            }
-		    int jumpTo = gameManager.stageDictionary[gameManager.currentView].jumpToStage[buttonIndex];
+            int jumpTo = gameManager.GetJumpToStageId(buttonIndex);
 
 		    if (gameManager.stageDictionary.ContainsKey (jumpTo)) 
 		    {
@@ -110,13 +87,10 @@ namespace Komugi
         public void GetItem(int itemIndex, string ItemName)
         {
             Debug.Log(" Click Item" + ItemName);
-            if (itemIndex >= gameManager.stageDictionary[gameManager.currentView].getItem.Length)
-            {
-                Debug.Log(ItemName + "Has not Setting");
-                return;
-            }
 
-            int itemId = gameManager.stageDictionary[gameManager.currentView].getItem[itemIndex];
+            int itemId = gameManager.GetStageItemId(itemIndex);
+            if (itemId == 0) { return; }
+
             itemManager.AddItem(itemId);
 
             GameObject itemObject = currentViewObject.transform.Find(ItemName).gameObject;
@@ -127,16 +101,6 @@ namespace Komugi
             }
 
             UIManager.Instance.AddItemToItemBar(itemId);
-        }
-
-        private void SwitchObject()
-        {
-
-        }
-
-        public void openDoor()
-        {
-
         }
 
 	    #endregion
@@ -167,7 +131,9 @@ namespace Komugi
 	    {
 		    if (currentViewObject != null) { Destroy (currentViewObject);}
             // ステージのオブジェクトを生成
-		    currentViewObject = Instantiate(Resources.Load("Prefabs/" + gameManager.stageDictionary[sceneId].prefab, typeof(GameObject))) as GameObject;
+            GameObject prefab = gameManager.GetStagePrefab(sceneId);
+
+            currentViewObject = Instantiate(prefab);
 
             if (currentViewObject == null)
             {
@@ -176,13 +142,10 @@ namespace Komugi
             }
 
             // ルートキャンパスへ追加
-            currentViewObject.transform.SetParent(mainCanvas.transform);
-		    currentViewObject.transform.SetAsFirstSibling();
-		    currentViewObject.transform.localPosition = Vector3.zero;
-		    currentViewObject.transform.localScale = Vector3.one;
-
+            UIManager.Instance.AddContentToMainCanvas(currentViewObject, gameManager.GetNextStageId(1, sceneId), gameManager.GetNextStageId(-1, sceneId));
+            
             // ボタンに適切なイベントハンドラを設定する
-		    Button[] buttons = currentViewObject.GetComponentsInChildren<Button> ();
+            Button[] buttons = currentViewObject.GetComponentsInChildren<Button> ();
 
             // 該当Tagは何個目の情報を入れるDictionary
             Dictionary<string, int> indexDic = new Dictionary<string, int>();
@@ -203,7 +166,7 @@ namespace Komugi
 
             }
 
-            Debug.Log("Change Scene to " + gameManager.stageDictionary[sceneId].prefab + "   SceneID : " + sceneId);
+            Debug.Log("Change Scene to " + prefab.name + "   SceneID : " + sceneId);
 
             return true;
 	    }

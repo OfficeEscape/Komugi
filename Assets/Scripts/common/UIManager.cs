@@ -15,8 +15,17 @@ namespace Komugi
         // アイテム表示領域
         private Image[] ItemImages;
 
+        [SerializeField]
+        private GameObject LeftRightPanel;
+
+        [SerializeField]
+        private GameObject ReturnPanel;
+
         // 現在持ってるアイテム数
         private int itemNum;
+
+        // 現在のページ数
+        private int currentPage = 0;
 
         // オブジェクトの表示非表示切替
         private GameObject[] changeableObjectList;
@@ -77,6 +86,21 @@ namespace Komugi
 
         #region =============================== C# public ===============================
 
+        public void AddContentToMainCanvas(GameObject content, int next, int preiver)
+        {
+            content.transform.SetParent(gameObject.transform);
+            content.transform.SetAsFirstSibling();
+            content.transform.localPosition = Vector3.zero;
+            content.transform.localScale = Vector3.one;
+
+            bool flag = next == 0;
+
+            LeftRightPanel.SetActive(!flag);
+            ReturnPanel.SetActive(flag);
+            
+        }
+
+        // 画像の切り替え
         public void SwitchObject(int index, string name)
         {
             changeableObjectIndex++;
@@ -133,6 +157,8 @@ namespace Komugi
                 ItemImages[itemNum].enabled = true;
                 ItemImages[itemNum].SetNativeSize();
             }
+
+            itemNum++;
         }
 
         #endregion

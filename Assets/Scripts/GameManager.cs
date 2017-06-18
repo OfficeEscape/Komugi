@@ -55,5 +55,55 @@ namespace Komugi
 
             Debug.Log("StageData OpenBinary " + Time.time.ToString());
         }
+
+        // ステージのプレハブを取得
+        public GameObject GetStagePrefab(int sceneId)
+        {
+            GameObject obj = Resources.Load("Prefabs/" + stageDictionary[sceneId].prefab, typeof(GameObject)) as GameObject;
+            return obj;
+         }
+
+        // 次のステージIDを取得
+        public int GetNextStageId(int next, int stageId = 0)
+        {
+            int id = stageId == 0 ? currentView : stageId;
+
+            int nextId = next > 0 ? stageDictionary[id].nextStage : stageDictionary[id].preiverStage;
+
+            if (nextId == 0)
+            {
+                Debug.Log(stageDictionary[id].prefab + " Has Not Next Stage ID");
+            }
+            return nextId;
+        }
+
+        // ジャンプ目的地のIDを取得
+        public int GetJumpToStageId(int index)
+        {
+            if (index >= stageDictionary[currentView].jumpToStage.Length)
+            {
+                Debug.Log("Has not jumpIndex");
+                return 0;
+            }
+            int jumpTo = stageDictionary[currentView].jumpToStage[index];
+
+            return jumpTo;
+        }
+
+        // ゲットするアイテムのIDを取得
+        public int GetStageItemId(int index, int stageId = 0)
+        {
+            int id = stageId == 0 ? currentView : stageId;
+
+            if (index >= stageDictionary[id].getItem.Length)
+            {
+                Debug.Log("Item Get error");
+                return 0;
+            }
+
+            int itemId = stageDictionary[id].getItem[index];
+
+            return itemId;
+        }
     }
 }
