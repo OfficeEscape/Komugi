@@ -1,49 +1,49 @@
 [
-  {
-    "id": 1,
-    "prefab": "office/glassdoor",
-    "gimmickId": 1,
-    "nextStage": 2,
-    "preiverStage": 4,
-    "jumpToStage": [ 8 ]
-  },
-  {
-    "id": 2,
-    "prefab": "office/whiteboard",
-    "gimmickId": 0,
-    "getItem": [ 1 ],
-    "nextStage": 3,
-    "preiverStage": 1
-  },
-  {
-    "id": 3,
-    "prefab": "office/desk_zone",
-    "nextStage": 4,
-    "preiverStage": 2
-  },
-    {
-    "id": 4,
-    "prefab": "office/sofa",
-    "getItem": [ 2 ],
-    "nextStage": 1,
-    "preiverStage": 3
-    },
-    {
-        "id": 5,
-        "prefab": "office/Desk2"
-    },
-    {
-        "id": 6,
-        "prefab": "office/Desk3"
-    },
-    {
-        "id": 7,
-        "prefab": "office/Desk5"
-    },
-  {
-    "id": 8,
-    "prefab": "office/Locker",
-    "gimmickId": 1,
-    "jumpTo": 2
-  }
-]
+	{
+		"id": 1,
+		"prefab": "office/glassdoor",
+		"gimmickId": 1,
+		"nextStage": 2,
+		"preiverStage": 4,
+		"jumpToStage": [ 8, 6 ]
+	},
+	{
+		"id": 2,
+		"prefab": "office/whiteboard",
+		"gimmickId": 0,
+		"getItem": [ 1 ],
+		"nextStage": 3,
+		"preiverStage": 1,
+		"jumpToStage": [ 7 ]
+	},
+	{
+		"id": 3,
+		"prefab": "office/desk_zone",
+		"nextStage": 4,
+		"preiverStage": 2
+	},
+	{
+		"id": 4,
+		"prefab": "office/sofa",
+		"getItem": [ 2 ],
+		"nextStage": 1,
+		"preiverStage": 3
+	},
+	{
+		"id": 6,
+		"prefab": "office/sensor",
+		"gimmickId": 4,
+		"nextStage": 1
+	},
+	{
+		"id": 7,
+		"prefab": "office/securitycard",
+		"nextStage": 2,
+		"jumpToStage": [ 8 ]
+	},
+	{
+		"id": 8,
+		"prefab": "office/securitycardnum",
+		"nextStage": 7
+	}
+	]
