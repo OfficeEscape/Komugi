@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Text;
+using Komugi.UI;
 
 namespace Komugi
 {
@@ -14,8 +14,9 @@ namespace Komugi
 
         // 現在持ってるアイテム数
         private int itemNum;
-
-        private string itemPath = "Office/";
+        
+        // アイテムダイアログのパス
+        private const string itemDialogPath = "Prefabs/ui/ItemDialog";
 
         override protected void Awake()
         {
@@ -31,6 +32,7 @@ namespace Komugi
             itemNum = 0;
         }
 
+        // アイテムバーにアイテムを追加
         public void AddItemToItemBar(int itemId)
         {
             if (ItemImages[itemNum].enabled)
@@ -39,15 +41,49 @@ namespace Komugi
                 return;
             }
 
-            string path = ItemManager.Instance.itemDictionary[itemId].itemImage;
-            var builder = new StringBuilder();
-            builder.AppendFormat("{0}{1}", itemPath, path);
-            Debug.Log("Item Path = " + builder.ToString());
+            ShowItemGetDailog(itemId);
 
-            Sprite itemSprite = Resources.Load<Sprite>(builder.ToString());
-            ItemImages[itemNum].sprite = itemSprite;
-            ItemImages[itemNum].enabled = true;
-            ItemImages[itemNum].SetNativeSize();
+            Sprite itemSprite = ItemManager.Instance.GetItemImage(itemId);
+            if (itemSprite!= null)
+            {
+                ItemImages[itemNum].sprite = itemSprite;
+                ItemImages[itemNum].enabled = true;
+                ItemImages[itemNum].SetNativeSize();
+            }
+        }
+
+        // アイテムゲットのダイアログ
+        private void ShowItemGetDailog(int itemId)
+        {
+            StartCoroutine(LoadAsyncDialogCoroutine(itemId));
+        }
+
+        // リソース非同期読み込み
+        private IEnumerator LoadAsyncDialogCoroutine(int itemId)
+        {
+            // リソースの非同期読込開始
+            ResourceRequest resReq = Resources.LoadAsync(itemDialogPath);
+            // 終わるまで待つ
+            while (resReq.isDone == false)
+            {
+                Debug.Log("Loading Dialog progress:" + resReq.progress.ToString());
+                yield return 0;
+            }
+            // テクスチャ表示
+            Debug.Log("Loading Dialog End  " + Time.time.ToString());
+
+            //ダイアログを出す
+            GameObject dialog = Instantiate(resReq.asset as GameObject);
+            ItemDialog script = dialog.GetComponent<ItemDialog>();
+            
+            if (script != null)
+            {
+                script.UpdateItem(ItemManager.Instance.GetItemImage(itemId), ItemManager.Instance.GetItemName(itemId));
+            }
+
+            dialog.transform.SetParent(gameObject.transform);
+            dialog.transform.localPosition = Vector3.zero;
+            dialog.transform.localScale = Vector3.one;
         }
     }
 }

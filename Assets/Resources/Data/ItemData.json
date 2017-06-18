@@ -1,14 +1,14 @@
 [
   {
     "itemId": 1,
-    "itemName": "G‹Ğ",
-    "itemDetail": "G‹Ğ‚Ìà–¾",
+    "itemName": "é›‘å·¾",
+    "itemDetail": "é›‘å·¾ã®èª¬æ˜",
     "itemImage": "whiteboard/item_s_zoukin1"
   },
   {
     "itemId": 2,
-    "itemName": "ƒLƒƒƒrŒ®",
-    "itemDetail": "ƒAƒCƒeƒ€à–¾",
-    "itemImage": "‰æ‘œ‚ÌƒpƒX"
+    "itemName": "ã‚­ãƒ£ãƒ“éµ",
+    "itemDetail": "ã‚¢ã‚¤ãƒ†ãƒ ã®èª¬æ˜",
+    "itemImage": "ç”»åƒãƒ‘ã‚¹"
   }
 ]
