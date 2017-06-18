@@ -8,15 +8,20 @@ namespace Komugi
 {
     public class UIManager : SingletonMonoBehaviour<UIManager>
     {
+        // アイテムダイアログのパス
+        private const string itemDialogPath = "Prefabs/ui/ItemDialog";
+
         [SerializeField]
         // アイテム表示領域
         private Image[] ItemImages;
 
         // 現在持ってるアイテム数
         private int itemNum;
-        
-        // アイテムダイアログのパス
-        private const string itemDialogPath = "Prefabs/ui/ItemDialog";
+
+        // オブジェクトの表示非表示切替
+        private GameObject[] changeableObjectList;
+
+        private int changeableObjectIndex = 0;
 
         override protected void Awake()
         {
@@ -32,25 +37,7 @@ namespace Komugi
             itemNum = 0;
         }
 
-        // アイテムバーにアイテムを追加
-        public void AddItemToItemBar(int itemId)
-        {
-            if (ItemImages[itemNum].enabled)
-            {
-                Debug.Log("item " + itemNum + " is Registered");
-                return;
-            }
-
-            ShowItemGetDailog(itemId);
-
-            Sprite itemSprite = ItemManager.Instance.GetItemImage(itemId);
-            if (itemSprite!= null)
-            {
-                ItemImages[itemNum].sprite = itemSprite;
-                ItemImages[itemNum].enabled = true;
-                ItemImages[itemNum].SetNativeSize();
-            }
-        }
+        #region =============================== C# private ===============================
 
         // アイテムゲットのダイアログ
         private void ShowItemGetDailog(int itemId)
@@ -85,5 +72,70 @@ namespace Komugi
             dialog.transform.localPosition = Vector3.zero;
             dialog.transform.localScale = Vector3.one;
         }
+
+        #endregion
+
+        #region =============================== C# public ===============================
+
+        public void SwitchObject(int index, string name)
+        {
+            changeableObjectIndex++;
+            if (changeableObjectIndex >= changeableObjectList.Length) changeableObjectIndex = 0;
+
+            foreach(GameObject o in changeableObjectList)
+            {
+                o.SetActive(false);
+            }
+            GameObject obj = changeableObjectList[changeableObjectIndex];
+            obj.SetActive(true);
+
+            Vector2 size = obj.GetComponent<RectTransform>().sizeDelta;
+        }
+
+        // 切り替えるゲームオブジェクトをリストに登録
+        public void AddChangeableObject(GameObject obj)
+        {
+            changeableObjectList = null;
+            changeableObjectIndex = 0;
+
+            int max = obj.transform.childCount;
+            changeableObjectList = new GameObject[max];
+            for (int i = 0; i < max; i++)
+            {
+                GameObject child = obj.transform.GetChild(i).gameObject;
+                changeableObjectList[i] = child;
+
+                Button btn = child.GetComponent<Button>();
+                if (btn == null)
+                {
+                    Debug.LogError("Button Component is not attach!!");
+                }
+
+                btn.onClick.AddListener(() => SwitchObject(0, ""));
+            }
+        }
+
+        // アイテムバーにアイテムを追加
+        public void AddItemToItemBar(int itemId)
+        {
+            if (ItemImages[itemNum].enabled)
+            {
+                Debug.Log("item " + itemNum + " is Registered");
+                return;
+            }
+
+            ShowItemGetDailog(itemId);
+
+            Sprite itemSprite = ItemManager.Instance.GetItemImage(itemId);
+            if (itemSprite != null)
+            {
+                ItemImages[itemNum].sprite = itemSprite;
+                ItemImages[itemNum].enabled = true;
+                ItemImages[itemNum].SetNativeSize();
+            }
+        }
+
+        #endregion
+
     }
 }

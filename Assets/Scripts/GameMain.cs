@@ -27,6 +27,8 @@ namespace Komugi
 	    /** 現在表示しているビュー */
 	    private GameObject currentViewObject;
 
+        
+
         #endregion
 
         #region =============================== Unityメソッド ===============================
@@ -127,6 +129,11 @@ namespace Komugi
             UIManager.Instance.AddItemToItemBar(itemId);
         }
 
+        private void SwitchObject()
+        {
+
+        }
+
         public void openDoor()
         {
 
@@ -216,6 +223,10 @@ namespace Komugi
                     bool visible = !itemManager.HasItemList.ContainsKey(itemList[index]);
                     button.gameObject.SetActive(visible);
                     Debug.Log("button.gameObject.SetActive " + visible);
+                    break;
+                case "Switch":
+
+                    UIManager.Instance.AddChangeableObject(button.gameObject);
                     break;
             }
         }
