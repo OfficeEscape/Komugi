@@ -11,6 +11,9 @@ namespace Komugi
         // アイテムダイアログのパス
         private const string itemDialogPath = "Prefabs/ui/ItemDialog";
 
+        // 画像切り替え可能オブジェクト最大数
+        private const int CHANGEABLE_MAX = 10;
+
         [SerializeField]
         // アイテム表示領域
         private Image[] ItemImages;
@@ -28,9 +31,9 @@ namespace Komugi
         private int currentPage = 0;
 
         // オブジェクトの表示非表示切替
-        private GameObject[] changeableObjectList;
+        private GameObject[][] changeableObjectList;
 
-        private int changeableObjectIndex = 0;
+        private int[] changeableObjectIndex;
 
         override protected void Awake()
         {
@@ -69,17 +72,15 @@ namespace Komugi
             Debug.Log("Loading Dialog End  " + Time.time.ToString());
 
             //ダイアログを出す
-            GameObject dialog = Instantiate(resReq.asset as GameObject);
+            GameObject dialog = Instantiate(resReq.asset as GameObject, gameObject.transform);
             ItemDialog script = dialog.GetComponent<ItemDialog>();
             
             if (script != null)
             {
-                script.UpdateItem(ItemManager.Instance.GetItemImage(itemId), ItemManager.Instance.GetItemName(itemId));
+                script.UpdateItem(ItemManager.Instance.GetItemImage(itemId, 1), ItemManager.Instance.GetItemName(itemId));
             }
 
             dialog.transform.SetParent(gameObject.transform);
-            dialog.transform.localPosition = Vector3.zero;
-            dialog.transform.localScale = Vector3.one;
         }
 
         #endregion
@@ -103,31 +104,29 @@ namespace Komugi
         // 画像の切り替え
         public void SwitchObject(int index, string name)
         {
-            changeableObjectIndex++;
-            if (changeableObjectIndex >= changeableObjectList.Length) changeableObjectIndex = 0;
+            changeableObjectIndex[index]++;
+            if (changeableObjectIndex[index] >= changeableObjectList[index].Length) changeableObjectIndex[index] = 0;
 
-            foreach(GameObject o in changeableObjectList)
+            foreach(GameObject o in changeableObjectList[index])
             {
                 o.SetActive(false);
             }
-            GameObject obj = changeableObjectList[changeableObjectIndex];
+            GameObject obj = changeableObjectList[index][changeableObjectIndex[index]];
             obj.SetActive(true);
 
-            Vector2 size = obj.GetComponent<RectTransform>().sizeDelta;
+            Debug.Log("SwitchObject : " + index + "   Active : " + changeableObjectIndex[index]);
         }
 
         // 切り替えるゲームオブジェクトをリストに登録
-        public void AddChangeableObject(GameObject obj)
+        public void AddChangeableObject(GameObject obj, int index)
         {
-            changeableObjectList = null;
-            changeableObjectIndex = 0;
-
             int max = obj.transform.childCount;
-            changeableObjectList = new GameObject[max];
+            changeableObjectList[index] = new GameObject[max];
+            changeableObjectIndex[index] = 0;
             for (int i = 0; i < max; i++)
             {
                 GameObject child = obj.transform.GetChild(i).gameObject;
-                changeableObjectList[i] = child;
+                changeableObjectList[index][i] = child;
 
                 Button btn = child.GetComponent<Button>();
                 if (btn == null)
@@ -135,7 +134,7 @@ namespace Komugi
                     Debug.LogError("Button Component is not attach!!");
                 }
 
-                btn.onClick.AddListener(() => SwitchObject(0, ""));
+                btn.onClick.AddListener(() => SwitchObject(index, child.name));
             }
         }
 
@@ -159,6 +158,13 @@ namespace Komugi
             }
 
             itemNum++;
+        }
+
+        // リセット
+        public void ResetStage()
+        {
+            changeableObjectList = new GameObject[CHANGEABLE_MAX][];
+            changeableObjectIndex = new int[10];
         }
 
         #endregion

@@ -8,10 +8,13 @@ namespace Komugi
         /** ステージID */
         public int id;
 
+        /** コメント（リリース時は消す予定） */
+        public string comment;
+
         /** プレファブ名 */
         public string prefab;
 
-        /** 扉を開くためのトリックタイプ  1 扉  2 パスワード */
+        /** 突破するためのギミックID */
         public int gimmickId;
 
         /** 次の行先 */

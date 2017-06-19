@@ -7,7 +7,7 @@ namespace Komugi
 {
     public class ItemManager
     {
-        private const string itemPath = "Office/";
+        private const string itemPath = "UI/item/";
 
         /** クラスのユニークなインスタンス */
         private static ItemManager mInstance;
@@ -64,14 +64,15 @@ namespace Komugi
         }
 
         // アイテムの画像を返す
-        public Sprite GetItemImage(int itemId)
+        // size 0 = small 1 = large
+        public Sprite GetItemImage(int itemId, int size = 0)
         {
             if (!itemDictionary.ContainsKey(itemId))
             {
                 Debug.Log("Item Load error");
             }
 
-            string path = itemDictionary[itemId].itemImage;
+            string path = size == 0 ? itemDictionary[itemId].itemIcon : itemDictionary[itemId].itemImage;
             var builder = new System.Text.StringBuilder();
             builder.AppendFormat("{0}{1}", itemPath, path);
             Debug.Log("Item Path = " + builder.ToString());

@@ -141,6 +141,7 @@ namespace Komugi
                 return false;
             }
 
+            UIManager.Instance.ResetStage();
             // ルートキャンパスへ追加
             UIManager.Instance.AddContentToMainCanvas(currentViewObject, gameManager.GetNextStageId(1, sceneId), gameManager.GetNextStageId(-1, sceneId));
             
@@ -189,7 +190,7 @@ namespace Komugi
                     break;
                 case "Switch":
 
-                    UIManager.Instance.AddChangeableObject(button.gameObject);
+                    UIManager.Instance.AddChangeableObject(button.gameObject, index);
                     break;
             }
         }

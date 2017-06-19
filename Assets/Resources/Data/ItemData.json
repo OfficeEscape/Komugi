@@ -3,18 +3,21 @@
     "itemId": 1,
     "itemName": "雑巾",
     "itemDetail": "雑巾の説明",
-    "itemImage": "whiteboard/item_s_zoukin1"
+    "itemIcon": "small/item_s_zoukin1",
+    "itemImage": "large/item_zoukin1"
   },
   {
     "itemId": 2,
     "itemName": "懐中電灯",
     "itemDetail": "ブラックライトの懐中電灯だ。",
-    "itemImage": "shoescase/shoescase_item"
+    "itemIcon": "small/shoescase_item",
+    "itemImage": "large/item_flashlight1"
   },
-    {
+  {
     "itemId": 3,
     "itemName": "キャビ鍵",
-    "itemDetail": "アイテムの説明",
-    "itemImage": "画像パス"
+    "itemDetail": "キャビ鍵らしき物体",
+    "itemIcon": "small/sofa_key",
+    "itemImage": "large/item_key_cabinet"
   }
 ]

@@ -11,6 +11,9 @@
         // アイテム説明
         public string itemDetail;
 
+        // アイテムアイコンのパス
+        public string itemIcon;
+
         // アイテム画像のパス
         public string itemImage;
     }
