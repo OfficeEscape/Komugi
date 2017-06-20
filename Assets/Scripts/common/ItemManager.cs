@@ -37,7 +37,7 @@ namespace Komugi
             }
         }
 
-        public void OpenBinary()
+        public void Deserialization()
         {
             if (itemDictionary.Count > 0) { return; }
 

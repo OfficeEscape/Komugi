@@ -3,7 +3,7 @@
     "comment": "ƒKƒ‰ƒXƒhƒA",
     "id": 1,
     "prefab": "office/glassdoor",
-    "gimmickId": 1,
+    "gimmickId": 99,
     "nextStage": 2,
     "preiverStage": 4,
     "jumpToStage": [ 8, 6 ]
@@ -135,6 +135,7 @@
     "id": 21,
     "prefab": "office/Kinko",
     "gimmickId": 1,
+    "getItem": [ 4 ],
     "preiverStage": 14
   }
 ]

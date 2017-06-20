@@ -17,6 +17,9 @@ namespace Komugi
         /** アイテムマネージャー */
         private ItemManager itemManager;
 
+        /** ギミックマネージャー */
+        private GimmickManager gimmickManager;
+
 	    /** 関数ディクショナリー */
 	    Dictionary<string, UnityAction<int, string>> functionDictionary = new Dictionary<string, UnityAction<int, string>>();
         
@@ -40,11 +43,14 @@ namespace Komugi
 	    {
             gameManager = GameManager.Instance;
             itemManager = ItemManager.Instance;
+            gimmickManager = GimmickManager.Instance;
 
-            gameManager.OpenBinary ();
-            itemManager.OpenBinary();
+            // Jasonデータデシリアライズ
+            gameManager.Deserialization();
+            itemManager.Deserialization();
+            gimmickManager.Deserialization();
 
-		    InitButtonFunction ();
+            InitButtonFunction ();
             //リソースフォルダのデータを非同期に読み込む
             StartCoroutine(LoadAsyncStageCoroutine(""));
 	    }
@@ -102,7 +108,7 @@ namespace Komugi
 
             UIManager.Instance.AddItemToItemBar(itemId);
         }
-
+        
 	    #endregion
 
 	    #region =============================== C# private ===============================
@@ -144,7 +150,14 @@ namespace Komugi
             UIManager.Instance.ResetStage();
             // ルートキャンパスへ追加
             UIManager.Instance.AddContentToMainCanvas(currentViewObject, gameManager.GetNextStageId(1, sceneId), gameManager.GetNextStageId(-1, sceneId));
-            
+
+            // ギミックのチェックおよびセットアップ
+            int gid = gameManager.GetStageGimmickId(sceneId);
+            if (gid > 0)
+            {
+                gimmickManager.SetupGimmick(ref currentViewObject, gid);
+            }
+
             // ボタンに適切なイベントハンドラを設定する
             Button[] buttons = currentViewObject.GetComponentsInChildren<Button> ();
 

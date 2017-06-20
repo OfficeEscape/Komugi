@@ -1,0 +1,14 @@
+[
+  {
+    "comment": "キャビ鍵を使って金庫をあける",
+    "gimmickId": 1,
+    "gimmickType": 1,
+    "gimmickAnswer": 3
+  },
+  {
+    "comment": "仮",
+    "gimmickId": 2,
+    "gimmickType": 1,
+    "gimmickAnswer": 3
+  }
+]

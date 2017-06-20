@@ -19,5 +19,12 @@
     "itemDetail": "キャビ鍵らしき物体",
     "itemIcon": "small/sofa_key",
     "itemImage": "large/item_key_cabinet"
+  },
+  {
+    "itemId": 4,
+    "itemName": "リモコン",
+    "itemDetail": "リモコンらしき物体",
+    "itemIcon": "small/shoescase_item",
+    "itemImage": "large/item_flashlight1"
   }
 ]

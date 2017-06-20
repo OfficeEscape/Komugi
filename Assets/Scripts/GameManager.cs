@@ -5,10 +5,8 @@ using LitJson;
 
 namespace Komugi
 {
-
     public class GameManager
     {
-        
         /** クラスのユニークなインスタンス */
         private static GameManager mInstance;
 
@@ -41,7 +39,7 @@ namespace Komugi
 
 
         // JsonDataをデシリアライズ
-        public void OpenBinary()
+        public void Deserialization()
         {
             if (stageDictionary.Count > 0) { return; }
 
@@ -104,6 +102,12 @@ namespace Komugi
             int itemId = stageDictionary[id].getItem[index];
 
             return itemId;
+        }
+
+        // ステージのギミックIDをゲット
+        public int GetStageGimmickId(int stageId)
+        {
+            return stageDictionary[stageId].gimmickId;
         }
     }
 }
