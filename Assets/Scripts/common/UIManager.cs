@@ -15,21 +15,14 @@ namespace Komugi
         private const int CHANGEABLE_MAX = 10;
 
         [SerializeField]
-        // アイテム表示領域
-        private Image[] ItemImages;
+        ItemBarController itemBar;
 
         [SerializeField]
         private GameObject LeftRightPanel;
 
         [SerializeField]
         private GameObject ReturnPanel;
-
-        // 現在持ってるアイテム数
-        private int itemNum;
-
-        // 現在のページ数
-        private int currentPage = 0;
-
+        
         // オブジェクトの表示非表示切替
         private GameObject[][] changeableObjectList;
 
@@ -46,7 +39,7 @@ namespace Komugi
         // Use this for initialization
         void Start()
         {
-            itemNum = 0;
+            
         }
 
         #region =============================== C# private ===============================
@@ -141,23 +134,8 @@ namespace Komugi
         // アイテムバーにアイテムを追加
         public void AddItemToItemBar(int itemId)
         {
-            if (ItemImages[itemNum].enabled)
-            {
-                Debug.Log("item " + itemNum + " is Registered");
-                return;
-            }
-
+            itemBar.AddItemImage(itemId);
             ShowItemGetDailog(itemId);
-
-            Sprite itemSprite = ItemManager.Instance.GetItemImage(itemId);
-            if (itemSprite != null)
-            {
-                ItemImages[itemNum].sprite = itemSprite;
-                ItemImages[itemNum].enabled = true;
-                ItemImages[itemNum].SetNativeSize();
-            }
-
-            itemNum++;
         }
 
         // リセット
