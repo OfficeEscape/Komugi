@@ -6,10 +6,10 @@
     "gimmickId": 99,
     "nextStage": 2,
     "preiverStage": 4,
-    "jumpToStage": [ 8, 6 ]
+    "jumpToStage": [ 27 ]
   },
   {
-    "comment": "コメント",
+    "comment": "ホワイトボード広域",
     "id": 2,
     "prefab": "office/whiteboard",
     "gimmickId": 0,
@@ -19,7 +19,7 @@
     "jumpToStage": [ 7, 9, 10, 11, 12 ]
   },
   {
-    "comment": "コメント",
+    "comment": "デスク広域",
     "id": 3,
     "prefab": "office/desk_zone",
     "nextStage": 4,
@@ -27,115 +27,172 @@
     "jumpToStage": [ 13, 14 ]
   },
   {
-    "comment": "コメント",
+    "comment": "ソファーのエリア",
     "id": 4,
     "prefab": "office/sofa",
-    "getItem": [ 3 ],
+    "getItem": [ 4 ],
     "nextStage": 1,
     "preiverStage": 3
   },
   {
-    "comment": "コメント",
+    "comment": "ガラスドア前のセンサー",
     "id": 6,
     "prefab": "office/sensor",
     "gimmickId": 4,
     "preiverStage": 1
   },
   {
-    "comment": "コメント",
+    "comment": "セキュリティカード",
     "id": 7,
     "prefab": "office/securitycard",
-    "nextStage": 2,
+    "preiverStage": 2,
     "jumpToStage": [ 8 ],
     "getItem": [ 2 ]
   },
   {
-    "comment": "コメント",
+    "comment": "ナンバー入力",
     "id": 8,
     "prefab": "office/securitycardnum",
-    "nextStage": 7
+    "preiverStage": 7
   },
   {
-    "comment": "コメント",
+    "comment": "シューズケース",
     "id": 9,
     "prefab": "office/shoescase",
     "getItem": [ 2 ],
-    "nextStage": 2
+    "preiverStage": 2
   },
   {
-    "comment": "コメント",
+    "comment": "モニター",
     "id": 10,
     "prefab": "office/monitor",
-    "nextStage": 2
+    "preiverStage": 2
   },
   {
-    "comment": "コメント",
+    "comment": "黒い箱",
     "id": 11,
     "prefab": "office/blackbox",
-    "nextStage": 2
+    "preiverStage": 2
   },
   {
-    "comment": "コメント",
+    "comment": "オットマン",
     "id": 12,
     "prefab": "office/ottoman",
-    "nextStage": 2
+    "preiverStage": 2
   },
   {
-    "comment": "コメント",
+    "comment": "デスク全部",
     "id": 13,
     "prefab": "office/desk_all",
-    "nextStage": 3,
+    "preiverStage": 3,
     "jumpToStage": [ 15, 16, 17, 18, 19, 20 ]
   },
   {
     "comment": "ロッカー",
     "id": 14,
     "prefab": "office/Locker",
-    "jumpToStage": [ 21 ],
+    "jumpToStage": [ 25 ],
     "preiverStage": 3
   },
   {
-    "comment": "コメント",
+    "comment": "デスク右下",
     "id": 15,
     "prefab": "office/Desk1",
+    "jumpToStage": [ 21 ],
     "preiverStage": 13
   },
   {
-    "comment": "コメント",
+    "comment": "デスク右真ん中",
     "id": 16,
     "prefab": "office/Desk2",
+    "jumpToStage": [ 22 ],
     "preiverStage": 13
   },
   {
-    "comment": "コメント",
+    "comment": "デスク右上",
     "id": 17,
     "prefab": "office/Desk3",
+    "jumpToStage": [ 23 ],
     "preiverStage": 13
   },
   {
-    "comment": "コメント",
+    "comment": "デスク左下",
     "id": 18,
     "prefab": "office/Desk4",
+    "getItem": [ 3 ],
     "preiverStage": 13
   },
   {
-    "comment": "コメント",
+    "comment": "デスク左真ん中",
     "id": 19,
     "prefab": "office/Desk5",
     "preiverStage": 13
   },
   {
-    "comment": "コメント",
+    "comment": "デスク左上",
     "id": 20,
     "prefab": "office/Desk6",
+    "jumpToStage": [ 24 ],
     "preiverStage": 13
   },
   {
-    "comment": "拡大した金庫",
+    "comment": "コメント",
     "id": 21,
+    "prefab": "office/Desk3_2",
+    "preiverStage": 15
+  },
+  {
+    "comment": "コメント",
+    "id": 22,
+    "prefab": "office/Desk2_2",
+    "preiverStage": 16
+  },
+  {
+    "comment": "コメント",
+    "id": 23,
+    "prefab": "office/Desk1_2",
+    "preiverStage": 17
+  },
+  {
+    "comment": "コメント",
+    "id": 24,
+    "prefab": "office/Desk6_2",
+    "preiverStage": 20
+  },
+  {
+    "comment": "拡大した金庫",
+    "id": 25,
     "prefab": "office/Kinko",
     "gimmickId": 1,
     "getItem": [ 4 ],
+    "jumpToStage": [ 26 ],
     "preiverStage": 14
+  },
+    {
+    "comment": "拡大した金庫の操作パネル",
+    "id": 26,
+    "prefab": "office/Kinko_up",
+    "preiverStage": 25
+  },
+    {
+    "comment": "ミーティングスペース",
+    "id": 27,
+    "prefab": "mtgspace/mtgspace_area",
+    "nextStage": 28,
+    "preiverStage": 29
+  },
+    {
+    "comment": "ミーティングスペース　廊下※preiverStageの矢印左にしたい",
+    "id": 28,
+    "prefab": "mtgspace/rouka_area",
+    "preiverStage": 27
+  },
+    {
+    "comment": "ミーティングスペース　ドア",
+    "id": 29,
+    "prefab": "mtgspace/door_area",
+    "jumpToStage": [ 1 ],
+    "nextStage": 28,
+    "preiverStage": 27
   }
 ]
