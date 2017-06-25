@@ -45,7 +45,7 @@ namespace Komugi
         #region =============================== C# private ===============================
 
         // アイテムゲットのダイアログ
-        private void ShowItemGetDailog(int itemId)
+        public void ShowItemGetDailog(int itemId)
         {
             StartCoroutine(LoadAsyncDialogCoroutine(itemId));
         }
