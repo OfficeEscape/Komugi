@@ -1,22 +1,40 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Komugi.Gimmick
 {
-    public class ItemGimmick : MonoBehaviour, IGimmick
+    public class ItemGimmick : GimmickBase, IGimmick
     {
-        [SerializeField]
-        GameObject closeObject;
+        public GimmickData Data
+        {
+            get
+            {
+                return data;
+            }
 
-        [SerializeField]
-        GameObject openObject;
+            set
+            {
+                data = value;
+            }
+        }
 
-        public bool ClearFlag { get; set; }
+        public bool ClearFlag
+        {
+            get
+            {
+                return clearflag;
+            }
 
-        public int ClearItem { get; set; }
+            set
+            {
+                clearflag = value;
+                if (clearflag) { RescissionGimmick(); }
+            }
+        }
 
         public bool CheckClearConditions(int itemId)
         {
-            return ClearItem == itemId;
+            return data.gimmickAnswer == itemId;
         }
 
         public void RescissionGimmick()

@@ -148,6 +148,8 @@ namespace Komugi
             }
 
             UIManager.Instance.ResetStage();
+            GimmickManager.Instance.ResetGimmick();
+
             // ルートキャンパスへ追加
             UIManager.Instance.AddContentToMainCanvas(currentViewObject, gameManager.GetNextStageId(1, sceneId), gameManager.GetNextStageId(-1, sceneId));
 

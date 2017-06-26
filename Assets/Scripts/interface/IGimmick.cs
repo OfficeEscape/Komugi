@@ -2,9 +2,9 @@
 {
     interface IGimmick
     {
-        bool ClearFlag { get; set; }
+        GimmickData Data { get; set; }
 
-        int ClearItem { get; set; }
+        bool ClearFlag { get; set; }
 
         bool CheckClearConditions(int itemId);
 

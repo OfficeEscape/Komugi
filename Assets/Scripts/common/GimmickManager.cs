@@ -14,10 +14,17 @@ namespace Komugi
         /** 各ギミックデータ */
         public Dictionary<int, GimmickData> gimmickDictionary { get; private set; }
 
+        /** 各ギミックのクリア状況 */
+        private Dictionary<int, bool> clearFlagDictionart;
+
+        /** 現在のステージのギミック */
+        private IGimmick currentGimmick;
+
         // Private Constructor
         private GimmickManager()
         {
             gimmickDictionary = new Dictionary<int, GimmickData>();
+            clearFlagDictionart = new Dictionary<int, bool>();
             Debug.Log("Create GimmickManager instance.");
         }
 
@@ -32,6 +39,11 @@ namespace Komugi
             }
         }
 
+        public void ResetGimmick()
+        {
+            currentGimmick = null;
+        }
+
         public void Deserialization()
         {
             if (gimmickDictionary.Count > 0) { return; }
@@ -42,6 +54,7 @@ namespace Komugi
             foreach (GimmickData data in gimmickList)
             {
                 gimmickDictionary.Add(data.gimmickId, data);
+                clearFlagDictionart.Add(data.gimmickId, false);
             }
 
             Debug.Log("GimmickData OpenBinary " + Time.time.ToString());
@@ -51,9 +64,24 @@ namespace Komugi
         {
             if (!gimmickDictionary.ContainsKey(gimmickId)) { return; }
 
-            IGimmick gimmick = stageObject.GetComponentInChildren<IGimmick>();
-            gimmick.ClearItem = gimmickDictionary[gimmickId].gimmickAnswer;
-            gimmick.ClearFlag = false;
+            currentGimmick = stageObject.GetComponentInChildren<IGimmick>();
+            currentGimmick.Data = gimmickDictionary[gimmickId];
+            currentGimmick.ClearFlag = clearFlagDictionart[gimmickId];
+        }
+
+        // ギミックを解除できるかを確認
+        public bool CheckCanOpenGimmick(int itemId)
+        {
+            if (currentGimmick.CheckClearConditions(itemId))
+            {
+                clearFlagDictionart[currentGimmick.Data.gimmickId] = true;
+                currentGimmick.RescissionGimmick();
+                Debug.Log("Correct answer");
+                return true;
+            }
+
+            Debug.Log("Incorrect answer");
+            return false;
         }
     }
 }

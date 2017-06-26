@@ -103,8 +103,8 @@ namespace Komugi.UI
             else
             {
                 // アイテムを使う
-                Debug.Log("Use");
-
+                Debug.Log("Use Item");
+                GimmickManager.Instance.CheckCanOpenGimmick(itemIdList[lastTouchItem]);
             }
             // throw new NotImplementedException();
         }

@@ -105,9 +105,16 @@ namespace Komugi
         }
 
         // ステージのギミックIDをゲット
-        public int GetStageGimmickId(int stageId)
+        public int GetStageGimmickId(int stageId = 0)
         {
-            return stageDictionary[stageId].gimmickId;
+            int sid = stageId == 0 ? currentView : stageId;
+            return stageDictionary[sid].gimmickId;
+        }
+
+        // アイテム使用
+        public bool UseItem(int itemId)
+        {
+            return false;
         }
     }
 }

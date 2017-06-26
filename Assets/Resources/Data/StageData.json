@@ -90,6 +90,7 @@
   {
     "comment": "ƒƒbƒJ[",
     "id": 14,
+    "gimmickId": 1,
     "prefab": "office/Locker",
     "jumpToStage": [ 25 ],
     "preiverStage": 3
