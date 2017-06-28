@@ -92,7 +92,7 @@ namespace Komugi
         // アイテムゲット
         public void GetItem(int itemIndex, string ItemName)
         {
-            Debug.Log(" Click Item" + ItemName);
+            Debug.Log(" Click Item Name : " + ItemName);
 
             int itemId = gameManager.GetStageItemId(itemIndex);
             if (itemId == 0) { return; }

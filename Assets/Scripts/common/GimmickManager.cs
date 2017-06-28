@@ -1,8 +1,7 @@
-﻿using System.Collections;
+﻿using Komugi.Gimmick;
+using LitJson;
 using System.Collections.Generic;
 using UnityEngine;
-using LitJson;
-using Komugi.Gimmick;
 
 namespace Komugi
 {
@@ -13,6 +12,9 @@ namespace Komugi
 
         /** 各ギミックデータ */
         public Dictionary<int, GimmickData> gimmickDictionary { get; private set; }
+
+        /** 今選んだアイテム */
+        public int selectedItem { get; set; }
 
         /** 各ギミックのクリア状況 */
         private Dictionary<int, bool> clearFlagDictionart;
@@ -42,6 +44,7 @@ namespace Komugi
         public void ResetGimmick()
         {
             currentGimmick = null;
+            selectedItem = 0;
         }
 
         public void Deserialization()
@@ -67,12 +70,13 @@ namespace Komugi
             currentGimmick = stageObject.GetComponentInChildren<IGimmick>();
             currentGimmick.Data = gimmickDictionary[gimmickId];
             currentGimmick.ClearFlag = clearFlagDictionart[gimmickId];
+            currentGimmick.OpenAction = () => { CheckCanOpenGimmick(); };
         }
 
         // ギミックを解除できるかを確認
-        public bool CheckCanOpenGimmick(int itemId)
+        public bool CheckCanOpenGimmick()
         {
-            if (currentGimmick.CheckClearConditions(itemId))
+            if (currentGimmick.Data.gimmickAnswer == selectedItem)
             {
                 clearFlagDictionart[currentGimmick.Data.gimmickId] = true;
                 currentGimmick.RescissionGimmick();

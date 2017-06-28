@@ -164,15 +164,16 @@
     "comment": "Šg‘å‚µ‚½‹àŒÉ",
     "id": 25,
     "prefab": "office/Kinko",
-    "gimmickId": 1,
-    "getItem": [ 4 ],
+    "gimmickId": 2,
+    "getItem": [ 5 ],
     "jumpToStage": [ 26 ],
     "preiverStage": 14
   },
-    {
+  {
     "comment": "Šg‘å‚µ‚½‹àŒÉ‚Ì‘€ìƒpƒlƒ‹",
     "id": 26,
     "prefab": "office/Kinko_up",
+    "gimmickId": 2,
     "preiverStage": 25
   },
     {

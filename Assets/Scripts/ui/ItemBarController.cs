@@ -19,6 +19,10 @@ namespace Komugi.UI
         // アイテム表示領域
         private Image[] ItemImages;
 
+        [SerializeField]
+        // カーソル
+        private RectTransform cursor;
+
         // アイテムIDの配列
         private int[] itemIdList;
 
@@ -104,9 +108,11 @@ namespace Komugi.UI
             {
                 // アイテムを使う
                 Debug.Log("Use Item");
-                GimmickManager.Instance.CheckCanOpenGimmick(itemIdList[lastTouchItem]);
+                
             }
-            // throw new NotImplementedException();
+            GimmickManager.Instance.selectedItem = itemIdList[lastTouchItem];
+            cursor.localPosition = ItemImages[lastTouchItem].rectTransform.localPosition;
+            if (!cursor.gameObject.activeSelf) { cursor.gameObject.SetActive(true); }
         }
 
         public void OnPointerDown(PointerEventData eventData)

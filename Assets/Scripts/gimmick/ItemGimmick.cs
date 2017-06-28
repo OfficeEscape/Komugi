@@ -1,10 +1,11 @@
 ﻿using System;
-using UnityEngine;
+using UnityEngine.UI;
 
 namespace Komugi.Gimmick
 {
     public class ItemGimmick : GimmickBase, IGimmick
     {
+        #region -------------------------------------インターフェースメソッド-------------------------------------
         public GimmickData Data
         {
             get
@@ -32,15 +33,37 @@ namespace Komugi.Gimmick
             }
         }
 
-        public bool CheckClearConditions(int itemId)
+        private Action openAction;
+
+        public Action OpenAction
         {
-            return data.gimmickAnswer == itemId;
+            get
+            {
+                return openAction;
+            }
+
+            set
+            {
+                openAction = value;
+                SetClickHandler();
+            }
         }
 
         public void RescissionGimmick()
         {
             closeObject.SetActive(false);
             openObject.SetActive(true);
+        }
+        #endregion
+
+        private void SetClickHandler()
+        {
+            Button btn = closeObject.GetComponent<Button>();
+            if (btn == null) { return; }
+            btn.onClick.AddListener(() =>
+            {
+                openAction.Invoke();
+            });
         }
     }
 }

@@ -6,7 +6,7 @@
 
         bool ClearFlag { get; set; }
 
-        bool CheckClearConditions(int itemId);
+        System.Action OpenAction { get; set; }
 
         // ギミック解除
         void RescissionGimmick();
