@@ -63,8 +63,12 @@ namespace Komugi.Gimmick
             if (inputPosition < 3) { return; }
             if (clearflag) { return; }
             int pw = currentNum[0] * 100 + currentNum[1] * 10 + currentNum[2];
-            GimmickManager.Instance.selectedItem = pw;
-            openAction.Invoke();
+            if (data.gimmickAnswer == pw)
+            {
+                RescissionGimmick();
+                openAction.Invoke();
+            }
+
         }
 
         private void DeleteNumber()

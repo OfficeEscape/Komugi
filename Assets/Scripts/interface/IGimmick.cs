@@ -8,7 +8,9 @@
 
         System.Action OpenAction { get; set; }
 
-        // ギミック解除
+        /// <summary>
+        /// ギミック解除
+        /// </summary>
         void RescissionGimmick();
     }
 }

@@ -53,14 +53,35 @@ namespace Komugi
         }
 
         // 所持アイテムを追加
-        public void AddItem(int itemId)
+        public bool AddItem(int itemId, bool showDialog = true)
         {
             if (HasItemList.ContainsKey(itemId))
             {
                 Debug.Log("Item Id " + itemId + " is Dubbed");
+                return false;
             }
 
             HasItemList.Add(itemId, false);
+
+            UIManager.Instance.AddItemToItemBar(itemId, showDialog);
+            return true;
+        }
+
+        /// <summary>
+        /// 所持アイテムを削除
+        /// </summary>
+        /// <param name="itemId"></param>
+        public bool DeleteItem(int itemId)
+        {
+            if (!HasItemList.ContainsKey(itemId))
+            {
+                Debug.Log("Item Id " + itemId + " is not Have");
+                return false;
+            }
+
+            HasItemList.Remove(itemId);
+            UIManager.Instance.RemoveItemFromItemBar(itemId);
+            return true;
         }
 
         // アイテムの画像を返す

@@ -70,22 +70,13 @@ namespace Komugi
             currentGimmick = stageObject.GetComponentInChildren<IGimmick>();
             currentGimmick.Data = gimmickDictionary[gimmickId];
             currentGimmick.ClearFlag = clearFlagDictionart[gimmickId];
-            currentGimmick.OpenAction = () => { CheckCanOpenGimmick(); };
+            currentGimmick.OpenAction = () => { SetGimmickClearFlg(); };
         }
 
         // ギミックを解除できるかを確認
-        public bool CheckCanOpenGimmick()
+        public void SetGimmickClearFlg()
         {
-            if (currentGimmick.Data.gimmickAnswer == selectedItem)
-            {
-                clearFlagDictionart[currentGimmick.Data.gimmickId] = true;
-                currentGimmick.RescissionGimmick();
-                Debug.Log("Correct answer");
-                return true;
-            }
-
-            Debug.Log("Incorrect answer");
-            return false;
+            clearFlagDictionart[currentGimmick.Data.gimmickId] = true;
         }
     }
 }

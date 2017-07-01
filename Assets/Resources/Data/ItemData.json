@@ -10,7 +10,8 @@
     "itemId": 2,
     "itemName": "懐中電灯",
     "itemDetail": "ブラックライトの懐中電灯だ。",
-    "itemIcon": "small/shoescase_item",
+    "changeItem": 7,
+    "itemIcon": "small/item_s_flashlight",
     "itemImage": "large/item_flashlight1"
   },
   {
@@ -31,7 +32,47 @@
     "itemId": 5,
     "itemName": "リモコン",
     "itemDetail": "リモコンらしき物体",
+    "itemIcon": "small/item_s_remocon",
+    "itemImage": "large/item_flashlight1"
+  },
+  {
+    "itemId": 6,
+    "itemName": "リモコン",
+    "itemDetail": "リモコンらしき物体",
     "itemIcon": "small/shoescase_item",
     "itemImage": "large/item_flashlight1"
+  },
+  {
+    "itemId": 7,
+    "itemName": "懐中電灯",
+    "itemDetail": "尻を向かれた懐中電灯",
+    "changeItem": 8,
+    "itemIcon": "small/item_s_flashlight",
+    "itemImage": "large/item_flashlight2"
+  },
+  {
+    "itemId": 8,
+    "itemName": "懐中電灯",
+    "itemDetail": "尻を向かれ、パンツも脱がされた懐中電灯",
+    "changeItem": 9,
+    "triggerItem": 10,
+    "itemIcon": "small/item_s_flashlight",
+    "itemImage": "large/item_flashlight4"
+  },
+  {
+    "itemId": 9,
+    "itemName": "懐中電灯",
+    "itemDetail": "電池を無残に抜かれ、もはや息をしていない懐中電灯",
+    "changeItem": 8,
+    "triggerItem": -10,
+    "itemIcon": "small/item_s_flashlight",
+    "itemImage": "large/item_flashlight3"
+  },
+  {
+    "itemId": 10,
+    "itemName": "電池",
+    "itemDetail": "単5アルカリ乾電池の模様、どっかの尻に突っ込めそう",
+    "itemIcon": "small/item_s_battery",
+    "itemImage": "large/item_battery"
   }
 ]

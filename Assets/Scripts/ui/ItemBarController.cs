@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using System;
+using System.Collections.Generic;
 
 namespace Komugi.UI
 { 
@@ -24,10 +24,7 @@ namespace Komugi.UI
         private RectTransform cursor;
 
         // アイテムIDの配列
-        private int[] itemIdList;
-
-        // 現在持ってるアイテム数
-        private int itemNum;
+        private List<int> itemIdList;
 
         // 現在のページ数
         private int currentPage = 0;
@@ -53,8 +50,6 @@ namespace Komugi.UI
         // Use this for initialization
         void Start ()
         {
-            itemNum = 0;
-
             float widthRatio = Screen.width / 1080f;
             float heightRatio = Screen.height / 1920f;
 
@@ -68,11 +63,17 @@ namespace Komugi.UI
             itemHeight = 384f * heightRatio / (float)ROW;
             Debug.Log("itemHeight" + itemHeight);
 
-            itemIdList = new int[100];
+            itemIdList = new List<int>();
         }
 
+
+        /// <summary>
+        /// アイテムバーに画像を追加
+        /// </summary>
+        /// <param name="itemId"></param>
         public void AddItemImage(int itemId)
         {
+            int itemNum = itemIdList.Count;
             if (ItemImages[itemNum].enabled)
             {
                 Debug.Log("item " + itemNum + " is Registered");
@@ -87,8 +88,7 @@ namespace Komugi.UI
                 ItemImages[itemNum].SetNativeSize();
             }
 
-            itemIdList[itemNum] = itemId;
-            itemNum++;
+            itemIdList.Add(itemId);
         }
 
         // 
@@ -141,6 +141,34 @@ namespace Komugi.UI
             return index;
         }
 
+        /// <summary>
+        /// アイテムバーからアイテムを消す
+        /// </summary>
+        public void DeleteItemFromItemBar(int itemId)
+        {
+            if (itemIdList[lastTouchItem] == itemId) { cursor.gameObject.SetActive(false); }
+            itemIdList.Remove(itemId);
+
+            RefreshItem();
+        }
+
+        /// <summary>
+        /// アイテムバーを並び替え
+        /// </summary>
+        private void RefreshItem()
+        {
+            foreach(Image img in ItemImages)
+            {
+                img.sprite = null;
+                img.enabled = false;
+            }
+
+            for(int i = 0; i < itemIdList.Count; i++)
+            {
+                ItemImages[i].sprite = ItemManager.Instance.GetItemImage(itemIdList[i]);
+                ItemImages[i].enabled = true;
+            }
+        }
         #endregion
     }
 }

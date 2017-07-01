@@ -47,6 +47,12 @@
 
         // アイテム画像のパス
         public string itemImage;
+
+        // 変化後アイテム
+        public int changeItem;
+
+        // 変化するトリガーとなるアイテム
+        public int triggerItem;
     }
     #endregion
 

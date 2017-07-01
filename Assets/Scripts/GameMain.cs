@@ -105,8 +105,6 @@ namespace Komugi
             {
                 itemObject.SetActive(false);
             }
-
-            UIManager.Instance.AddItemToItemBar(itemId);
         }
         
 	    #endregion

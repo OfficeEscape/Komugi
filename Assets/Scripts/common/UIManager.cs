@@ -36,12 +36,6 @@ namespace Komugi
             base.Awake();
         }
 
-        // Use this for initialization
-        void Start()
-        {
-            
-        }
-
         #region =============================== C# private ===============================
 
         // アイテムゲットのダイアログ
@@ -70,7 +64,7 @@ namespace Komugi
             
             if (script != null)
             {
-                script.UpdateItem(ItemManager.Instance.GetItemImage(itemId, 1), ItemManager.Instance.GetItemName(itemId));
+                script.UpdateItem(ItemManager.Instance.itemDictionary[itemId]);
             }
 
             dialog.transform.SetParent(gameObject.transform);
@@ -132,10 +126,19 @@ namespace Komugi
         }
 
         // アイテムバーにアイテムを追加
-        public void AddItemToItemBar(int itemId)
+        public void AddItemToItemBar(int itemId, bool showDialog = true)
         {
             itemBar.AddItemImage(itemId);
-            ShowItemGetDailog(itemId);
+            if (showDialog){ ShowItemGetDailog(itemId); }
+        }
+
+        /// <summary>
+        /// アイテムを削除
+        /// </summary>
+        /// <param name="itemId"></param>
+        public void RemoveItemFromItemBar(int itemId)
+        {
+            itemBar.DeleteItemFromItemBar(itemId);
         }
 
         // リセット

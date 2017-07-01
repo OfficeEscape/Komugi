@@ -60,10 +60,21 @@ namespace Komugi.Gimmick
         {
             Button btn = closeObject.GetComponent<Button>();
             if (btn == null) { return; }
+
             btn.onClick.AddListener(() =>
             {
-                openAction.Invoke();
+                CheckCanOpenGimmick();
             });
+        }
+
+        private void CheckCanOpenGimmick()
+        {
+            if (data.gimmickAnswer == GimmickManager.Instance.selectedItem)
+            {
+                RescissionGimmick();
+                openAction.Invoke();
+                ItemManager.Instance.DeleteItem(data.gimmickAnswer);
+            }
         }
     }
 }
