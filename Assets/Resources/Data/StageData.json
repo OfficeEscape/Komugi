@@ -1,6 +1,6 @@
 [
   {
-    "comment": "ƒKƒ‰ƒXƒhƒA",
+    "comment": "ã‚¬ãƒ©ã‚¹ãƒ‰ã‚¢",
     "id": 1,
     "prefab": "office/glassdoor",
     "gimmickId": 99,
@@ -9,7 +9,7 @@
     "jumpToStage": [ 40,6 ]
   },
   {
-    "comment": "ƒzƒƒCƒgƒ{[ƒhLˆæ",
+    "comment": "ãƒ›ãƒ¯ã‚¤ãƒˆãƒœãƒ¼ãƒ‰åºƒåŸŸ",
     "id": 2,
     "prefab": "office/whiteboard",
     "gimmickId": 0,
@@ -19,7 +19,7 @@
     "jumpToStage": [ 7, 9, 10, 11, 12 ]
   },
   {
-    "comment": "ƒfƒXƒNLˆæ",
+    "comment": "ãƒ‡ã‚¹ã‚¯åºƒåŸŸ",
     "id": 3,
     "prefab": "office/desk_zone",
     "nextStage": 4,
@@ -27,7 +27,7 @@
     "jumpToStage": [ 13, 14 ]
   },
   {
-    "comment": "ƒ\ƒtƒ@[‚ÌƒGƒŠƒA",
+    "comment": "ã‚½ãƒ•ã‚¡ãƒ¼ã®ã‚¨ãƒªã‚¢",
     "id": 4,
     "prefab": "office/sofa",
     "getItem": [ 4 ],
@@ -35,14 +35,14 @@
     "preiverStage": 3
   },
   {
-    "comment": "ƒKƒ‰ƒXƒhƒA‘O‚ÌƒZƒ“ƒT[",
+    "comment": "ã‚¬ãƒ©ã‚¹ãƒ‰ã‚¢å‰ã®ã‚»ãƒ³ã‚µãƒ¼",
     "id": 6,
     "prefab": "office/sensor",
     "gimmickId": 4,
     "preiverStage": 1
   },
   {
-    "comment": "ƒZƒLƒ…ƒŠƒeƒBƒJ[ƒh",
+    "comment": "ã‚»ã‚­ãƒ¥ãƒªãƒ†ã‚£ã‚«ãƒ¼ãƒ‰",
     "id": 7,
     "prefab": "office/securitycard",
     "preiverStage": 2,
@@ -50,47 +50,47 @@
     "getItem": [ 13 ]
   },
   {
-    "comment": "ƒiƒ“ƒo[“ü—Í",
+    "comment": "ãƒŠãƒ³ãƒãƒ¼å…¥åŠ›",
     "id": 8,
     "prefab": "office/securitycardnum",
     "preiverStage": 7
   },
   {
-    "comment": "ƒVƒ…[ƒYƒP[ƒX",
+    "comment": "ã‚·ãƒ¥ãƒ¼ã‚ºã‚±ãƒ¼ã‚¹",
     "id": 9,
     "prefab": "office/shoescase",
     "getItem": [ 2 ],
     "preiverStage": 2
   },
   {
-    "comment": "ƒ‚ƒjƒ^[",
+    "comment": "ãƒ¢ãƒ‹ã‚¿ãƒ¼",
     "id": 10,
     "prefab": "office/monitor",
     "gimmickId": 3,
     "preiverStage": 2
   },
   {
-    "comment": "•‚¢” ",
+    "comment": "é»’ã„ç®±",
     "id": 11,
     "prefab": "office/blackbox",
     "preiverStage": 2,
     "jumpToStage": [ 27 ]
   },
   {
-    "comment": "ƒIƒbƒgƒ}ƒ“",
+    "comment": "ã‚ªãƒƒãƒˆãƒãƒ³",
     "id": 12,
     "prefab": "office/ottoman",
     "preiverStage": 2
   },
   {
-    "comment": "ƒfƒXƒN‘S•”",
+    "comment": "ãƒ‡ã‚¹ã‚¯å…¨éƒ¨",
     "id": 13,
     "prefab": "office/desk_all",
     "preiverStage": 3,
     "jumpToStage": [ 15, 16, 17, 18, 19, 20 ]
   },
   {
-    "comment": "ƒƒbƒJ[",
+    "comment": "ãƒ­ãƒƒã‚«ãƒ¼",
     "id": 14,
     "gimmickId": 1,
     "prefab": "office/Locker",
@@ -98,72 +98,72 @@
     "preiverStage": 3
   },
   {
-    "comment": "ƒfƒXƒN‰E‰º",
+    "comment": "ãƒ‡ã‚¹ã‚¯å³ä¸‹",
     "id": 15,
     "prefab": "office/Desk1",
     "jumpToStage": [ 21 ],
     "preiverStage": 13
   },
   {
-    "comment": "ƒfƒXƒN‰E^‚ñ’†",
+    "comment": "ãƒ‡ã‚¹ã‚¯å³çœŸã‚“ä¸­",
     "id": 16,
     "prefab": "office/Desk2",
     "jumpToStage": [ 22 ],
     "preiverStage": 13
   },
   {
-    "comment": "ƒfƒXƒN‰Eã",
+    "comment": "ãƒ‡ã‚¹ã‚¯å³ä¸Š",
     "id": 17,
     "prefab": "office/Desk3",
     "jumpToStage": [ 23 ],
     "preiverStage": 13
   },
   {
-    "comment": "ƒfƒXƒN¶‰º",
+    "comment": "ãƒ‡ã‚¹ã‚¯å·¦ä¸‹",
     "id": 18,
     "prefab": "office/Desk4",
     "getItem": [ 3 ],
     "preiverStage": 13
   },
   {
-    "comment": "ƒfƒXƒN¶^‚ñ’†",
+    "comment": "ãƒ‡ã‚¹ã‚¯å·¦çœŸã‚“ä¸­",
     "id": 19,
     "prefab": "office/Desk5",
     "preiverStage": 13
   },
   {
-    "comment": "ƒfƒXƒN¶ã",
+    "comment": "ãƒ‡ã‚¹ã‚¯å·¦ä¸Š",
     "id": 20,
     "prefab": "office/Desk6",
     "jumpToStage": [ 24 ],
     "preiverStage": 13
   },
   {
-    "comment": "ƒfƒXƒN‰Eã‚ÌƒAƒbƒv",
+    "comment": "ãƒ‡ã‚¹ã‚¯å³ä¸Šã®ã‚¢ãƒƒãƒ—",
     "id": 21,
     "prefab": "office/Desk3_2",
     "preiverStage": 15
   },
   {
-    "comment": "ƒfƒXƒN‰E^‚ñ’†‚ÌƒAƒbƒv",
+    "comment": "ãƒ‡ã‚¹ã‚¯å³çœŸã‚“ä¸­ã®ã‚¢ãƒƒãƒ—",
     "id": 22,
     "prefab": "office/Desk2_2",
     "preiverStage": 16
   },
   {
-    "comment": "ƒfƒXƒN‰E‰ºƒAƒbƒv",
+    "comment": "ãƒ‡ã‚¹ã‚¯å³ä¸‹ã‚¢ãƒƒãƒ—",
     "id": 23,
     "prefab": "office/Desk1_2",
     "preiverStage": 17
   },
   {
-    "comment": "ƒfƒXƒN¶ãƒAƒbƒv",
+    "comment": "ãƒ‡ã‚¹ã‚¯å·¦ä¸Šã‚¢ãƒƒãƒ—",
     "id": 24,
     "prefab": "office/Desk6_2",
     "preiverStage": 20
   },
   {
-    "comment": "Šg‘å‚µ‚½‹àŒÉ",
+    "comment": "æ‹¡å¤§ã—ãŸé‡‘åº«",
     "id": 25,
     "prefab": "office/Kinko",
     "gimmickId": 2,
@@ -172,21 +172,21 @@
     "preiverStage": 14
   },
   {
-    "comment": "Šg‘å‚µ‚½‹àŒÉ‚Ì‘€ìƒpƒlƒ‹",
+    "comment": "æ‹¡å¤§ã—ãŸé‡‘åº«ã®æ“ä½œãƒ‘ãƒãƒ«",
     "id": 26,
     "prefab": "office/Kinko_up",
     "gimmickId": 2,
     "preiverStage": 25
   },
   {
-    "comment": "Šg‘å‚µ‚½•‚¢” ",
+    "comment": "æ‹¡å¤§ã—ãŸé»’ã„ç®±",
     "id": 27,
     "prefab": "office/blackbox_up",
     "gimmickId": 3,
     "preiverStage": 11
   },
   {
-    "comment": "ƒ~[ƒeƒBƒ“ƒOƒXƒy[ƒX",
+    "comment": "ãƒŸãƒ¼ãƒ†ã‚£ãƒ³ã‚°ã‚¹ãƒšãƒ¼ã‚¹",
     "id": 40,
     "prefab": "mtgspace/mtgspace_area",
     "jumpToStage": [ 43,44,45,46 ],
@@ -194,13 +194,13 @@
     "preiverStage": 42
   },
     {
-    "comment": "ƒ~[ƒeƒBƒ“ƒOƒXƒy[ƒX@˜L‰º¦preiverStage‚Ì–îˆó¶‚É‚µ‚½‚¢",
+    "comment": "ãƒŸãƒ¼ãƒ†ã‚£ãƒ³ã‚°ã‚¹ãƒšãƒ¼ã‚¹ã€€å»Šä¸‹â€»preiverStageã®çŸ¢å°å·¦ã«ã—ãŸã„",
     "id": 41,
     "prefab": "mtgspace/rouka_area",
     "preiverStage": 40
   },
     {
-    "comment": "ƒ~[ƒeƒBƒ“ƒOƒXƒy[ƒX@ƒhƒA",
+    "comment": "ãƒŸãƒ¼ãƒ†ã‚£ãƒ³ã‚°ã‚¹ãƒšãƒ¼ã‚¹ã€€ãƒ‰ã‚¢",
     "id": 42,
     "prefab": "mtgspace/door_area",
     "jumpToStage": [ 1 ],
@@ -208,54 +208,54 @@
     "preiverStage": 40
   },
     {
-    "comment": "ƒpƒ“ƒtƒŒƒbƒg",
+    "comment": "ãƒ‘ãƒ³ãƒ•ãƒ¬ãƒƒãƒˆ",
     "id": 43,
     "prefab": "mtgspace/pamphlet",
     "jumpToStage": [ 47 ],
     "preiverStage": 40
   },
     {
-    "comment": "ƒVƒ“ƒN",
+    "comment": "ã‚·ãƒ³ã‚¯",
     "id": 44,
     "prefab": "mtgspace/sink",
     "jumpToStage": [ 47 ],
     "preiverStage": 40
   },
     {
-    "comment": "P—§‚Ä",
+    "comment": "å‚˜ç«‹ã¦",
     "id": 45,
     "prefab": "mtgspace/umbrellastand",
     "preiverStage": 40
   },
     {
-    "comment": "ƒXƒCƒbƒ`",
+    "comment": "ã‚¹ã‚¤ãƒƒãƒ",
     "id": 46,
     "prefab": "mtgspace/swich",
     "nextStage": 42,
     "preiverStage": 40
   },
     {
-    "comment": "ƒVƒ“ƒNŒ®ƒAƒbƒv",
+    "comment": "ã‚·ãƒ³ã‚¯éµã‚¢ãƒƒãƒ—",
     "id": 47,
     "prefab": "mtgspace/sink_under_key",
     "jumpToStage": [ 48 ],
     "preiverStage": 44
   },
     {
-    "comment": "ƒVƒ“ƒN‰º",
+    "comment": "ã‚·ãƒ³ã‚¯ä¸‹",
     "id": 48,
     "prefab": "mtgspace/sink_under",
     "jumpToStage": [ 49,50 ],
     "preiverStage": 44
   },
     {
-    "comment": "ƒVƒ“ƒN‰º@ƒpƒCƒvƒAƒbƒv",
+    "comment": "ã‚·ãƒ³ã‚¯ä¸‹ã€€ãƒ‘ã‚¤ãƒ—ã‚¢ãƒƒãƒ—",
     "id": 49,
     "prefab": "mtgspace/sink_under_pipe",
     "preiverStage": 48
   },
     {
-    "comment": "ƒVƒ“ƒN‰º@” ƒAƒbƒv",
+    "comment": "ã‚·ãƒ³ã‚¯ä¸‹ã€€ç®±ã‚¢ãƒƒãƒ—",
     "id": 50,
     "prefab": "mtgspace/sink_under_box",
     "preiverStage": 48
