@@ -3,12 +3,18 @@
     "comment": "キャビ鍵を使って金庫をあける",
     "gimmickId": 1,
     "gimmickType": 1,
-    "gimmickAnswer": 4
+    "gimmickAnswer": [ 4 ]
   },
   {
     "comment": "操作パネル",
     "gimmickId": 2,
     "gimmickType": 1,
-    "gimmickAnswer": 683
+    "gimmickAnswer": [ 6, 8, 3 ]
+  },
+  {
+    "comment": "モニター",
+    "gimmickId": 3,
+    "gimmickType": 1,
+    "gimmickAnswer": [ 12, 3 ]
   }
 ]

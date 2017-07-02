@@ -19,23 +19,23 @@ namespace Komugi.Gimmick
             }
         }
 
-        public bool ClearFlag
+        public int ClearFlag
         {
             get
             {
-                return clearflag;
+                return clearflag ? 1 : 0;
             }
 
             set
             {
-                clearflag = value;
+                clearflag = value == 1;
                 if (clearflag) { RescissionGimmick(); }
             }
         }
 
-        private Action openAction;
+        private Action<int> openAction;
 
-        public Action OpenAction
+        public Action<int> OpenAction
         {
             get
             {
@@ -69,11 +69,11 @@ namespace Komugi.Gimmick
 
         private void CheckCanOpenGimmick()
         {
-            if (data.gimmickAnswer == GimmickManager.Instance.selectedItem)
+            if (data.gimmickAnswer[0] == GimmickManager.Instance.SelectedItem)
             {
                 RescissionGimmick();
-                openAction.Invoke();
-                ItemManager.Instance.DeleteItem(data.gimmickAnswer);
+                openAction.Invoke(1);
+                ItemManager.Instance.DeleteItem(data.gimmickAnswer[0]);
             }
         }
     }

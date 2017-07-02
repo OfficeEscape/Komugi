@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,10 +14,8 @@ namespace Komugi.Gimmick
         Text display;
 
         private const string SPACE = "  ";
-
-        private const int MAXNUM = 3;
-
-        private int[] currentNum = new int[MAXNUM];
+        
+        private int[] currentNum;
 
         int inputPosition = 0;
 
@@ -46,7 +42,7 @@ namespace Komugi.Gimmick
 
         private void OnInputPanel(Button btn)
         {
-            if (inputPosition >= MAXNUM) { return; }
+            if (inputPosition >= currentNum.Length) { return; }
             string num = btn.name;
             Debug.Log("Push " + num);
             currentNum[inputPosition] = int.Parse(num);
@@ -62,11 +58,20 @@ namespace Komugi.Gimmick
         {
             if (inputPosition < 3) { return; }
             if (clearflag) { return; }
-            int pw = currentNum[0] * 100 + currentNum[1] * 10 + currentNum[2];
-            if (data.gimmickAnswer == pw)
+
+            bool clearFlg = true;
+
+            for (int i = 0; i <data.gimmickAnswer.Length; i ++)
+            {
+                if (data.gimmickAnswer[i] != currentNum[i])
+                {
+                    clearFlg = false;
+                }
+            }
+            if (clearFlg)
             {
                 RescissionGimmick();
-                openAction.Invoke();
+                openAction.Invoke(1);
             }
 
         }
@@ -91,26 +96,27 @@ namespace Komugi.Gimmick
             set
             {
                 data = value;
+                currentNum = new int[data.gimmickAnswer.Length];
             }
         }
 
-        public bool ClearFlag
+        public int ClearFlag
         {
             get
             {
-                return clearflag;
+                return clearflag ? 1 : 0;
             }
 
             set
             {
-                clearflag = value;
+                clearflag = value == 1;
                 if (clearflag) { RescissionGimmick(); }
             }
         }
 
-        private Action openAction;
+        private Action<int> openAction;
 
-        public Action OpenAction
+        public Action<int> OpenAction
         {
             get
             {
