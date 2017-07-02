@@ -14,10 +14,24 @@ namespace Komugi
         public Dictionary<int, GimmickData> gimmickDictionary { get; private set; }
 
         /** 今選んだアイテム */
-        public int selectedItem { get; set; }
+        private int selectedItem;
+
+        public int SelectedItem
+        {
+            get
+            {
+                return selectedItem;
+            }
+
+            set
+            {
+                selectedItem = value;
+                Debug.Log("selectedItem : " + selectedItem);
+            }
+        }
 
         /** 各ギミックのクリア状況 */
-        private Dictionary<int, bool> clearFlagDictionart;
+        private Dictionary<int, int> clearFlagDictionary;
 
         /** 現在のステージのギミック */
         private IGimmick currentGimmick;
@@ -26,7 +40,7 @@ namespace Komugi
         private GimmickManager()
         {
             gimmickDictionary = new Dictionary<int, GimmickData>();
-            clearFlagDictionart = new Dictionary<int, bool>();
+            clearFlagDictionary = new Dictionary<int, int>();
             Debug.Log("Create GimmickManager instance.");
         }
 
@@ -34,7 +48,6 @@ namespace Komugi
         {
             get
             {
-
                 if (mInstance == null) mInstance = new GimmickManager();
 
                 return mInstance;
@@ -57,7 +70,7 @@ namespace Komugi
             foreach (GimmickData data in gimmickList)
             {
                 gimmickDictionary.Add(data.gimmickId, data);
-                clearFlagDictionart.Add(data.gimmickId, false);
+                clearFlagDictionary.Add(data.gimmickId, 0);
             }
 
             Debug.Log("GimmickData OpenBinary " + Time.time.ToString());
@@ -69,14 +82,14 @@ namespace Komugi
 
             currentGimmick = stageObject.GetComponentInChildren<IGimmick>();
             currentGimmick.Data = gimmickDictionary[gimmickId];
-            currentGimmick.ClearFlag = clearFlagDictionart[gimmickId];
-            currentGimmick.OpenAction = () => { SetGimmickClearFlg(); };
+            currentGimmick.ClearFlag = clearFlagDictionary[gimmickId];
+            currentGimmick.OpenAction = (progress) => { SetGimmickClearFlg(progress); };
         }
 
-        // ギミックを解除できるかを確認
-        public void SetGimmickClearFlg()
+        // ギミックのクリア状況をセット
+        public void SetGimmickClearFlg(int progress = 1)
         {
-            clearFlagDictionart[currentGimmick.Data.gimmickId] = true;
+            clearFlagDictionary[currentGimmick.Data.gimmickId] = progress;
         }
     }
 }

@@ -68,7 +68,7 @@
         public int gimmickType;
 
         /** ギミック解くための正解 */
-        public int gimmickAnswer;
+        public int[] gimmickAnswer;
     }
     #endregion
 }

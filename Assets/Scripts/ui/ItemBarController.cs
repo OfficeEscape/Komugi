@@ -110,7 +110,7 @@ namespace Komugi.UI
                 Debug.Log("Use Item");
                 
             }
-            GimmickManager.Instance.selectedItem = itemIdList[lastTouchItem];
+            GimmickManager.Instance.SelectedItem = itemIdList[lastTouchItem];
             cursor.localPosition = ItemImages[lastTouchItem].rectTransform.localPosition;
             if (!cursor.gameObject.activeSelf) { cursor.gameObject.SetActive(true); }
         }

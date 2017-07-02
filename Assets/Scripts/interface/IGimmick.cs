@@ -4,9 +4,9 @@
     {
         GimmickData Data { get; set; }
 
-        bool ClearFlag { get; set; }
+        int ClearFlag { get; set; }
 
-        System.Action OpenAction { get; set; }
+        System.Action<int> OpenAction { get; set; }
 
         /// <summary>
         /// ギミック解除
