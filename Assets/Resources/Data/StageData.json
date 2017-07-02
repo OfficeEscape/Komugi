@@ -6,7 +6,7 @@
     "gimmickId": 99,
     "nextStage": 2,
     "preiverStage": 4,
-    "jumpToStage": [ 27 ]
+    "jumpToStage": [ 40,6 ]
   },
   {
     "comment": "ホワイトボード広域",
@@ -47,7 +47,7 @@
     "prefab": "office/securitycard",
     "preiverStage": 2,
     "jumpToStage": [ 8 ],
-    "getItem": [ 2 ]
+    "getItem": [ 13 ]
   },
   {
     "comment": "ナンバー入力",
@@ -72,7 +72,8 @@
     "comment": "黒い箱",
     "id": 11,
     "prefab": "office/blackbox",
-    "preiverStage": 2
+    "preiverStage": 2,
+    "jumpToStage": [ 27 ]
   },
   {
     "comment": "オットマン",
@@ -137,25 +138,25 @@
     "preiverStage": 13
   },
   {
-    "comment": "コメント",
+    "comment": "デスク右上のアップ",
     "id": 21,
     "prefab": "office/Desk3_2",
     "preiverStage": 15
   },
   {
-    "comment": "コメント",
+    "comment": "デスク右真ん中のアップ",
     "id": 22,
     "prefab": "office/Desk2_2",
     "preiverStage": 16
   },
   {
-    "comment": "コメント",
+    "comment": "デスク右下アップ",
     "id": 23,
     "prefab": "office/Desk1_2",
     "preiverStage": 17
   },
   {
-    "comment": "コメント",
+    "comment": "デスク左上アップ",
     "id": 24,
     "prefab": "office/Desk6_2",
     "preiverStage": 20
@@ -176,25 +177,86 @@
     "gimmickId": 2,
     "preiverStage": 25
   },
-    {
-    "comment": "ミーティングスペース",
+  {
+    "comment": "拡大した黒い箱",
     "id": 27,
+    "prefab": "office/blackbox_up",
+    "gimmickId": 3,
+    "preiverStage": 11
+  },
+  {
+    "comment": "ミーティングスペース",
+    "id": 40,
     "prefab": "mtgspace/mtgspace_area",
-    "nextStage": 28,
-    "preiverStage": 29
+    "jumpToStage": [ 43,44,45,46 ],
+    "nextStage": 41,
+    "preiverStage": 42
   },
     {
     "comment": "ミーティングスペース　廊下※preiverStageの矢印左にしたい",
-    "id": 28,
+    "id": 41,
     "prefab": "mtgspace/rouka_area",
-    "preiverStage": 27
+    "preiverStage": 40
   },
     {
     "comment": "ミーティングスペース　ドア",
-    "id": 29,
+    "id": 42,
     "prefab": "mtgspace/door_area",
     "jumpToStage": [ 1 ],
-    "nextStage": 28,
-    "preiverStage": 27
+    "nextStage": 41,
+    "preiverStage": 40
+  },
+    {
+    "comment": "パンフレット",
+    "id": 43,
+    "prefab": "mtgspace/pamphlet",
+    "jumpToStage": [ 47 ],
+    "preiverStage": 40
+  },
+    {
+    "comment": "シンク",
+    "id": 44,
+    "prefab": "mtgspace/sink",
+    "jumpToStage": [ 47 ],
+    "preiverStage": 40
+  },
+    {
+    "comment": "傘立て",
+    "id": 45,
+    "prefab": "mtgspace/umbrellastand",
+    "preiverStage": 40
+  },
+    {
+    "comment": "スイッチ",
+    "id": 46,
+    "prefab": "mtgspace/swich",
+    "nextStage": 42,
+    "preiverStage": 40
+  },
+    {
+    "comment": "シンク鍵アップ",
+    "id": 47,
+    "prefab": "mtgspace/sink_under_key",
+    "jumpToStage": [ 48 ],
+    "preiverStage": 44
+  },
+    {
+    "comment": "シンク下",
+    "id": 48,
+    "prefab": "mtgspace/sink_under",
+    "jumpToStage": [ 49,50 ],
+    "preiverStage": 44
+  },
+    {
+    "comment": "シンク下　パイプアップ",
+    "id": 49,
+    "prefab": "mtgspace/sink_under_pipe",
+    "preiverStage": 48
+  },
+    {
+    "comment": "シンク下　箱アップ",
+    "id": 50,
+    "prefab": "mtgspace/sink_under_box",
+    "preiverStage": 48
   }
 ]

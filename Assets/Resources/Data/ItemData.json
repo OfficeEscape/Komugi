@@ -94,5 +94,82 @@
     "triggerItem": 10,
     "itemIcon": "small/item_s_remocon",
     "itemImage": "large/item_remocon4"
+  },
+  {
+    "itemId": 13,
+    "itemName": "カードキー",
+    "itemDetail": "カードキーだ。",
+    "itemIcon": "small/item_securitycard",
+    "itemImage": "large/item_securitycard"
+  },
+  {
+    "itemId": 14,
+    "itemName": "何かのパーツ",
+    "itemDetail": "見覚えのある形だ。",
+    "itemIcon": "small/item_parts1",
+    "itemImage": "large/item_parts1"
+  },
+  {
+    "itemId": 15,
+    "itemName": "何かのパーツ",
+    "itemDetail": "見覚えのある形だ。",
+    "itemIcon": "small/item_parts2",
+    "itemImage": "large/item_parts2"
+  }, 
+  {
+    "itemId": 16,
+    "itemName": "何かのパーツ",
+    "itemDetail": "見覚えのある形だ。",
+    "itemIcon": "small/item_parts3",
+    "itemImage": "large/item_parts3"
+  }, 
+   {
+    "itemId": 17,
+    "itemName": "メモ",
+    "itemDetail": "なにかのデザイン案だろうか。",
+    "itemIcon": "small/item_s_angou",
+    "itemImage": "large/item_angou"
+  },
+  {
+    "itemId": 18,
+    "itemName": "バケツ",
+    "itemDetail": "バケツだ。",
+    "itemIcon": "small/item_s_bucket1",
+    "itemImage": "large/item_bucket1"
+  },
+  {
+    "itemId": 19,
+    "itemName": "水の入ったバケツ",
+    "itemDetail": "水の入ったバケツだ。",
+    "itemIcon": "small/item_s_bucket2",
+    "itemImage": "large/item_bucket2"
+  },
+  {
+    "itemId": 20,
+    "itemName": "ハンドル",
+    "itemDetail": "どこかに取り付けられそうなハンドルだ。",
+    "itemIcon": "small/item_s_handle",
+    "itemImage": "large/item_handle"
+  },
+  {
+    "itemId": 21,
+    "itemName": "どこかの鍵",
+    "itemDetail": "どこのカギだろう。",
+    "itemIcon": "small/item_s_key_sink",
+    "itemImage": "large/item_key_sink"
+  },
+  {
+    "itemId": 22,
+    "itemName": "どこかの鍵",
+    "itemDetail": "どこのカギだろう。",
+    "itemIcon": "small/item_s_key_sink",
+    "itemImage": "large/item_key_sink"
+  },
+  {
+    "itemId": 23,
+    "itemName": "濡れた雑巾",
+    "itemDetail": "雑巾を濡らした。",
+    "itemIcon": "small/item_s_zoukin2",
+    "itemImage": "large/item_zoukin2"
   }
 ]
