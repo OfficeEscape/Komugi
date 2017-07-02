@@ -32,15 +32,17 @@
     "itemId": 5,
     "itemName": "リモコン",
     "itemDetail": "リモコンらしき物体",
+    "changeItem": 6,
     "itemIcon": "small/item_s_remocon",
-    "itemImage": "large/item_flashlight1"
+    "itemImage": "large/item_remocon1"
   },
   {
     "itemId": 6,
     "itemName": "リモコン",
-    "itemDetail": "リモコンらしき物体",
-    "itemIcon": "small/shoescase_item",
-    "itemImage": "large/item_flashlight1"
+    "itemDetail": "リモコンのけつ",
+    "itemIcon": "small/item_remocon",
+    "changeItem": 11,
+    "itemImage": "large/item_remocon2"
   },
   {
     "itemId": 7,
@@ -74,5 +76,23 @@
     "itemDetail": "単5アルカリ乾電池の模様、どっかの尻に突っ込めそう",
     "itemIcon": "small/item_s_battery",
     "itemImage": "large/item_battery"
+  },
+  {
+    "itemId": 11,
+    "itemName": "リモコン",
+    "itemDetail": "リモコンのパンツ",
+    "changeItem": 12,
+    "triggerItem": -10,
+    "itemIcon": "small/item_remocon",
+    "itemImage": "large/item_remocon3"
+  },
+  {
+    "itemId": 12,
+    "itemName": "リモコン",
+    "itemDetail": "電池を突っ込まれたリモコン",
+    "changeItem": 11,
+    "triggerItem": 10,
+    "itemIcon": "small/item_remocon",
+    "itemImage": "large/item_remocon4"
   }
 ]
