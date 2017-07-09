@@ -8,9 +8,7 @@ namespace Komugi
 {
     public class UIManager : SingletonMonoBehaviour<UIManager>
     {
-        // アイテムダイアログのパス
-        private const string itemDialogPath = "Prefabs/ui/ItemDialog";
-
+        
         // 画像切り替え可能オブジェクト最大数
         private const int CHANGEABLE_MAX = 10;
 
@@ -24,6 +22,8 @@ namespace Komugi
         private GameObject ReturnPanel;
 
         private AlertMenu alert;
+
+        private DialogMenu dialog;
         
         // オブジェクトの表示非表示切替
         private GameObject[][] changeableObjectList;
@@ -37,35 +37,12 @@ namespace Komugi
             // 複数のGameObjectにアタッチされないようにします.
             base.Awake();
             alert = gameObject.AddComponent<AlertMenu>();
+            dialog = gameObject.AddComponent<DialogMenu>();
         }
 
         #region =============================== C# private ===============================
         
-        // リソース非同期読み込み
-        private IEnumerator LoadAsyncDialogCoroutine(int itemId)
-        {
-            // リソースの非同期読込開始
-            ResourceRequest resReq = Resources.LoadAsync(itemDialogPath);
-            // 終わるまで待つ
-            while (resReq.isDone == false)
-            {
-                Debug.Log("Loading Dialog progress:" + resReq.progress.ToString());
-                yield return 0;
-            }
-            // テクスチャ表示
-            Debug.Log("Loading Dialog End  " + Time.time.ToString());
-
-            //ダイアログを出す
-            GameObject dialog = Instantiate(resReq.asset as GameObject, gameObject.transform);
-            ItemDialog script = dialog.GetComponent<ItemDialog>();
-            
-            if (script != null)
-            {
-                script.UpdateItem(ItemManager.Instance.itemDictionary[itemId]);
-            }
-
-            dialog.transform.SetParent(gameObject.transform);
-        }
+        
 
         #endregion
 
@@ -77,7 +54,7 @@ namespace Komugi
         /// <param name="itemId"></param>
         public void ShowItemGetDailog(int itemId)
         {
-            StartCoroutine(LoadAsyncDialogCoroutine(itemId));
+            dialog.OpenDialog(itemId);
         }
 
         /// <summary>
@@ -87,7 +64,6 @@ namespace Komugi
         /// <param name="destoryFlg">自動で消えるかどうか</param>
         public void OpenAlert(string message, bool destoryFlg = true, System.Action callback = null)
         {
-            if (alert.IsOpen) { return; }
             alert.OpenAlert(message, destoryFlg, callback);
         }
 

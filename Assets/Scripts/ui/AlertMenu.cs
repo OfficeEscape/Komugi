@@ -22,7 +22,8 @@ namespace Komugi.UI
         /// <param name="autoDestoryFlg">自動で消えるかどうか</param>
         public void OpenAlert(string message, bool autoDestoryFlg = true, System.Action callback = null)
         {
-            StartCoroutine(LoadAsyncAlertCoroutine(message, autoDestoryFlg));
+            if (IsOpen) { return; }
+            StartCoroutine(LoadAsyncAlertCoroutine(message, autoDestoryFlg, callback));
         }
 
         // リソース非同期読み込み

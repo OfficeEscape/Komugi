@@ -16,10 +16,15 @@ namespace Komugi.UI
 
         private ItemData itemData;
 
+        public System.Action CloseCallBack = null;
+
         private void Awake()
         {
-            CloseButton.onClick.AddListener(() => Destroy(gameObject));
-
+            CloseButton.onClick.AddListener(() =>
+            {
+                Destroy(gameObject);
+                if (CloseCallBack != null) { CloseCallBack.Invoke(); }
+            });
             ItemImage.GetComponent<Button>().onClick.AddListener(() => ChangeItem());
         }
 

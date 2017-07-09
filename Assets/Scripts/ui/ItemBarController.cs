@@ -32,8 +32,8 @@ namespace Komugi.UI
         // 最後にタッチしたアイテム
         private int lastTouchItem = 0;
 
-        // タッチし始めた時間
-        private float touchStartTime = 0f;
+        // 選択中のアイテムのインデックス
+        private int selectedIndex = -1;
 
         #region =============================== タップ領域計算用フィールド ===============================
 
@@ -97,22 +97,23 @@ namespace Komugi.UI
             if (GetPressedItemIndex(eventData.pressPosition) != lastTouchItem) { return; }
             if (!ItemImages[lastTouchItem].enabled) { return; }
 
-            float elapsedTime = Time.time - touchStartTime;
-
-            if (elapsedTime >= USE_TIME)
+            if (selectedIndex == lastTouchItem)
             {
                 // アイテムダイアログを出す
                 UIManager.Instance.ShowItemGetDailog(itemIdList[lastTouchItem]);
             }
             else
             {
-                // アイテムを使う
+                // アイテムを使うモード
                 Debug.Log("Use Item");
-                
+                selectedIndex = lastTouchItem;
+                GimmickManager.Instance.SelectedItem = itemIdList[selectedIndex];
+                cursor.name = lastTouchItem.ToString();
+                cursor.localPosition = ItemImages[lastTouchItem].rectTransform.localPosition;
+                if (!cursor.gameObject.activeSelf) { cursor.gameObject.SetActive(true); }
+
             }
-            GimmickManager.Instance.SelectedItem = itemIdList[lastTouchItem];
-            cursor.localPosition = ItemImages[lastTouchItem].rectTransform.localPosition;
-            if (!cursor.gameObject.activeSelf) { cursor.gameObject.SetActive(true); }
+            
         }
 
         public void OnPointerDown(PointerEventData eventData)
@@ -120,8 +121,6 @@ namespace Komugi.UI
             // throw new NotImplementedException();
             lastTouchItem = GetPressedItemIndex(eventData.pressPosition);
             Debug.Log("Now Pressed : " + lastTouchItem);
-
-            touchStartTime = Time.time;
         }
 
         #region =============================== C# private ===============================
