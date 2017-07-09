@@ -149,6 +149,7 @@ namespace Komugi.UI
             {
                 cursor.gameObject.SetActive(false);
                 GimmickManager.Instance.SelectedItem = 0;
+                selectedIndex = -1;
             }
             itemIdList.Remove(itemId);
 
@@ -184,6 +185,7 @@ namespace Komugi.UI
                 if (GimmickManager.Instance.SelectedItem == itemIdList[i])
                 {
                     cursor.localPosition = ItemImages[i].rectTransform.localPosition;
+                    selectedIndex = i;
                 }
                 ItemImages[i].sprite = ItemManager.Instance.GetItemImage(itemIdList[i]);
                 ItemImages[i].enabled = true;

@@ -57,7 +57,6 @@ namespace Komugi
         public void ResetGimmick()
         {
             currentGimmick = null;
-            selectedItem = 0;
         }
 
         public void Deserialization()

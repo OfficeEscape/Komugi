@@ -23,6 +23,7 @@ namespace Komugi.Gimmick
         /// </summary>
         private void CheckOpenItem()
         {
+            if (clearNumber >= data.gimmickAnswer.Length) { return; }
             if (data.gimmickAnswer[clearNumber] == GimmickManager.Instance.SelectedItem)
             {
                 openObjects[clearNumber].SetActive(true);
