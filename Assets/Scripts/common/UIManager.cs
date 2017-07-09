@@ -22,6 +22,8 @@ namespace Komugi
 
         [SerializeField]
         private GameObject ReturnPanel;
+
+        private AlertMenu alert;
         
         // オブジェクトの表示非表示切替
         private GameObject[][] changeableObjectList;
@@ -34,16 +36,11 @@ namespace Komugi
             // 必ず親クラスのAwakeをCallして
             // 複数のGameObjectにアタッチされないようにします.
             base.Awake();
+            alert = gameObject.AddComponent<AlertMenu>();
         }
 
         #region =============================== C# private ===============================
-
-        // アイテムゲットのダイアログ
-        public void ShowItemGetDailog(int itemId)
-        {
-            StartCoroutine(LoadAsyncDialogCoroutine(itemId));
-        }
-
+        
         // リソース非同期読み込み
         private IEnumerator LoadAsyncDialogCoroutine(int itemId)
         {
@@ -73,6 +70,26 @@ namespace Komugi
         #endregion
 
         #region =============================== C# public ===============================
+
+        /// <summary>
+        /// アイテムダイアログを出す
+        /// </summary>
+        /// <param name="itemId"></param>
+        public void ShowItemGetDailog(int itemId)
+        {
+            StartCoroutine(LoadAsyncDialogCoroutine(itemId));
+        }
+
+        /// <summary>
+        /// アラートを出す
+        /// </summary>
+        /// <param name="message">アラートの本文</param>
+        /// <param name="destoryFlg">自動で消えるかどうか</param>
+        public void OpenAlert(string message, bool destoryFlg = true, System.Action callback = null)
+        {
+            if (alert.IsOpen) { return; }
+            alert.OpenAlert(message, destoryFlg, callback);
+        }
 
         public void AddContentToMainCanvas(GameObject content, int next, int preiver)
         {
@@ -139,6 +156,11 @@ namespace Komugi
         public void RemoveItemFromItemBar(int itemId)
         {
             itemBar.DeleteItemFromItemBar(itemId);
+        }
+
+        public void ChangeItem(int before, int after)
+        {
+            itemBar.ChangeItem(before, after);
         }
 
         // リセット

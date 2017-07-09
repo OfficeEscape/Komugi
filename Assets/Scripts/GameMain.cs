@@ -89,6 +89,21 @@ namespace Komugi
 		    }
 	    }
 
+        /// <summary>
+        /// 行先を指定してジャンプ
+        /// </summary>
+        /// <param name="jumpTo">目的地</param>
+        public void JumpView(int jumpTo)
+        {
+            if (gameManager.stageDictionary.ContainsKey(jumpTo))
+            {
+                if (ChangeView(jumpTo))
+                {
+                    gameManager.currentView = jumpTo;
+                }
+            }
+        }
+
         // アイテムゲット
         public void GetItem(int itemIndex, string ItemName)
         {

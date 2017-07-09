@@ -146,10 +146,26 @@ namespace Komugi.UI
         /// </summary>
         public void DeleteItemFromItemBar(int itemId)
         {
-            if (itemIdList[lastTouchItem] == itemId) { cursor.gameObject.SetActive(false); }
+            if (itemIdList[lastTouchItem] == itemId)
+            {
+                cursor.gameObject.SetActive(false);
+                GimmickManager.Instance.SelectedItem = 0;
+            }
             itemIdList.Remove(itemId);
 
             RefreshItem();
+        }
+
+        public void ChangeItem(int beforeItem, int afterItem)
+        {
+            if (itemIdList[lastTouchItem] != beforeItem) { Debug.Log("Change Item Failed"); return; }
+
+            itemIdList[lastTouchItem] = afterItem;
+            Sprite itemSprite = ItemManager.Instance.GetItemImage(afterItem);
+            if (itemSprite != null)
+            {
+                ItemImages[lastTouchItem].sprite = itemSprite;
+            }
         }
 
         /// <summary>
@@ -165,6 +181,11 @@ namespace Komugi.UI
 
             for(int i = 0; i < itemIdList.Count; i++)
             {
+                // カーソルの位置を更新
+                if (GimmickManager.Instance.SelectedItem == itemIdList[i])
+                {
+                    cursor.localPosition = ItemImages[i].rectTransform.localPosition;
+                }
                 ItemImages[i].sprite = ItemManager.Instance.GetItemImage(itemIdList[i]);
                 ItemImages[i].enabled = true;
             }

@@ -59,6 +59,35 @@ namespace Komugi.UI
             }
 
             ItemImage.sprite = itemManager.GetItemImage(itemData.changeItem, 1);
+            ItemName.text = itemManager.GetItemName(itemData.changeItem);
+            itemManager.DeleteItem(itemData.itemId);
+
+            itemManager.AddItem(itemData.changeItem, false);
+            itemData = itemManager.itemDictionary[itemData.changeItem];
+
+            // 変化後のアイテムが自動変化アイテムならもう一度呼び出す
+            if (itemData.autoChange == 1)
+            {
+                ItemImage.raycastTarget = false;
+                Invoke("AutoChangeItem", 1.0f);
+            }
+        }
+
+
+        /// <summary>
+        /// アイテム自動変化
+        /// </summary>
+        private void AutoChangeItem()
+        {
+            ItemImage.raycastTarget = true;
+            if (itemData.changeItem == 0) { return; }
+
+            UIManager.Instance.OpenAlert("アイテムが変化しました");
+
+            // ほかのアイテムが必要としない前提で変化
+            var itemManager = ItemManager.Instance;
+            ItemImage.sprite = itemManager.GetItemImage(itemData.changeItem, 1);
+            ItemName.text = itemManager.GetItemName(itemData.changeItem);
             itemManager.DeleteItem(itemData.itemId);
 
             itemManager.AddItem(itemData.changeItem, false);

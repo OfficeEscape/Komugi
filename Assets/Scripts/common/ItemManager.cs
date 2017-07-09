@@ -84,6 +84,27 @@ namespace Komugi
             return true;
         }
 
+        /// <summary>
+        /// アイテムの変化
+        /// </summary>
+        /// <param name="beforeId"></param>
+        /// <param name="afterId"></param>
+        /// <returns></returns>
+        public bool ChangeItem(int beforeId, int afterId)
+        {
+            if (!HasItemList.ContainsKey(beforeId) || HasItemList.ContainsKey(afterId))
+            {
+                Debug.Log("ChangeItem " + beforeId + "To " + afterId + "Failed");
+                return false;
+            }
+
+            HasItemList.Remove(beforeId);
+            HasItemList.Add(afterId, false);
+
+            UIManager.Instance.ChangeItem(beforeId, afterId);
+            return true;
+        }
+
         // アイテムの画像を返す
         // size 0 = small 1 = large
         public Sprite GetItemImage(int itemId, int size = 0)

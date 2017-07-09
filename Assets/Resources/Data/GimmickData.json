@@ -9,6 +9,7 @@
     "comment": "操作パネル",
     "gimmickId": 2,
     "gimmickType": 1,
+    "clearJump": 25,
     "gimmickAnswer": [ 6, 8, 3 ]
   },
   {

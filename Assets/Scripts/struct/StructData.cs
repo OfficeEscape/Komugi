@@ -53,6 +53,9 @@
 
         // 変化するトリガーとなるアイテム
         public int triggerItem;
+
+        // アイテム自動変化するか
+        public int autoChange;
     }
     #endregion
 
@@ -66,6 +69,9 @@
 
         /** ギミックタイプ 1 アイテム 2 パスワード */
         public int gimmickType;
+
+        /** クリア後別のステージへ飛ぶか 0 だと飛ばない それ以外は飛び先を指す */
+        public int clearJump;
 
         /** ギミック解くための正解 */
         public int[] gimmickAnswer;
