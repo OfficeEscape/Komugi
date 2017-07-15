@@ -3,7 +3,7 @@
     "comment": "ガラスドア",
     "id": 1,
     "prefab": "office/glassdoor",
-    "gimmickId": 99,
+    "gimmickId": 5,
     "nextStage": 2,
     "preiverStage": 4,
     "jumpToStage": [ 40,6 ]

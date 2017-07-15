@@ -24,5 +24,11 @@
     "gimmickType": 1,
     "clearJump": 7,
     "gimmickAnswer": [ 2, 3, 3 ]
+  },
+  {
+    "comment": "セキュリティカードを使ってガラスドアを開く",
+    "gimmickId": 5,
+    "gimmickType": 1,
+    "gimmickAnswer": [ 13 ]
   }
 ]

@@ -51,8 +51,8 @@ namespace Komugi.Gimmick
 
         public void RescissionGimmick()
         {
-            closeObject.SetActive(false);
-            openObject.SetActive(true);
+            if (closeObject) { closeObject.SetActive(false); }
+            if (openObject) { openObject.SetActive(true); }
         }
         #endregion
 

@@ -99,7 +99,7 @@
     "itemId": 13,
     "itemName": "カードキー",
     "itemDetail": "カードキーだ。",
-    "itemIcon": "small/item_securitycard",
+    "itemIcon": "small/item_s_securitycard",
     "itemImage": "large/item_securitycard"
   },
   {
