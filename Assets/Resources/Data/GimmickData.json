@@ -17,5 +17,12 @@
     "gimmickId": 3,
     "gimmickType": 1,
     "gimmickAnswer": [ 24, 3 ]
+  },
+  {
+    "comment": "ガラスケース",
+    "gimmickId": 4,
+    "gimmickType": 1,
+    "clearJump": 7,
+    "gimmickAnswer": [ 2, 3, 3 ]
   }
 ]

@@ -4,51 +4,46 @@ using UnityEngine.UI;
 
 namespace Komugi.Gimmick
 {
-    public class PasswordGimmick : GimmickBase, IGimmick
+    public class InputPasswordGimmick : GimmickBase, IGimmick
     {
 
         [SerializeField]
-        Button[] panelButton;
+        InputField inputField;
 
         [SerializeField]
         Text display;
 
-        private const string SPACE = "  ";
-        
-        private int[] currentNum;
+        [SerializeField]
+        Button inputButton;
 
-        int inputPosition = 0;
+        [SerializeField]
+        Button openButton;
+
+        private const string SPACE = "     ";
+        private const string ALPHABET = "ABCDEFG";
+
+
 
         private void Start()
         {
-            if (panelButton.Length < 9) { return; }
+            inputField.characterLimit = 3;
+            inputField.contentType = InputField.ContentType.EmailAddress;
+            inputField.caretBlinkRate = 1;
+            inputField.onEndEdit.AddListener((t) => OnEditEnd(t));
 
-            int i = 0;
-            foreach(Button btn in panelButton)
-            {
-                btn.name = (i + 1).ToString();
-                btn.onClick.AddListener(() =>
-                {
-                    OnInputPanel(btn);
-                });
-                i++;
-                if (i == 9) { break; }
-            }
-                
-
-            panelButton[9].onClick.AddListener(() => DeleteNumber());
-            panelButton[10].onClick.AddListener(() => CheckPassWord());
+            inputButton.onClick.AddListener(() => inputField.ActivateInputField());
+            openButton.onClick.AddListener(() => CheckPassWord());
         }
 
-        private void OnInputPanel(Button btn)
+        private void OnEditEnd(string pw)
         {
-            if (inputPosition >= currentNum.Length) { return; }
-            string num = btn.name;
-            Debug.Log("Push " + num);
-            currentNum[inputPosition] = int.Parse(num);
+            var tempText = new System.Text.StringBuilder(10);
 
-            display.text = string.Format("{0}{1}{2}", display.text, num, SPACE);
-            inputPosition++;
+            tempText = tempText.Append(pw).Append(SPACE);
+
+            string result = tempText.ToString();
+
+            display.text = string.Format("{0} {1} {2}", result[0], result[1], result[2]);
         }
 
         /// <summary>
@@ -56,14 +51,14 @@ namespace Komugi.Gimmick
         /// </summary>
         private void CheckPassWord()
         {
-            if (inputPosition < 3) { return; }
             if (clearflag) { return; }
 
             bool clearFlg = true;
 
-            for (int i = 0; i <data.gimmickAnswer.Length; i ++)
+            for (int i = 0; i < data.gimmickAnswer.Length; i++)
             {
-                if (data.gimmickAnswer[i] != currentNum[i])
+                if (inputField.text.Length <= i) { return; }
+                if (ALPHABET[data.gimmickAnswer[i]] != inputField.text[i])
                 {
                     clearFlg = false;
                 }
@@ -76,16 +71,10 @@ namespace Komugi.Gimmick
             else
             {
                 UIManager.Instance.OpenAlert("パスワードが違います", true);
+                inputField.text = string.Empty;
+                display.text = string.Empty;
             }
-        }
 
-        private void DeleteNumber()
-        {
-            if (inputPosition <= 0) { return; }
-
-            inputPosition--;
-            currentNum[inputPosition] = 0;
-            display.text = display.text.Substring(0, inputPosition * (SPACE.Length + 1));
         }
 
         #region -------------------------------------インターフェースメソッド-------------------------------------
@@ -99,7 +88,6 @@ namespace Komugi.Gimmick
             set
             {
                 data = value;
-                currentNum = new int[data.gimmickAnswer.Length];
             }
         }
 
@@ -134,9 +122,8 @@ namespace Komugi.Gimmick
 
         public void RescissionGimmick()
         {
-            
+
         }
         #endregion
-
     }
 }

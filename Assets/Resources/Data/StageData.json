@@ -38,13 +38,14 @@
     "comment": "ガラスドア前のセンサー",
     "id": 6,
     "prefab": "office/sensor",
-    "gimmickId": 4,
+    "gimmickId": 5,
     "preiverStage": 1
   },
   {
     "comment": "セキュリティカード",
     "id": 7,
     "prefab": "office/securitycard",
+    "gimmickId": 4,
     "preiverStage": 2,
     "jumpToStage": [ 8 ],
     "getItem": [ 13 ]
@@ -52,6 +53,7 @@
   {
     "comment": "ナンバー入力",
     "id": 8,
+    "gimmickId": 4,
     "prefab": "office/securitycardnum",
     "preiverStage": 7
   },
