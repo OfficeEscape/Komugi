@@ -76,6 +76,8 @@
     "id": 11,
     "prefab": "office/blackbox",
     "preiverStage": 2,
+    "getItem": [ 14 ],
+    "gimmickId": 6,
     "jumpToStage": [ 27 ]
   },
   {
@@ -183,8 +185,8 @@
   {
     "comment": "拡大した黒い箱",
     "id": 27,
+    "gimmickId": 6,
     "prefab": "office/blackbox_up",
-    "gimmickId": 3,
     "preiverStage": 11
   },
   {

@@ -30,5 +30,12 @@
     "gimmickId": 5,
     "gimmickType": 1,
     "gimmickAnswer": [ 13 ]
+  },
+  {
+    "comment": "ダイアルキーでブラックボックスを開く",
+    "gimmickId": 6,
+    "gimmickType": 1,
+    "clearJump": 11,
+    "gimmickAnswer": [ 1, 7, 8 ]
   }
 ]

@@ -29,6 +29,9 @@ namespace Komugi.UI
         // 現在のページ数
         private int currentPage = 0;
 
+        // 最大ページ数
+        private int maxPage = 0;
+
         // 最後にタッチしたアイテム
         private int lastTouchItem = 0;
 
