@@ -193,13 +193,13 @@
     "comment": "ミーティングスペース",
     "id": 40,
     "prefab": "mtgspace/mtgspace_area",
-    "jumpToStage": [ 43,44,45,46 ],
     "nextStage": 41,
     "preiverStage": 42
   },
     {
     "comment": "ミーティングスペース　廊下※preiverStageの矢印左にしたい",
     "id": 41,
+    "jumpToStage": [ 51,52,53,54 ],
     "prefab": "mtgspace/rouka_area",
     "preiverStage": 40
   },
@@ -263,5 +263,73 @@
     "id": 50,
     "prefab": "mtgspace/sink_under_box",
     "preiverStage": 48
+  },
+  {
+    "comment": "エレベーター",
+    "id": 51,
+    "prefab": "rouka/elevator",
+    "jumpToStage": [ 55 ],
+    "preiverStage": 41
+  },
+  {
+    "comment": "廊下奥",
+    "id": 52,
+    "prefab": "rouka/rouka_toilet",
+    "jumpToStage": [ 56,57 ],
+    "preiverStage": 41
+  },
+  {
+    "comment": "電話",
+    "id": 53,
+    "prefab": "rouka/tell",
+    "preiverStage": 41
+  },
+  {
+    "comment": "ロゴ",
+    "id": 54,
+    "prefab": "rouka/01_rightside",
+    "preiverStage": 41
+  },
+  {
+    "comment": "エレベーター暗号",
+    "id": 55,
+    "prefab": "rouka/elevator_panel",
+    "preiverStage": 51
+  },
+  {
+    "comment": "女子トイレ",
+    "id": 56,
+    "prefab": "toilet/toilet_women",
+    "jumpToStage": [ 58,59 ],
+    "preiverStage": 52
+  },
+  {
+    "comment": "男子トイレ",
+    "id": 57,
+    "prefab": "toilet/toilet_men",
+    "jumpToStage": [ 60 ],
+    "getItem": [ 20 ],
+    "preiverStage": 52
+  },
+  {
+    "comment": "女子トイレ鏡",
+    "id": 58,
+    "prefab": "toilet/toilet_women_mirror",
+    "preiverStage": 56
+  },
+  {
+    "comment": "女子トイレ個室",
+    "id": 59,
+    "prefab": "toilet/toilet_women_2",
+    "getItem": [ 18 ],
+    "preiverStage": 56
   }
-]
+,
+  {
+    "comment": "男子トイレ窓",
+    "id": 60,
+    "prefab": "toilet/toilet_man_window",
+    "getItem": [ 21 ],
+    "preiverStage": 57
+  }
+    ]
