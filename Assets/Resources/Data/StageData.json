@@ -192,6 +192,7 @@
   {
     "comment": "ミーティングスペース",
     "id": 40,
+    "jumpToStage": [ 43,44,45,46 ],
     "prefab": "mtgspace/mtgspace_area",
     "nextStage": 41,
     "preiverStage": 42
@@ -199,7 +200,7 @@
     {
     "comment": "ミーティングスペース　廊下※preiverStageの矢印左にしたい",
     "id": 41,
-    "jumpToStage": [ 51,52,53,54 ],
+    "jumpToStage": [ 51,52,53 ],
     "prefab": "mtgspace/rouka_area",
     "preiverStage": 40
   },
@@ -279,16 +280,17 @@
     "preiverStage": 41
   },
   {
-    "comment": "電話",
+    "comment": "廊下右側",
     "id": 53,
-    "prefab": "rouka/tell",
+    "prefab": "rouka/01_rightside",
+    "jumpToStage": [ 61,62 ],
     "preiverStage": 41
   },
   {
     "comment": "ロゴ",
     "id": 54,
     "prefab": "rouka/01_rightside",
-    "preiverStage": 41
+    "preiverStage": 53
   },
   {
     "comment": "エレベーター暗号",
@@ -323,13 +325,32 @@
     "prefab": "toilet/toilet_women_2",
     "getItem": [ 18 ],
     "preiverStage": 56
-  }
-,
+  },
   {
     "comment": "男子トイレ窓",
     "id": 60,
     "prefab": "toilet/toilet_man_window",
     "getItem": [ 21 ],
     "preiverStage": 57
+  },
+	{
+    "comment": "廊下の箱",
+    "id": 61,
+    "prefab": "rouka/rouka_box",
+    "getItem": [ 16 ],
+    "preiverStage": 53
+  },
+  {
+    "comment": "電話",
+    "id": 62,
+    "prefab": "rouka/tell",
+    "jumpToStage": [ 63 ],
+    "preiverStage": 53
+  },
+    {
+    "comment": "電話アップ",
+    "id": 63,
+    "prefab": "rouka/tell_up",
+    "preiverStage": 62
   }
     ]
