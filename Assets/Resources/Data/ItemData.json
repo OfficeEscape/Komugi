@@ -159,13 +159,6 @@
     "itemImage": "large/item_key_sink"
   },
   {
-    "itemId": 22,
-    "itemName": "どこかの鍵",
-    "itemDetail": "どこのカギだろう。",
-    "itemIcon": "small/item_s_key_sink",
-    "itemImage": "large/item_key_sink"
-  },
-  {
     "itemId": 23,
     "itemName": "濡れた雑巾",
     "itemDetail": "雑巾を濡らした。",
