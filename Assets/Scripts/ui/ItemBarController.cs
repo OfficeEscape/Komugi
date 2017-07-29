@@ -80,7 +80,6 @@ namespace Komugi.UI
             if (ItemImages[ItemImages.Length - 1].enabled)
             {
                 currentPage++;
-                maxPage = ItemManager.Instance.itemDictionary.Count / ItemImages.Length;
                 ResetPage();
             }
 
@@ -98,6 +97,7 @@ namespace Komugi.UI
             }
 
             itemIdList.Add(itemId);
+            maxPage = itemIdList.Count / ItemImages.Length + 1;
         }
 
         // 
