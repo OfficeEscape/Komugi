@@ -65,9 +65,10 @@ namespace Komugi.UI
 
             ItemImage.sprite = itemManager.GetItemImage(itemData.changeItem, 1);
             ItemName.text = itemManager.GetItemName(itemData.changeItem);
-            itemManager.DeleteItem(itemData.itemId);
+            //itemManager.DeleteItem(itemData.itemId);
 
-            itemManager.AddItem(itemData.changeItem, false);
+            //itemManager.AddItem(itemData.changeItem, false);
+            itemManager.ChangeItem(itemData.itemId, itemData.changeItem);
             itemData = itemManager.itemDictionary[itemData.changeItem];
 
             // 変化後のアイテムが自動変化アイテムならもう一度呼び出す
@@ -93,9 +94,10 @@ namespace Komugi.UI
             var itemManager = ItemManager.Instance;
             ItemImage.sprite = itemManager.GetItemImage(itemData.changeItem, 1);
             ItemName.text = itemManager.GetItemName(itemData.changeItem);
-            itemManager.DeleteItem(itemData.itemId);
+            //itemManager.DeleteItem(itemData.itemId);
 
-            itemManager.AddItem(itemData.changeItem, false);
+            //itemManager.AddItem(itemData.changeItem, false);
+            itemManager.ChangeItem(itemData.itemId, itemData.changeItem);
             itemData = itemManager.itemDictionary[itemData.changeItem];
         }
     }

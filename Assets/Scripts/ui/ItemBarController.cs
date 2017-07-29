@@ -22,7 +22,7 @@ namespace Komugi.UI
         [SerializeField]
         // カーソル
         private RectTransform cursor;
-
+        
         // アイテムIDの配列
         private List<int> itemIdList;
 
@@ -30,7 +30,7 @@ namespace Komugi.UI
         private int currentPage = 0;
 
         // 最大ページ数
-        private int maxPage = 0;
+        private int maxPage = 1;
 
         // 最後にタッチしたアイテム
         private int lastTouchItem = 0;
@@ -76,7 +76,15 @@ namespace Komugi.UI
         /// <param name="itemId"></param>
         public void AddItemImage(int itemId)
         {
-            int itemNum = itemIdList.Count;
+            // ページが埋まったら自動で次のページへ
+            if (ItemImages[ItemImages.Length - 1].enabled)
+            {
+                currentPage++;
+                maxPage = ItemManager.Instance.itemDictionary.Count / ItemImages.Length;
+                ResetPage();
+            }
+
+            int itemNum = itemIdList.Count - (currentPage * ItemImages.Length);
             if (ItemImages[itemNum].enabled)
             {
                 Debug.Log("item " + itemNum + " is Registered");
@@ -86,9 +94,7 @@ namespace Komugi.UI
             Sprite itemSprite = ItemManager.Instance.GetItemImage(itemId);
             if (itemSprite != null)
             {
-                ItemImages[itemNum].sprite = itemSprite;
-                ItemImages[itemNum].enabled = true;
-                ItemImages[itemNum].SetNativeSize();
+                SetItemImage(itemNum, itemSprite);
             }
 
             itemIdList.Add(itemId);
@@ -97,21 +103,31 @@ namespace Komugi.UI
         // 
         public void OnPointerUp(PointerEventData eventData)
         {
-            if (GetPressedItemIndex(eventData.pressPosition) != lastTouchItem) { return; }
-            if (!ItemImages[lastTouchItem].enabled) { return; }
+            int pressIndex = GetPressedItemIndex(eventData.pressPosition);
+            if (pressIndex < 0)
+            {
+                OnTouchOptionButton(eventData.pressPosition);
+                return;
+            }
+            
+            if (pressIndex != lastTouchItem) { return; }
+            if (!ItemImages[pressIndex].enabled) { return; }
 
-            if (selectedIndex == lastTouchItem)
+            int itemIndex = lastTouchItem + currentPage * ItemImages.Length;
+            int itemIdIndex = itemIdList[itemIndex];
+
+            if (selectedIndex == itemIndex)
             {
                 // アイテムダイアログを出す
-                UIManager.Instance.ShowItemGetDailog(itemIdList[lastTouchItem]);
+                UIManager.Instance.ShowItemGetDailog(itemIdList[itemIndex]);
             }
             else
             {
                 // アイテムを使うモード
                 Debug.Log("Use Item");
-                selectedIndex = lastTouchItem;
-                GimmickManager.Instance.SelectedItem = itemIdList[selectedIndex];
-                cursor.name = lastTouchItem.ToString();
+                selectedIndex = itemIndex;
+                GimmickManager.Instance.SelectedItem = itemIdList[itemIndex];
+                cursor.name = itemIndex.ToString();
                 cursor.localPosition = ItemImages[lastTouchItem].rectTransform.localPosition;
                 if (!cursor.gameObject.activeSelf) { cursor.gameObject.SetActive(true); }
 
@@ -128,6 +144,17 @@ namespace Komugi.UI
 
         #region =============================== C# private ===============================
 
+        private void ResetPage()
+        {
+            foreach (Image img in ItemImages)
+            {
+                img.sprite = null;
+                img.enabled = false;
+            }
+
+            cursor.gameObject.SetActive(false);
+        }
+
         private int GetPressedItemIndex(Vector2 pressPosition)
         {
             int index = -1;
@@ -139,7 +166,8 @@ namespace Komugi.UI
                 int y = Mathf.FloorToInt(pressY / itemHeight);
                 index = x + y * COLUMN;
             }
-
+            
+            // ページ分もプラス
             return index;
         }
 
@@ -148,7 +176,7 @@ namespace Komugi.UI
         /// </summary>
         public void DeleteItemFromItemBar(int itemId)
         {
-            if (itemIdList[lastTouchItem] == itemId)
+            if (itemIdList[lastTouchItem + currentPage * ItemImages.Length] == itemId)
             {
                 cursor.gameObject.SetActive(false);
                 GimmickManager.Instance.SelectedItem = 0;
@@ -159,11 +187,17 @@ namespace Komugi.UI
             RefreshItem();
         }
 
+        /// <summary>
+        /// アイテム変化
+        /// </summary>
+        /// <param name="beforeItem"></param>
+        /// <param name="afterItem"></param>
         public void ChangeItem(int beforeItem, int afterItem)
         {
             if (itemIdList[lastTouchItem] != beforeItem) { Debug.Log("Change Item Failed"); return; }
 
-            itemIdList[lastTouchItem] = afterItem;
+            itemIdList[lastTouchItem + ItemImages.Length * currentPage] = afterItem;
+            GimmickManager.Instance.SelectedItem = afterItem;
             Sprite itemSprite = ItemManager.Instance.GetItemImage(afterItem);
             if (itemSprite != null)
             {
@@ -176,24 +210,102 @@ namespace Komugi.UI
         /// </summary>
         private void RefreshItem()
         {
-            foreach(Image img in ItemImages)
-            {
-                img.sprite = null;
-                img.enabled = false;
-            }
+            ResetPage();
+            
+            int start = currentPage * ItemImages.Length;
+            int end = start + ItemImages.Length;
+            end = Mathf.Clamp(end, 0, itemIdList.Count);
 
-            for(int i = 0; i < itemIdList.Count; i++)
+            for (int i = start; i < end; i++)
             {
                 // カーソルの位置を更新
                 if (GimmickManager.Instance.SelectedItem == itemIdList[i])
                 {
-                    cursor.localPosition = ItemImages[i].rectTransform.localPosition;
+                    int imgIndex = i - start;
+                    cursor.localPosition = ItemImages[imgIndex].rectTransform.localPosition;
                     selectedIndex = i;
+                    cursor.gameObject.SetActive(true);
                 }
-                ItemImages[i].sprite = ItemManager.Instance.GetItemImage(itemIdList[i]);
-                ItemImages[i].enabled = true;
+
+                SetItemImage(i, ItemManager.Instance.GetItemImage(itemIdList[i]));
             }
         }
+
+        /// <summary>
+        /// ページ切替
+        /// </summary>
+        private void ChangePage(int nextPage)
+        {
+            ResetPage();
+
+            int start = nextPage * ItemImages.Length;
+            int end = start + ItemImages.Length;
+            end = Mathf.Clamp(end, 0, itemIdList.Count);
+
+            int imageIndex = 0;
+            for (int i = start; i < end; i++)
+            {
+                // カーソルの位置を更新
+                if (GimmickManager.Instance.SelectedItem == itemIdList[i])
+                {
+                    int imgIndex = i - start;
+                    cursor.localPosition = ItemImages[imgIndex].rectTransform.localPosition;
+                    cursor.gameObject.SetActive(true);
+                }
+
+                SetItemImage(imageIndex, ItemManager.Instance.GetItemImage(itemIdList[i]));
+
+                imageIndex++;
+            }
+
+            currentPage = nextPage;
+        }
+
+        private void OnTouchOptionButton(Vector2 pressPosition)
+        {
+            float pressY = Screen.height - pressPosition.y;
+            int y = Mathf.FloorToInt(pressY / itemHeight);
+            
+            if (pressPosition.x < touchStart && y >= 1)
+            {
+                // ←が押された
+                Debug.Log("←が押された");
+                int nextPage = currentPage - 1;
+                nextPage = Mathf.Clamp(nextPage, 0, maxPage);
+                if (nextPage != currentPage)
+                {
+                    ChangePage(nextPage);
+                }
+            }
+            else if (pressPosition.x > touchEnd)
+            {
+                if (y >= 1)
+                {
+                    // →押された
+                    Debug.Log("→が押された");
+                    int nextPage = currentPage + 1;
+                    nextPage = Mathf.Clamp(nextPage, 0, maxPage);
+                    if (nextPage != currentPage)
+                    {
+                        ChangePage(nextPage);
+                    }
+                }
+                else
+                {
+                    // メニューボタン押された
+                    CheatManager.Instance.AddAllItem();
+                    Debug.Log("メニューボタン押された");
+                }
+            }
+        }
+
+        private void SetItemImage(int index, Sprite img)
+        {
+            ItemImages[index].sprite = img;
+            ItemImages[index].enabled = true;
+            ItemImages[index].SetNativeSize();
+        }
+
         #endregion
     }
 }

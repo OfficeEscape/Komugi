@@ -8,12 +8,11 @@ namespace Komugi
 {
     public class UIManager : SingletonMonoBehaviour<UIManager>
     {
-        
         // 画像切り替え可能オブジェクト最大数
         private const int CHANGEABLE_MAX = 10;
 
         [SerializeField]
-        ItemBarController itemBar;
+        private ItemBarController itemBar;
 
         [SerializeField]
         private GameObject LeftRightPanel;
@@ -42,8 +41,6 @@ namespace Komugi
 
         #region =============================== C# private ===============================
         
-        
-
         #endregion
 
         #region =============================== C# public ===============================
