@@ -55,7 +55,7 @@ namespace Komugi.Gimmick
             set
             {
                 clearNumber = value;
-                bool clearflag = clearNumber == data.gimmickAnswer.Length;
+                //bool clearflag = clearNumber == data.gimmickAnswer.Length;
                 RescissionGimmick();
             }
         }

@@ -337,6 +337,7 @@
     "comment": "廊下の箱",
     "id": 61,
     "prefab": "rouka/rouka_box",
+    "gimmickId": 7,
     "getItem": [ 16 ],
     "preiverStage": 53
   },
@@ -350,7 +351,8 @@
     {
     "comment": "電話アップ",
     "id": 63,
+    "gimmickId": 7,
     "prefab": "rouka/tell_up",
     "preiverStage": 62
   }
-    ]
+]

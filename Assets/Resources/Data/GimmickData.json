@@ -29,6 +29,7 @@
     "comment": "セキュリティカードを使ってガラスドアを開く",
     "gimmickId": 5,
     "gimmickType": 1,
+    "clearJump": 1,
     "gimmickAnswer": [ 13 ]
   },
   {
@@ -37,5 +38,12 @@
     "gimmickType": 1,
     "clearJump": 11,
     "gimmickAnswer": [ 1, 7, 8 ]
+  },
+  {
+    "comment": "電話",
+    "gimmickId": 7,
+    "gimmickType": 1,
+    "clearJump": 62,
+    "gimmickAnswer": [ 2, 5, 3, 3, 1, 4, 2, 5, 4 ]
   }
 ]

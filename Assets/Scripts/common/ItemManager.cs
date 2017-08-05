@@ -57,11 +57,13 @@ namespace Komugi
         {
             if (HasItemList.ContainsKey(itemId))
             {
-                Debug.Log("Item Id " + itemId + " is Dubbed");
-                return false;
+                HasItemList[itemId] = false;
             }
-
-            HasItemList.Add(itemId, false);
+            else
+            {
+                HasItemList.Add(itemId, false);
+            }
+            
 
             UIManager.Instance.AddItemToItemBar(itemId, showDialog);
             return true;
@@ -79,7 +81,7 @@ namespace Komugi
                 return false;
             }
 
-            HasItemList.Remove(itemId);
+            HasItemList[itemId] = true;
             UIManager.Instance.RemoveItemFromItemBar(itemId);
             return true;
         }
