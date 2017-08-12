@@ -112,6 +112,7 @@ namespace Komugi
                 }
 
                 btn.onClick.AddListener(() => SwitchObject(index, child.name));
+                if (i != 0) { child.SetActive(false); }
             }
         }
 

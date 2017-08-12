@@ -217,6 +217,7 @@
     "id": 43,
     "prefab": "mtgspace/pamphlet",
     "jumpToStage": [ 47 ],
+    "getItem": [ 17 ],
     "preiverStage": 40
   },
     {

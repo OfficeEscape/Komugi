@@ -114,11 +114,22 @@ namespace Komugi
 
             itemManager.AddItem(itemId);
 
-            GameObject itemObject = currentViewObject.transform.Find(ItemName).gameObject;
-
-            if (ItemName != null)
+            Transform itemObject = currentViewObject.transform.Find(ItemName);
+            if (itemObject == null)
             {
-                itemObject.SetActive(false);
+                Button[] ary = currentViewObject.GetComponentsInChildren<Button>();
+                foreach (Button b in ary)
+                {
+                    if (b.name == ItemName)
+                    {
+                        itemObject = b.transform;
+                    }
+                }
+            }
+
+            if (itemObject != null)
+            {
+                itemObject.gameObject.SetActive(false);
             }
         }
         
@@ -162,10 +173,7 @@ namespace Komugi
 
             UIManager.Instance.ResetStage();
             GimmickManager.Instance.ResetGimmick();
-
-            // ルートキャンパスへ追加
-            UIManager.Instance.AddContentToMainCanvas(currentViewObject, gameManager.GetNextStageId(1, sceneId), gameManager.GetNextStageId(-1, sceneId));
-
+            
             // ギミックのチェックおよびセットアップ
             int gid = gameManager.GetStageGimmickId(sceneId);
             if (gid > 0)
@@ -195,6 +203,8 @@ namespace Komugi
 
             }
 
+            // ルートキャンパスへ追加
+            UIManager.Instance.AddContentToMainCanvas(currentViewObject, gameManager.GetNextStageId(1, sceneId), gameManager.GetNextStageId(-1, sceneId));
             Debug.Log("Change Scene to " + prefab.name + "   SceneID : " + sceneId);
 
             return true;
