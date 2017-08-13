@@ -45,5 +45,17 @@
     "gimmickType": 1,
     "clearJump": 62,
     "gimmickAnswer": [ 2, 5, 3, 3, 1, 4, 2, 5, 4 ]
+  },
+  {
+    "comment": "どっかのカギを使ってシンク下を開ける",
+    "gimmickId": 8,
+    "gimmickType": 1,
+    "gimmickAnswer": [ 21 ]
+  },
+  {
+    "comment": "どっかのカギを使ってシンク下を開ける",
+    "gimmickId": 9,
+    "gimmickType": 1,
+    "gimmickAnswer": [ 20 ]
   }
 ]

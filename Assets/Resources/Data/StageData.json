@@ -244,6 +244,7 @@
     "comment": "シンク鍵アップ",
     "id": 47,
     "prefab": "mtgspace/sink_under_key",
+    "gimmickId": 8,
     "jumpToStage": [ 48 ],
     "preiverStage": 44
   },
@@ -258,6 +259,7 @@
     "comment": "シンク下　パイプアップ",
     "id": 49,
     "prefab": "mtgspace/sink_under_pipe",
+    "gimmickId": 9,
     "preiverStage": 48
   },
     {
