@@ -3,6 +3,8 @@
     "itemId": 1,
     "itemName": "雑巾",
     "itemDetail": "雑巾の説明",
+    "changeItem": 23,
+    "triggerItem": -19,
     "itemIcon": "small/item_s_zoukin1",
     "itemImage": "large/item_zoukin1"
   },
@@ -162,6 +164,7 @@
     "itemId": 23,
     "itemName": "濡れた雑巾",
     "itemDetail": "雑巾を濡らした。",
+    "triggerItem": 1,
     "itemIcon": "small/item_s_zoukin2",
     "itemImage": "large/item_zoukin2"
   },

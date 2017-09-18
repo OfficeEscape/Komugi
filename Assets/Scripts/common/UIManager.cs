@@ -132,9 +132,9 @@ namespace Komugi
             itemBar.DeleteItemFromItemBar(itemId);
         }
 
-        public void ChangeItem(int before, int after)
+        public bool ChangeItem(int before, int after)
         {
-            itemBar.ChangeItem(before, after);
+            return itemBar.ChangeItem(before, after);
         }
 
         // リセット

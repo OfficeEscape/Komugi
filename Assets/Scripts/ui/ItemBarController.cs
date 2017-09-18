@@ -176,14 +176,16 @@ namespace Komugi.UI
         /// </summary>
         public void DeleteItemFromItemBar(int itemId)
         {
+            if (lastTouchItem < 0) { Debug.Log("lastTouchItem < 0"); return; }
             if (itemIdList[lastTouchItem + currentPage * ItemImages.Length] == itemId)
             {
                 cursor.gameObject.SetActive(false);
                 GimmickManager.Instance.SelectedItem = 0;
                 selectedIndex = -1;
             }
+            
             itemIdList.Remove(itemId);
-
+            lastTouchItem = -1;
             RefreshItem();
         }
 
@@ -192,9 +194,10 @@ namespace Komugi.UI
         /// </summary>
         /// <param name="beforeItem"></param>
         /// <param name="afterItem"></param>
-        public void ChangeItem(int beforeItem, int afterItem)
+        public bool ChangeItem(int beforeItem, int afterItem)
         {
-            if (itemIdList[lastTouchItem] != beforeItem) { Debug.Log("Change Item Failed"); return; }
+            if (lastTouchItem < 0) { Debug.Log("lastTouchItem < 0"); return false; }
+            if (itemIdList[lastTouchItem] != beforeItem) { Debug.Log("Change Item Failed"); return false; }
 
             itemIdList[lastTouchItem + ItemImages.Length * currentPage] = afterItem;
             GimmickManager.Instance.SelectedItem = afterItem;
@@ -203,6 +206,8 @@ namespace Komugi.UI
             {
                 ItemImages[lastTouchItem].sprite = itemSprite;
             }
+
+            return true;
         }
 
         /// <summary>

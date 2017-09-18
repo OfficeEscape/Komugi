@@ -224,6 +224,8 @@
     "comment": "シンク",
     "id": 44,
     "prefab": "mtgspace/sink",
+    "gimmickId": 9,
+    "getItem": [ 23 ],
     "jumpToStage": [ 47 ],
     "preiverStage": 40
   },

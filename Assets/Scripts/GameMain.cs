@@ -132,6 +132,31 @@ namespace Komugi
                 itemObject.gameObject.SetActive(false);
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="itemIndex"></param>
+        /// <param name="ItemName"></param>
+        private void ChangeItem(int itemIndex, string ItemName)
+        {
+            Debug.Log(" Click Item Name : " + ItemName);
+
+            int itemId = gameManager.GetStageItemId(itemIndex);
+            if (itemId == 0) { return; }
+            
+            if (ItemManager.Instance.ItemUpgrade(itemId))
+            {
+                Transform itemObject = currentViewObject.transform.Find(ItemName);
+
+                if (itemObject != null)
+                {
+                    itemObject.gameObject.SetActive(false);
+                }
+
+
+            }
+        }
         
 	    #endregion
 
@@ -218,7 +243,7 @@ namespace Komugi
                 case "Jump":
                     break;
                 case "Item":
-
+                case "Change":
                     int[] itemList = gameManager.stageDictionary[sceneId].getItem;
                     if (index >= itemList.Length) { return; }
 
@@ -262,6 +287,7 @@ namespace Komugi
 	    {
 		    functionDictionary.Add ("Jump", JumpView);
             functionDictionary.Add("Item", GetItem);
+            functionDictionary.Add("Change", ChangeItem);
 	    }
 
 	    #endregion

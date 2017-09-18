@@ -94,17 +94,42 @@ namespace Komugi
         /// <returns></returns>
         public bool ChangeItem(int beforeId, int afterId)
         {
-            if (!HasItemList.ContainsKey(beforeId) || HasItemList.ContainsKey(afterId))
+            HasItemList[beforeId] = true;
+
+            if (HasItemList.ContainsKey(afterId))
             {
-                Debug.Log("ChangeItem " + beforeId + "To " + afterId + "Failed");
-                return false;
+                HasItemList[afterId] = false;
             }
-
-            HasItemList.Remove(beforeId);
-            HasItemList.Add(afterId, false);
-
+            else
+            {
+                HasItemList.Add(afterId, false);
+            }
+            
             UIManager.Instance.ChangeItem(beforeId, afterId);
             return true;
+        }
+
+        public bool ItemUpgrade(int afterId)
+        {
+            if (!itemDictionary.ContainsKey(afterId)) { return false; }
+
+            int beforeId = itemDictionary[afterId].triggerItem;
+            if (beforeId == 0) { return false; }
+
+            if (!HasItemList.ContainsKey(beforeId)) { return false; }
+            //if (GimmickManager.Instance.SelectedItem != beforeId) { return false; }
+
+            if (HasItemList.ContainsKey(afterId)) { HasItemList[afterId] = false; }
+            else { HasItemList.Add(afterId, false); }
+
+            bool ret = UIManager.Instance.ChangeItem(beforeId, afterId);
+
+            if (ret)
+            {
+                UIManager.Instance.OpenAlert(string.Format("{0} が {1} になりました", itemDictionary[beforeId].itemName, itemDictionary[afterId].itemName), true);
+            }
+
+            return ret;
         }
 
         // アイテムの画像を返す
