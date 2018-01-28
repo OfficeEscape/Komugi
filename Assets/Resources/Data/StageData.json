@@ -85,7 +85,20 @@
     "id": 12,
     "prefab": "office/ottoman",
     "preiverStage": 2,
-    "jumpToStage": [ 1 ]
+    "jumpToStage": [ 28 ]
+  },
+  {
+    "comment": "オットマンアップ1",
+    "id": 28,
+    "prefab": "office/ottoman_up1",
+    "preiverStage": 12,
+	"jumpToStage": [ 29 ]
+	},
+    {
+    "comment": "オットマンアップ2",
+    "id": 29,
+    "prefab": "office/ottoman_up2",
+    "preiverStage": 28
   },
   {
     "comment": "デスク全部",
