@@ -109,20 +109,20 @@
     "itemName": "何かのパーツ",
     "itemDetail": "見覚えのある形だ。",
     "itemIcon": "small/item_parts1",
-    "itemImage": "large/item_parts1"
+    "itemImage": "large/item_s_parts1"
   },
   {
     "itemId": 15,
     "itemName": "何かのパーツ",
     "itemDetail": "見覚えのある形だ。",
-    "itemIcon": "small/item_parts2",
+    "itemIcon": "small/item_s_parts2",
     "itemImage": "large/item_parts2"
   }, 
   {
     "itemId": 16,
     "itemName": "何かのパーツ",
     "itemDetail": "見覚えのある形だ。",
-    "itemIcon": "small/item_parts3",
+    "itemIcon": "small/item_s_parts3",
     "itemImage": "large/item_parts3"
   }, 
    {
