@@ -84,7 +84,8 @@
     "comment": "オットマン",
     "id": 12,
     "prefab": "office/ottoman",
-    "preiverStage": 2
+    "preiverStage": 2,
+    "jumpToStage": [ 1 ]
   },
   {
     "comment": "デスク全部",
@@ -275,6 +276,7 @@
     "comment": "シンク下　箱さらにアップ",
     "id": 64,
     "prefab": "mtgspace/sink_under_box_up",
+    "gimmickId": 10,
     "preiverStage": 50
   },
   {
@@ -288,7 +290,7 @@
     "comment": "廊下奥",
     "id": 52,
     "prefab": "rouka/rouka_toilet",
-    "jumpToStage": [ 56,57 ],
+    "jumpToStage": [ 56, 57 ],
     "preiverStage": 41
   },
   {
@@ -360,7 +362,7 @@
     "jumpToStage": [ 63 ],
     "preiverStage": 53
   },
-    {
+  {
     "comment": "電話アップ",
     "id": 63,
     "gimmickId": 7,

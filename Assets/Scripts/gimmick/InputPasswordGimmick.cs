@@ -21,8 +21,7 @@ namespace Komugi.Gimmick
 
         private const string SPACE = "     ";
         private const string ALPHABET = "ABCDEFG";
-
-
+        
 
         private void Start()
         {
@@ -32,7 +31,7 @@ namespace Komugi.Gimmick
             inputField.onEndEdit.AddListener((t) => OnEditEnd(t));
 
             inputButton.onClick.AddListener(() => inputField.ActivateInputField());
-            openButton.onClick.AddListener(() => CheckPassWord());
+            if (openButton) { openButton.onClick.AddListener(() => CheckPassWord()); }
         }
 
         private void OnEditEnd(string pw)
