@@ -211,14 +211,14 @@
     "nextStage": 41,
     "preiverStage": 42
   },
-    {
+  {
     "comment": "ミーティングスペース　廊下※preiverStageの矢印左にしたい",
     "id": 41,
     "jumpToStage": [ 51,52,53 ],
     "prefab": "mtgspace/rouka_area",
     "preiverStage": 40
   },
-    {
+  {
     "comment": "ミーティングスペース　ドア",
     "id": 42,
     "prefab": "mtgspace/door_area",
@@ -226,7 +226,7 @@
     "nextStage": 41,
     "preiverStage": 40
   },
-    {
+  {
     "comment": "パンフレット",
     "id": 43,
     "prefab": "mtgspace/pamphlet",
@@ -234,7 +234,7 @@
     "getItem": [ 17 ],
     "preiverStage": 40
   },
-    {
+  {
     "comment": "シンク",
     "id": 44,
     "prefab": "mtgspace/sink",
@@ -243,20 +243,20 @@
     "jumpToStage": [ 47 ],
     "preiverStage": 40
   },
-    {
+  {
     "comment": "傘立て",
     "id": 45,
     "prefab": "mtgspace/umbrellastand",
     "preiverStage": 40
   },
-    {
+  {
     "comment": "スイッチ",
     "id": 46,
     "prefab": "mtgspace/swich",
     "nextStage": 42,
     "preiverStage": 40
   },
-    {
+  {
     "comment": "シンク鍵アップ",
     "id": 47,
     "prefab": "mtgspace/sink_under_key",
@@ -264,28 +264,30 @@
     "jumpToStage": [ 48 ],
     "preiverStage": 44
   },
-    {
+  {
     "comment": "シンク下",
     "id": 48,
     "prefab": "mtgspace/sink_under",
     "jumpToStage": [ 49,50 ],
     "preiverStage": 44
   },
-    {
+  {
     "comment": "シンク下　パイプアップ",
     "id": 49,
     "prefab": "mtgspace/sink_under_pipe",
     "gimmickId": 9,
     "preiverStage": 48
   },
-    {
+  {
     "comment": "シンク下　箱アップ",
     "id": 50,
     "prefab": "mtgspace/sink_under_box",
-	"jumpToStage": [ 64 ],
+    "jumpToStage": [ 64 ],
+    "getItem": [ 16 ],
+    "gimmickId": 10,
     "preiverStage": 48
   },
-      {
+  {
     "comment": "シンク下　箱さらにアップ",
     "id": 64,
     "prefab": "mtgspace/sink_under_box_up",
