@@ -92,12 +92,14 @@
     "id": 28,
     "prefab": "office/ottoman_up1",
     "preiverStage": 12,
-	"jumpToStage": [ 29 ]
+    "gimmickId": 11,
+    "jumpToStage": [ 29 ]
 	},
     {
     "comment": "オットマンアップ2",
     "id": 29,
     "prefab": "office/ottoman_up2",
+    "gimmickId": 11,
     "preiverStage": 28
   },
   {

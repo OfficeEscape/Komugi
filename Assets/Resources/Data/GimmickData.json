@@ -64,5 +64,11 @@
     "gimmickType": 1,
     "clearJump": 50,
     "gimmickAnswer": [ 2, 8, 1, 5 ]
+  },
+  {
+    "comment": "暗号ボックス",
+    "gimmickId": 11,
+    "gimmickType": 1,
+    "gimmickAnswer": [ 1 ]
   }
 ]
