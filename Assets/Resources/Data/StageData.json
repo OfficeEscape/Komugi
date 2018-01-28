@@ -351,7 +351,14 @@
     "id": 59,
     "prefab": "toilet/toilet_women_2",
     "getItem": [ 18 ],
+	"jumpToStage": [ 65 ],
     "preiverStage": 56
+  },
+  {
+    "comment": "女子トイレ個室",
+    "id": 65,
+    "prefab": "toilet/toilet_women_3",
+    "preiverStage": 59
   },
   {
     "comment": "男子トイレ窓",
