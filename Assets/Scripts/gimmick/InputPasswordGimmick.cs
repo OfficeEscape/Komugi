@@ -19,19 +19,30 @@ namespace Komugi.Gimmick
         [SerializeField]
         Button openButton;
 
+        [SerializeField]
+        bool IsAlphabet = true;
+
+        bool autoCheck = true;
+
         private const string SPACE = "     ";
         private const string ALPHABET = "ABCDEFG";
         
-
         private void Start()
         {
-            inputField.characterLimit = 3;
             inputField.contentType = InputField.ContentType.EmailAddress;
             inputField.caretBlinkRate = 1;
             inputField.onEndEdit.AddListener((t) => OnEditEnd(t));
 
             inputButton.onClick.AddListener(() => inputField.ActivateInputField());
-            if (openButton) { openButton.onClick.AddListener(() => CheckPassWord()); }
+            if (openButton)
+            {
+                openButton.onClick.AddListener(() => CheckPassWord());
+                autoCheck = false;
+            }
+            else
+            {
+                inputField.onValueChanged.AddListener((pw) => CheckPassWord());
+            }
         }
 
         private void OnEditEnd(string pw)
@@ -51,13 +62,15 @@ namespace Komugi.Gimmick
         private void CheckPassWord()
         {
             if (clearflag) { return; }
+            if (inputField.text.Length != data.gimmickAnswer.Length) { return; }
 
             bool clearFlg = true;
 
             for (int i = 0; i < data.gimmickAnswer.Length; i++)
             {
                 if (inputField.text.Length <= i) { return; }
-                if (ALPHABET[data.gimmickAnswer[i]] != inputField.text[i])
+                char target = IsAlphabet ? ALPHABET[data.gimmickAnswer[i]] : char.Parse(data.gimmickAnswer[i].ToString());
+                if (target != inputField.text[i])
                 {
                     clearFlg = false;
                 }
@@ -87,6 +100,7 @@ namespace Komugi.Gimmick
             set
             {
                 data = value;
+                inputField.characterLimit = data.gimmickAnswer.Length;
             }
         }
 
