@@ -268,7 +268,14 @@
     "comment": "シンク下　箱アップ",
     "id": 50,
     "prefab": "mtgspace/sink_under_box",
+	"jumpToStage": [ 64 ],
     "preiverStage": 48
+  },
+      {
+    "comment": "シンク下　箱さらにアップ",
+    "id": 64,
+    "prefab": "mtgspace/sink_under_box_up",
+    "preiverStage": 50
   },
   {
     "comment": "エレベーター",
