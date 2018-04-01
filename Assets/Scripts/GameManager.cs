@@ -11,7 +11,7 @@ namespace Komugi
         private static GameManager mInstance;
 
         /** 現在表示している画面 */
-        public int currentView = 12;
+        public int currentView = 40;
         //public int currentView = 1;
 
         /** 現在表示している画面の何番目の画像 */

@@ -225,6 +225,7 @@
     "id": 42,
     "prefab": "mtgspace/door_area",
     "jumpToStage": [ 1 ],
+    "gimmickId": 12,
     "nextStage": 41,
     "preiverStage": 40
   },
@@ -254,7 +255,7 @@
   {
     "comment": "スイッチ",
     "id": 46,
-    "prefab": "mtgspace/swich",
+    "prefab": "mtgspace/switch",
     "nextStage": 42,
     "preiverStage": 40
   },
@@ -355,7 +356,7 @@
     "id": 59,
     "prefab": "toilet/toilet_women_2",
     "getItem": [ 18 ],
-	"jumpToStage": [ 65 ],
+    "jumpToStage": [ 65 ],
     "preiverStage": 56
   },
   {
@@ -392,5 +393,12 @@
     "gimmickId": 7,
     "prefab": "rouka/tell_up",
     "preiverStage": 62
+  },
+  {
+    "comment": "電気消した後のガラスドア",
+    "id": 64,
+    "prefab": "mtgspace/swicthoff_door",
+    "nextStage": 41,
+    "preiverStage": 40
   }
 ]
