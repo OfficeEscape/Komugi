@@ -397,6 +397,7 @@
   {
     "comment": "電気消した後のガラスドア",
     "id": 66,
+    "gimmickId": 12,
     "prefab": "mtgspace/swicthoff_door",
     "preiverStage": 67
   },

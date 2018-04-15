@@ -71,5 +71,11 @@
     "gimmickId": 11,
     "gimmickType": 1,
     "gimmickAnswer": [ 1 ]
+  },
+  {
+    "comment": "ブラックライト",
+    "gimmickId": 12,
+    "gimmickType": 1,
+    "gimmickAnswer": [ 2 ]
   }
 ]
