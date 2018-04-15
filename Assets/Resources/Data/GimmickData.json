@@ -77,5 +77,11 @@
     "gimmickId": 12,
     "gimmickType": 1,
     "gimmickAnswer": [ 2 ]
+  },
+  {
+    "comment": "エレベーターのキー",
+    "gimmickId": 13,
+    "gimmickType": 1,
+    "gimmickAnswer": [ 14, 15, 16 ]
   }
 ]

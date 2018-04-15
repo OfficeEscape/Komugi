@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using LitJson;
 
@@ -109,6 +108,11 @@ namespace Komugi
             return true;
         }
 
+        /// <summary>
+        /// アイテム進化
+        /// </summary>
+        /// <param name="afterId"></param>
+        /// <returns></returns>
         public bool ItemUpgrade(int afterId)
         {
             if (!itemDictionary.ContainsKey(afterId)) { return false; }
@@ -130,6 +134,16 @@ namespace Komugi
             }
 
             return ret;
+        }
+
+        /// <summary>
+        /// アイテムの所持をチェック
+        /// </summary>
+        /// <param name="itemid"></param>
+        /// <returns></returns>
+        public bool CheckItem(int itemid)
+        {
+            return HasItemList.ContainsKey(itemid) && !HasItemList[itemid];
         }
 
         // アイテムの画像を返す

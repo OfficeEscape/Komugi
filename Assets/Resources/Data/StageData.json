@@ -300,6 +300,7 @@
   {
     "comment": "エレベーター",
     "id": 51,
+    "gimmickId": 13,
     "prefab": "rouka/elevator",
     "jumpToStage": [ 55 ],
     "preiverStage": 41
