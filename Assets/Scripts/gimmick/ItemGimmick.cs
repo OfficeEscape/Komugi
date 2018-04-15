@@ -29,7 +29,7 @@ namespace Komugi.Gimmick
             set
             {
                 clearflag = value == 1;
-                if (clearflag) { RescissionGimmick(); }
+                if (clearflag) { ReleaseGimmick(); }
             }
         }
 
@@ -49,7 +49,7 @@ namespace Komugi.Gimmick
             }
         }
 
-        public void RescissionGimmick()
+        public void ReleaseGimmick()
         {
             if (closeObject) { closeObject.SetActive(false); }
             if (openObject) { openObject.SetActive(true); }
@@ -71,7 +71,7 @@ namespace Komugi.Gimmick
         {
             if (data.gimmickAnswer[0] == GimmickManager.Instance.SelectedItem)
             {
-                RescissionGimmick();
+                ReleaseGimmick();
                 openAction.Invoke(1);
                 ItemManager.Instance.DeleteItem(data.gimmickAnswer[0]);
             }

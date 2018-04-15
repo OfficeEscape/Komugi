@@ -225,7 +225,6 @@
     "id": 42,
     "prefab": "mtgspace/door_area",
     "jumpToStage": [ 1 ],
-    "gimmickId": 12,
     "nextStage": 41,
     "preiverStage": 40
   },
@@ -253,9 +252,10 @@
     "preiverStage": 40
   },
   {
-    "comment": "スイッチ",
+    "comment": "スイッチオン",
     "id": 46,
-    "prefab": "mtgspace/switch",
+    "jumpToStage": [ 67 ],
+    "prefab": "mtgspace/switch_on",
     "nextStage": 42,
     "preiverStage": 40
   },
@@ -396,9 +396,15 @@
   },
   {
     "comment": "電気消した後のガラスドア",
-    "id": 64,
+    "id": 66,
     "prefab": "mtgspace/swicthoff_door",
-    "nextStage": 41,
-    "preiverStage": 40
+    "preiverStage": 67
+  },
+  {
+    "comment": "スイッチオフ",
+    "id": 67,
+    "jumpToStage": [ 46 ],
+    "prefab": "mtgspace/switch_off",
+    "preiverStage": 66
   }
 ]

@@ -10,6 +10,7 @@
     "gimmickId": 2,
     "gimmickType": 1,
     "clearJump": 25,
+    "autoJump": true,
     "gimmickAnswer": [ 6, 8, 3 ]
   },
   {
@@ -69,13 +70,6 @@
     "comment": "黒い箱",
     "gimmickId": 11,
     "gimmickType": 1,
-    "gimmickAnswer": [ 1 ]
-  },
-  {
-    "comment": "電気オンオフ",
-    "gimmickId": 12,
-    "gimmickType": 1,
-    "clearJump": 64,
     "gimmickAnswer": [ 1 ]
   }
 ]

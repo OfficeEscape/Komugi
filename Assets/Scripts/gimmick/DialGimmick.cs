@@ -45,7 +45,7 @@ namespace Komugi.Gimmick
             if (correct)
             {
                 if (clearflag) { return; }
-                RescissionGimmick();
+                ReleaseGimmick();
             }
         }
 
@@ -73,7 +73,7 @@ namespace Komugi.Gimmick
             set
             {
                 clearflag = value == 1;
-                if (clearflag) { RescissionGimmick(); }
+                if (clearflag) { ReleaseGimmick(); }
             }
         }
 
@@ -92,7 +92,7 @@ namespace Komugi.Gimmick
             }
         }
 
-        public void RescissionGimmick()
+        public void ReleaseGimmick()
         {
             if (openAction != null)
             {

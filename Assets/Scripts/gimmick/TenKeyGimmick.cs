@@ -72,7 +72,7 @@ namespace Komugi.Gimmick
                 }
             }
 
-            if (clearflg && !clearflag) { RescissionGimmick(); }
+            if (clearflg && !clearflag) { ReleaseGimmick(); }
         }
 
         #region -------------------------------------インターフェースメソッド-------------------------------------
@@ -99,7 +99,7 @@ namespace Komugi.Gimmick
             set
             {
                 clearflag = value == 1;
-                if (clearflag) { RescissionGimmick(); }
+                if (clearflag) { ReleaseGimmick(); }
             }
         }
 
@@ -118,7 +118,7 @@ namespace Komugi.Gimmick
             }
         }
 
-        public void RescissionGimmick()
+        public void ReleaseGimmick()
         {
             if (openAction != null)
             {

@@ -56,7 +56,7 @@ namespace Komugi.Gimmick
             {
                 clearNumber = value;
                 //bool clearflag = clearNumber == data.gimmickAnswer.Length;
-                RescissionGimmick();
+                ReleaseGimmick();
             }
         }
 
@@ -78,7 +78,7 @@ namespace Komugi.Gimmick
         /// <summary>
         /// ギミック解除
         /// </summary>
-        public void RescissionGimmick()
+        public void ReleaseGimmick()
         {
             for (int i = 0; i < clearNumber; i ++)
             {

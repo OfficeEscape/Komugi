@@ -11,6 +11,6 @@
         /// <summary>
         /// ギミック解除
         /// </summary>
-        void RescissionGimmick();
+        void ReleaseGimmick();
     }
 }

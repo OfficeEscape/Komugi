@@ -2,6 +2,9 @@
 
 namespace Komugi.Gimmick
 {
+    /// <summary>
+    /// クリア状態をチェックのみのギミック
+    /// </summary>
     public class CheckOnlyGimmick : GimmickBase, IGimmick
     {
 
@@ -29,7 +32,7 @@ namespace Komugi.Gimmick
             set
             {
                 clearflag = value == 1;
-                if (clearflag) { RescissionGimmick(); }
+                if (clearflag) { ReleaseGimmick(); }
             }
         }
 
@@ -48,10 +51,10 @@ namespace Komugi.Gimmick
             }
         }
 
-        public void RescissionGimmick()
+        public void ReleaseGimmick()
         {
-            closeObject.SetActive(false);
-            openObject.SetActive(true);
+            if (closeObject) closeObject.SetActive(false);
+            if (openObject) openObject.SetActive(true);
         }
         #endregion
     }
