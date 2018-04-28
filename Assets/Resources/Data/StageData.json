@@ -329,6 +329,7 @@
     "comment": "エレベーター暗号",
     "id": 55,
     "prefab": "rouka/elevator_panel",
+    "gimmickId": 14,
     "preiverStage": 51
   },
   {
@@ -408,5 +409,11 @@
     "jumpToStage": [ 46 ],
     "prefab": "mtgspace/switch_off",
     "preiverStage": 66
+  },
+  {
+    "comment": "エレベーターオープンアニメーション",
+    "id": 68,
+    "prefab": "rouka/elevator_open",
+    "preiverStage": 0
   }
 ]

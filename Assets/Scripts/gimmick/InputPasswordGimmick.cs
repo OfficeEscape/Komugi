@@ -22,11 +22,15 @@ namespace Komugi.Gimmick
         [SerializeField]
         bool IsAlphabet = true;
 
+        [SerializeField]
+        int MultiAnswerCount = 1;
+
         bool autoCheck = true;
 
         private const string SPACE = "     ";
-        private const string ALPHABET = "ABCDEFG";
-        
+        private const string ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+        //private const string ALPHABET1 = "abc def ghi jkl mno pqr stu vwx yz";
+
         private void Start()
         {
             inputField.contentType = InputField.ContentType.EmailAddress;
@@ -53,7 +57,14 @@ namespace Komugi.Gimmick
 
             string result = tempText.ToString();
 
-            display.text = string.Format("{0} {1} {2}", result[0], result[1], result[2]);
+            var formatstr = new System.Text.StringBuilder(10);
+            for (int i = 0; i < inputField.characterLimit; i++)
+            {
+                if (result.Length <= i) { break; }
+                formatstr = formatstr.Append(result[i]).Append(" ");
+            }
+
+            display.text = formatstr.ToString();
         }
 
         /// <summary>
@@ -62,23 +73,24 @@ namespace Komugi.Gimmick
         private void CheckPassWord()
         {
             if (clearflag) { return; }
-            if (inputField.text.Length != data.gimmickAnswer.Length) { return; }
 
-            bool clearFlg = true;
+            int clearFlg = 0;
 
-            for (int i = 0; i < data.gimmickAnswer.Length; i++)
+            int len = data.gimmickAnswer.Length / MultiAnswerCount;
+            for (int i = 0; i < MultiAnswerCount; i++)
             {
-                if (inputField.text.Length <= i) { return; }
-                char target = IsAlphabet ? ALPHABET[data.gimmickAnswer[i]] : char.Parse(data.gimmickAnswer[i].ToString());
-                if (target != inputField.text[i])
+                int[] ans = new int[len];
+                Array.Copy(data.gimmickAnswer, i * len, ans, 0, len);
+                if (StringCompare(ans))
                 {
-                    clearFlg = false;
+                    clearFlg = i + 1;
                 }
             }
-            if (clearFlg)
+            
+            if (clearFlg > 0)
             {
                 ReleaseGimmick();
-                openAction.Invoke(1);
+                openAction.Invoke(clearFlg);
             }
             else
             {
@@ -87,6 +99,22 @@ namespace Komugi.Gimmick
                 display.text = string.Empty;
             }
 
+        }
+
+        private bool StringCompare(int[] correct)
+        {
+            string inputAnswer = inputField.text.ToLower();
+            for (int i = 0; i < correct.Length; i++)
+            {
+                if (inputAnswer.Length <= i) { return false; }
+                char target = IsAlphabet ? ALPHABET[correct[i]] : char.Parse(correct[i].ToString());
+                if (target != inputAnswer[i])
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         #region -------------------------------------インターフェースメソッド-------------------------------------
@@ -100,7 +128,7 @@ namespace Komugi.Gimmick
             set
             {
                 data = value;
-                inputField.characterLimit = data.gimmickAnswer.Length;
+                inputField.characterLimit = data.gimmickAnswer.Length / MultiAnswerCount;
             }
         }
 

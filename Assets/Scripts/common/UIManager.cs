@@ -73,8 +73,8 @@ namespace Komugi
 
             bool flag = next == 0;
 
-            LeftRightPanel.SetActive(!flag);
-            ReturnPanel.SetActive(flag);
+            LeftRightPanel.SetActive(next != 0);
+            ReturnPanel.SetActive(next == 0 && preiver != 0);
             
         }
 

@@ -98,5 +98,12 @@ namespace Komugi
                 
             }
         }
+
+        public int GetClearProgress(int gimmickId = 0)
+        {
+            if (gimmickId == 0) { gimmickId = gimmickDictionary.Count - 1; }
+
+            return clearFlagDictionary.ContainsKey(gimmickId) ? clearFlagDictionary[gimmickId] : 0;
+        }
     }
 }

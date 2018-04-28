@@ -8,7 +8,7 @@ namespace Komugi
     public class Opening : MonoBehaviour
     {
 
-        private string[] SYNOPSIS = {"ここは御徒町にあるオフィス、",
+        private readonly string[] SYNOPSIS = {"ここは御徒町にあるオフィス、",
                                 "「Space Lab」",
                                 "目が覚めると誰もいない",
                                 "オフィスに閉じ込められていた。",

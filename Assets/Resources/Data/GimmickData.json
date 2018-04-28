@@ -79,9 +79,17 @@
     "gimmickAnswer": [ 2 ]
   },
   {
-    "comment": "エレベーターのキー",
+    "comment": "エレベーターのキー行けるかチェック",
     "gimmickId": 13,
     "gimmickType": 1,
-    "gimmickAnswer": [ 14, 15, 16 ]
+    //"gimmickAnswer": [ 14, 15, 16 ]
+    "gimmickAnswer": [ 17, 20 ]
+  },
+  {
+    "comment": "エレベーターのキー",
+    "gimmickId": 14,
+    "gimmickType": 1,
+    "clearJump": 68,
+    "gimmickAnswer": [ 12, 0, 18, 20, 3, 0, 20, 18, 0, 3, 0, 12]
   }
 ]
