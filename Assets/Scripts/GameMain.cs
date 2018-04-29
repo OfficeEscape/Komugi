@@ -9,6 +9,8 @@ namespace Komugi
 { 
     public class GameMain : SingletonMonoBehaviour<GameMain>
     {
+        [SerializeField]
+        GameObject LoadingAnime = null;
 
         #region =============================== フィールド ===============================
         /** ゲームマネージャー */
@@ -173,12 +175,16 @@ namespace Komugi
 			    Debug.Log("Loading progress:" + resReq.progress.ToString());
 			    yield return 0;
 		    }
+            
 		    // テクスチャ表示
 		    Debug.Log("End  " + Time.time.ToString());
 
 		    //最初の画面を出す
 		    ChangeView(gameManager.currentView);
-	    }
+
+            LoadingAnime.SetActive(false);
+
+        }
 
         // ステージ変更
         // @param 変更するステージのiD

@@ -64,7 +64,7 @@ namespace Komugi
                 else
                 {
                     this.enabled = false;
-                    SceneManager.LoadScene("GameScene");
+                    SceneManager.LoadSceneAsync("GameScene");
                 }
             }
         }
