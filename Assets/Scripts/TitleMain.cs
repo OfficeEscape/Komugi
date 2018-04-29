@@ -5,14 +5,22 @@ namespace Komugi
 {
     public class TitleMain : MonoBehaviour
     {
-
         private GameObject _canvas;
+
+        [SerializeField]
+        private GameObject GameManagerObj = null;
 
         // Use this for initialization
         void Start()
         {
             _canvas = transform.Find("Canvas").gameObject;
             Invoke("PlayBGM", 3f);
+
+            if (!Persistence.Created)
+            {
+                Instantiate(GameManagerObj);
+                Persistence.Created = true;
+            }
         }
         
         public void startButtonHandler()
@@ -26,6 +34,11 @@ namespace Komugi
             Animator animator = _canvas.GetComponent<Animator>();
             animator.Play("startAnimation");
             Invoke("createOpening", 1f);
+
+            if (SoundManger.Instance != null)
+            {
+                SoundManger.Instance.PlaySe(AudioConst.SE_BUTTON);
+            }
         }
      
         private void createOpening()

@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class Persistence : MonoBehaviour {
-
-	// Use this for initialization
-	void Awake ()
+namespace Komugi
+{ 
+    public class Persistence : MonoBehaviour
     {
-		if (SceneManager.GetActiveScene().name != "EndingScene")
+        public static bool Created = false;
+
+	    // Use this for initialization
+	    void Awake ()
         {
             DontDestroyOnLoad(this);
-        }
-	}
+	    }
+    }
 }
