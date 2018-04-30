@@ -18,6 +18,8 @@ namespace Komugi
         [SerializeField]
         private GameObject ReturnPanel;
 
+        private MainMenu mainMenu;
+
         private AlertMenu alert;
 
         private DialogMenu dialog;
@@ -33,8 +35,12 @@ namespace Komugi
             // 必ず親クラスのAwakeをCallして
             // 複数のGameObjectにアタッチされないようにします.
             base.Awake();
+
+            mainMenu = gameObject.AddComponent<MainMenu>();
             alert = gameObject.AddComponent<AlertMenu>();
             dialog = gameObject.AddComponent<DialogMenu>();
+
+            itemBar.MenuButtonHandle = () => { mainMenu.OpenMainMenu(); };
         }
 
         #region =============================== C# private ===============================

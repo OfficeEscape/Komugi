@@ -1,4 +1,5 @@
 ﻿using Komugi.Data;
+using UnityEngine;
 using System.Collections.Generic;
 
 namespace Komugi
@@ -25,6 +26,10 @@ namespace Komugi
 
         private static readonly string GIMMICK_DATA_KEY = "GimmickSaveData";
 
+        private static readonly string BGM_KEY = "Bgm";
+
+        private static readonly string SE_KEY = "Se";
+
         /// <summary>
         /// データ保存
         /// </summary>
@@ -34,10 +39,16 @@ namespace Komugi
             PlayerPrefsUtility.SaveDict(GIMMICK_DATA_KEY, GimmickManager.Instance.clearFlagDictionary);
         }
 
+        public void SaveOption(int bgm, int se)
+        {
+            PlayerPrefs.SetInt(BGM_KEY, bgm);
+            PlayerPrefs.SetInt(SE_KEY, se);
+        }
+
         public void SaveDataReset()
         {
-            UnityEngine.PlayerPrefs.DeleteKey(ITEM_DATA_KEY);
-            UnityEngine.PlayerPrefs.DeleteKey(GIMMICK_DATA_KEY);
+            PlayerPrefs.DeleteKey(ITEM_DATA_KEY);
+            PlayerPrefs.DeleteKey(GIMMICK_DATA_KEY);
         }
 
         /// <summary>
@@ -56,6 +67,16 @@ namespace Komugi
         public Dictionary<int, bool> LoadItemSaveData()
         {
             return PlayerPrefsUtility.LoadDict<int, bool>(ITEM_DATA_KEY);
+        }
+
+        public int LoadBGMOption()
+        {
+            return PlayerPrefs.GetInt(BGM_KEY);
+        }
+
+        public int LoadSEOption()
+        {
+            return PlayerPrefs.GetInt(SE_KEY);
         }
     }
 }

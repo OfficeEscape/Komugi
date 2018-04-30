@@ -54,7 +54,7 @@ namespace Komugi
 
             InitButtonFunction ();
             //リソースフォルダのデータを非同期に読み込む
-            StartCoroutine(LoadAsyncStageCoroutine(""));
+            StartCoroutine(LoadAsyncStageCoroutine("Prefabs"));
 
             itemManager.AddItemSaveData();
 
@@ -190,7 +190,6 @@ namespace Komugi
             
             // ローディング画面を消す
             LoadingAnime.SetActive(false);
-
         }
 
         // ステージ変更

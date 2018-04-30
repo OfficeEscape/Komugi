@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using System;
 
 namespace Komugi.UI
 { 
@@ -37,6 +38,11 @@ namespace Komugi.UI
 
         // 選択中のアイテムのインデックス
         private int selectedIndex = -1;
+
+        /// <summary>
+        /// メニューボタン押されたら
+        /// </summary>
+        public Action MenuButtonHandle { get; set; }
 
         #region =============================== タップ領域計算用フィールド ===============================
 
@@ -300,6 +306,11 @@ namespace Komugi.UI
                     // メニューボタン押された
                     //CheatManager.Instance.AddAllItem();
                     Debug.Log("メニューボタン押された");
+
+                    if (MenuButtonHandle != null)
+                    {
+                        MenuButtonHandle.Invoke();
+                    }
                 }
             }
         }

@@ -12,7 +12,6 @@ namespace Komugi.UI
 
         public bool IsOpen { get; private set; }
 
-
         /// <summary>
         /// ダイアログを出す
         /// </summary>

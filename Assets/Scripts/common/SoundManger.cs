@@ -18,6 +18,35 @@ namespace Komugi
 
         Queue<int> seRequestQueue = new Queue<int>();
 
+        private bool bgmOff = false;
+
+        public int BgmOff
+        {
+            get { return bgmOff ? 1 : 0; }
+            set
+            {
+                bgmOff = (value == 1);
+                bgmSource.volume = bgmOff ? 0f : 1f;
+                DataManager.Instance.SaveOption(value, SeOff);
+            }
+        }
+
+        private bool seOff = false;
+
+        public int SeOff
+        {
+            get { return seOff ? 1 : 0; }
+            set
+            {
+                seOff = (value == 1);
+                DataManager.Instance.SaveOption(BgmOff, value);
+                if (seOff)
+                {
+                    StopSe();
+                }
+            }
+        }
+
         override protected void Awake()
         {
             // 子クラスでAwakeを使う場合は
@@ -45,12 +74,15 @@ namespace Komugi
             {
                 bgmIndexes[bgmClips[i].name] = i;
             }
+
+            bgmOff = DataManager.Instance.LoadBGMOption() == 1;
+            bgmSource.volume = bgmOff ? 0f : 1f;
+            seOff = DataManager.Instance.LoadSEOption() == 1;
         }
 
         void Update()
         {
             
-
             int count = seRequestQueue.Count;
             if (count != 0)
             {
@@ -133,6 +165,8 @@ namespace Komugi
         //------------------------------------------------------------------------------
         public void PlaySe(int index)
         {
+            if (seOff) { return; }
+
             if (!seRequestQueue.Contains(index))
             {
                 seRequestQueue.Enqueue(index);
