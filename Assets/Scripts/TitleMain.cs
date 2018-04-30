@@ -40,7 +40,13 @@ namespace Komugi
                 SoundManger.Instance.PlaySe(AudioConst.SE_BUTTON);
             }
         }
-     
+
+        public void ContinueButtonHandle()
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("GameScene");
+        }
+
+
         private void createOpening()
         {
             GameObject obj = Resources.Load("Prefabs/office/opening", typeof(GameObject)) as GameObject;

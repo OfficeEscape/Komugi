@@ -56,6 +56,8 @@ namespace Komugi
             //リソースフォルダのデータを非同期に読み込む
             StartCoroutine(LoadAsyncStageCoroutine(""));
 
+            itemManager.AddItemSaveData();
+
             gameManager.PlayBGM(AudioConst.BGM_MAIN);
 	    }
 

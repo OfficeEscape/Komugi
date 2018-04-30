@@ -21,7 +21,7 @@ namespace Komugi
         private ItemManager()
         {
             itemDictionary = new Dictionary<int, ItemData>();
-            HasItemList = new Dictionary<int, bool>();
+            HasItemList = DataManager.Instance.LoadItemSaveData();
             Debug.Log("Create ItemManager instance.");
         }
 
@@ -51,6 +51,17 @@ namespace Komugi
             Debug.Log("ItemData OpenBinary " + Time.time.ToString());
         }
 
+        public void AddItemSaveData()
+        {
+            foreach(KeyValuePair<int, bool> kvp in HasItemList)
+            {
+                if (!kvp.Value)
+                {
+                    UIManager.Instance.AddItemToItemBar(kvp.Key, false);
+                }
+            }
+        }
+        
         // 所持アイテムを追加
         public bool AddItem(int itemId, bool showDialog = true)
         {
@@ -65,6 +76,10 @@ namespace Komugi
             
 
             UIManager.Instance.AddItemToItemBar(itemId, showDialog);
+
+            // セーブデータ
+            DataManager.Instance.SaveData();
+
             return true;
         }
 
@@ -82,6 +97,9 @@ namespace Komugi
 
             HasItemList[itemId] = true;
             UIManager.Instance.RemoveItemFromItemBar(itemId);
+
+            // セーブデータ
+            DataManager.Instance.SaveData();
             return true;
         }
 
@@ -105,6 +123,9 @@ namespace Komugi
             }
             
             UIManager.Instance.ChangeItem(beforeId, afterId);
+
+            // セーブデータ
+            DataManager.Instance.SaveData();
             return true;
         }
 
@@ -132,6 +153,9 @@ namespace Komugi
             {
                 UIManager.Instance.OpenAlert(string.Format("{0} が {1} になりました", itemDictionary[beforeId].itemName, itemDictionary[afterId].itemName), true);
             }
+
+            // セーブデータ
+            DataManager.Instance.SaveData();
 
             return ret;
         }

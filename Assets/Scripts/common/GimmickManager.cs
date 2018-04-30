@@ -31,7 +31,7 @@ namespace Komugi
         }
 
         /** 各ギミックのクリア状況 */
-        private Dictionary<int, int> clearFlagDictionary;
+        public Dictionary<int, int> clearFlagDictionary { get; private set; }
 
         /** 現在のステージのギミック */
         private IGimmick currentGimmick;
@@ -40,7 +40,7 @@ namespace Komugi
         private GimmickManager()
         {
             gimmickDictionary = new Dictionary<int, GimmickData>();
-            clearFlagDictionary = new Dictionary<int, int>();
+            clearFlagDictionary = DataManager.Instance.LoadGimmickSaveData();
             Debug.Log("Create GimmickManager instance.");
         }
 
@@ -69,6 +69,8 @@ namespace Komugi
             foreach (GimmickData data in gimmickList)
             {
                 gimmickDictionary.Add(data.gimmickId, data);
+
+                if (clearFlagDictionary.ContainsKey(data.gimmickId)) { continue; }
                 clearFlagDictionary.Add(data.gimmickId, 0);
             }
 
@@ -98,6 +100,9 @@ namespace Komugi
             }
 
             GameManager.Instance.PlaySE(currentGimmick.Data.clearSe);
+
+            // データ保存
+            DataManager.Instance.SaveData();
         }
 
         public int GetClearProgress(int gimmickId = 0)
