@@ -298,7 +298,7 @@ namespace Komugi.UI
                 else
                 {
                     // メニューボタン押された
-                    CheatManager.Instance.AddAllItem();
+                    //CheatManager.Instance.AddAllItem();
                     Debug.Log("メニューボタン押された");
                 }
             }

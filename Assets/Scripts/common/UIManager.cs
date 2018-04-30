@@ -69,8 +69,6 @@ namespace Komugi
             content.transform.localPosition = Vector3.zero;
             content.transform.localScale = Vector3.one;
 
-            bool flag = next == 0;
-
             LeftRightPanel.SetActive(next != 0);
             ReturnPanel.SetActive(next == 0 && preiver != 0);
             

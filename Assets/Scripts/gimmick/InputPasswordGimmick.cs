@@ -25,7 +25,7 @@ namespace Komugi.Gimmick
         [SerializeField]
         int MultiAnswerCount = 1;
 
-        bool autoCheck = true;
+        //bool autoCheck = true;
 
         private const string SPACE = "     ";
         private const string ALPHABET = "abcdefghijklmnopqrstuvwxyz";
@@ -41,7 +41,7 @@ namespace Komugi.Gimmick
             if (openButton)
             {
                 openButton.onClick.AddListener(() => CheckPassWord());
-                autoCheck = false;
+                //autoCheck = false;
                 GameManager.Instance.PlaySE(AudioConst.SE_INPUT_OPEN);
             }
             else
