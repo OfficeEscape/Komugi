@@ -18,6 +18,8 @@ namespace Komugi.UI
 
         private const string SETTING_WINDOW_PATH = "Prefabs/ui/setting_dialog";
 
+        private const string HINT_WINDOW_PATH = "Prefabs/ui/hint_window";
+
         private GameObject content = null;
 
         private GameObject childcontent = null;
@@ -96,6 +98,9 @@ namespace Komugi.UI
             if (childcontent != null) { Destroy(childcontent); }
             if (isLoading) { return; }
 
+            Destroy(content);
+            IsOpen = false;
+
             switch ((ButtonType)buttonIndex)
             {
                 case ButtonType.Help:
@@ -104,10 +109,7 @@ namespace Komugi.UI
                     StartCoroutine(LoadAsyncPrefab(SETTING_WINDOW_PATH));
                     break;
                 case ButtonType.Hint:
-                    break;
-                case ButtonType.Return:
-                    Destroy(content);
-                    IsOpen = false;
+                    StartCoroutine(LoadAsyncPrefab(HINT_WINDOW_PATH));
                     break;
             }
 
