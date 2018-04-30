@@ -79,6 +79,8 @@ namespace Komugi
         // 画像の切り替え
         public void SwitchObject(int index, string name)
         {
+            GameManager.Instance.PlaySE(AudioConst.SE_SWITCH_SE);
+
             changeableObjectIndex[index]++;
             if (changeableObjectIndex[index] >= changeableObjectList[index].Length) changeableObjectIndex[index] = 0;
 

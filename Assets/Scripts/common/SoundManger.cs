@@ -12,7 +12,7 @@ namespace Komugi
         private Dictionary<string, int> seIndexes = new Dictionary<string, int>();
         private Dictionary<string, int> bgmIndexes = new Dictionary<string, int>();
 
-        const int cNumChannel = 16;
+        const int cNumChannel = 6;
         private AudioSource bgmSource;
         private AudioSource[] seSources = new AudioSource[cNumChannel];
 
