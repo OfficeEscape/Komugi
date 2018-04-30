@@ -42,6 +42,7 @@ namespace Komugi.Gimmick
             {
                 openButton.onClick.AddListener(() => CheckPassWord());
                 autoCheck = false;
+                GameManager.Instance.PlaySE(AudioConst.SE_INPUT_OPEN);
             }
             else
             {

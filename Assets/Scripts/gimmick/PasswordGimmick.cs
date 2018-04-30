@@ -42,6 +42,8 @@ namespace Komugi.Gimmick
 
         private void OnInputPanel(Button btn)
         {
+            GameManager.Instance.PlaySE(AudioConst.SE_PW_KEY);
+
             if (inputPosition >= currentNum.Length) { return; }
             string num = btn.name;
             Debug.Log("Push " + num);
@@ -56,6 +58,8 @@ namespace Komugi.Gimmick
         /// </summary>
         private void CheckPassWord()
         {
+            GameManager.Instance.PlaySE(AudioConst.SE_PW_OPEN);
+
             if (inputPosition < 3) { return; }
             if (clearflag) { return; }
 
@@ -81,6 +85,7 @@ namespace Komugi.Gimmick
 
         private void DeleteNumber()
         {
+            GameManager.Instance.PlaySE(AudioConst.SE_PW_OPEN);
             if (inputPosition <= 0) { return; }
 
             inputPosition--;

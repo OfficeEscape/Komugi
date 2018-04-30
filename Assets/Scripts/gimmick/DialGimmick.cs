@@ -25,6 +25,8 @@ namespace Komugi.Gimmick
 
         private void SetDialNumber()
         {
+            GameManager.Instance.PlaySE(AudioConst.SE_DIAL_KEY);
+
             var strBuilder = new System.Text.StringBuilder(dialkey.Length * 2);
 
             bool correct = true;

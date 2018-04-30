@@ -23,6 +23,7 @@ namespace Komugi.UI
             CloseButton.onClick.AddListener(() =>
             {
                 Destroy(gameObject);
+                GameManager.Instance.PlaySE(AudioConst.SE_BUTTON);
                 if (CloseCallBack != null) { CloseCallBack.Invoke(); }
             });
             ItemImage.GetComponent<Button>().onClick.AddListener(() => ChangeItem());
@@ -99,6 +100,8 @@ namespace Komugi.UI
             //itemManager.AddItem(itemData.changeItem, false);
             itemManager.ChangeItem(itemData.itemId, itemData.changeItem);
             itemData = itemManager.itemDictionary[itemData.changeItem];
+
+            GameManager.Instance.PlaySE(AudioConst.SE_ITEM_GET);
         }
     }
 }

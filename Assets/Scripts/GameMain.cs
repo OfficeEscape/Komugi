@@ -55,6 +55,8 @@ namespace Komugi
             InitButtonFunction ();
             //リソースフォルダのデータを非同期に読み込む
             StartCoroutine(LoadAsyncStageCoroutine(""));
+
+            gameManager.PlayBGM(AudioConst.BGM_MAIN);
 	    }
 
 	    #endregion
@@ -133,6 +135,8 @@ namespace Komugi
             {
                 itemObject.gameObject.SetActive(false);
             }
+
+            gameManager.PlaySE(AudioConst.SE_ITEM_GET);
         }
 
         /// <summary>
@@ -181,7 +185,8 @@ namespace Komugi
 
 		    //最初の画面を出す
 		    ChangeView(gameManager.currentView);
-
+            
+            // ローディング画面を消す
             LoadingAnime.SetActive(false);
 
         }
@@ -297,6 +302,7 @@ namespace Komugi
 	    }
 
 	    #endregion
+        
     }
 }
 

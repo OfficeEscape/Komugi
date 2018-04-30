@@ -39,6 +39,8 @@ namespace Komugi.Gimmick
         /// <param name="img"></param>
         private void ColorChanage(Image img)
         {
+            GameManager.Instance.PlaySE(AudioConst.SE_TEN_KEY);
+
             int index = int.Parse(img.name);
             if (index < 0 || index >= keyArray.Length) { return; }
 

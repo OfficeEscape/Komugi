@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using LitJson;
 
@@ -116,6 +115,22 @@ namespace Komugi
         public bool UseItem(int itemId)
         {
             return false;
+        }
+
+        public void PlayBGM(string bgm)
+        {
+            if (SoundManger.Instance != null)
+            {
+                SoundManger.Instance.PlayBgm(bgm);
+            }
+        }
+
+        public void PlaySE(string se)
+        {
+            if (SoundManger.Instance != null)
+            {
+                SoundManger.Instance.PlaySe(se);
+            }
         }
     }
 }

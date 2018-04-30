@@ -95,8 +95,9 @@ namespace Komugi
                 {
                     GameMain.Instance.JumpView(currentGimmick.Data.clearJump);
                 });
-                
             }
+
+            GameManager.Instance.PlaySE(currentGimmick.Data.clearSe);
         }
 
         public int GetClearProgress(int gimmickId = 0)
