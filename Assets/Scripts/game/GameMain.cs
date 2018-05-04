@@ -306,8 +306,14 @@ namespace Komugi
             functionDictionary.Add("Change", ChangeItem);
 	    }
 
-	    #endregion
-        
+        #endregion
+
+        private void OnApplicationQuit()
+        {
+            DataManager.Instance.SetStageId(gameManager.currentView);
+            DataManager.Instance.SaveUserData();
+        }
+
     }
 }
 
