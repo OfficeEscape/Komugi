@@ -28,5 +28,9 @@ namespace Komugi
             buttonText.text = RESULT_BUTTON[index];
         }
       
+        public void ShareTest()
+        {
+            Application.OpenURL("twitter://post?message=" + WWW.EscapeURL("テストツイート"));
+        }
     }
 }

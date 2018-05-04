@@ -310,7 +310,7 @@ namespace Komugi
 
         private void OnApplicationQuit()
         {
-            DataManager.Instance.SetStageId(gameManager.currentView);
+            DataManager.Instance.SetStageId(gameManager.currentView);   
             DataManager.Instance.SaveUserData();
         }
 
