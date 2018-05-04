@@ -29,9 +29,13 @@ namespace Komugi.UI
 
         private const string AD_KEY = "rewardedVideo";
 
+        private const string CHECK_MESSAGE = "アメを{1}消費します。\nよろしいでしょうか";
+
         private const int ROW_BUTTON_MAX = 3;
 
         bool isLoading = false;
+
+        int currentHintId = 1;
 
         List<HintButton> hintList = new List<HintButton>();
 
@@ -125,15 +129,28 @@ namespace Komugi.UI
             int needNum = GimmickManager.Instance.hintDictionary[data.hintId].candyNum;
 
             if (DataManager.Instance.UserSaveData.candyNum < needNum) { return; }
-            
-            DataManager.Instance.AddCandy(needNum * -1);
-            GimmickManager.Instance.hintPayDictionary[data.hintId] = true;
 
-            DataManager.Instance.SaveHintData();
+            currentHintId = data.hintId;
 
-            HintDetail.text = data.detail;
-            CandyNum.text = DataManager.Instance.UserSaveData.candyNum.ToString();
-            RefushHintButton();
+            string msg = string.Format(CHECK_MESSAGE, needNum);
+            UIManager.Instance.OpenCheckDialog(msg, PaidCallBack);
+        }
+
+        private void PaidCallBack(int res)
+        {
+            if (res == (int)CheckDialog.ResultType.OK)
+            {
+                int needNum = GimmickManager.Instance.hintDictionary[currentHintId].candyNum;
+
+                DataManager.Instance.AddCandy(needNum * -1);
+                GimmickManager.Instance.hintPayDictionary[currentHintId] = true;
+
+                DataManager.Instance.SaveHintData();
+
+                HintDetail.text = GimmickManager.Instance.hintDictionary[currentHintId].detail;
+                CandyNum.text = DataManager.Instance.UserSaveData.candyNum.ToString();
+                RefushHintButton();
+            }
         }
 
         private void RefushHintButton()

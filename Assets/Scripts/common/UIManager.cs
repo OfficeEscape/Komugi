@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using Komugi.UI;
+using System;
 
 namespace Komugi
 {
@@ -56,6 +57,11 @@ namespace Komugi
         public void ShowItemGetDailog(int itemId)
         {
             dialog.OpenDialog(itemId);
+        }
+
+        public void OpenCheckDialog(string message, Action<int> callBack = null, bool okOnly = false)
+        {
+            dialog.OpenCheckDialog(message, callBack, okOnly);
         }
 
         /// <summary>
