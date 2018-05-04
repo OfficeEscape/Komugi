@@ -1,4 +1,5 @@
 ﻿using Komugi.Data;
+using LitJson;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -26,10 +27,24 @@ namespace Komugi
 
         private static readonly string GIMMICK_DATA_KEY = "GimmickSaveData";
 
+        private static readonly string HINT_DATA_KEY = "HintSaveData";
+
         private static readonly string BGM_KEY = "Bgm";
 
         private static readonly string SE_KEY = "Se";
 
+        private static readonly string USER_KEY = "user";
+
+        private UserData userData;
+
+        public UserData UserSaveData { get { return userData; } }
+        
+        private DataManager()
+        {
+            userData = new UserData(1, 0);
+        }
+
+        #region ---------------------- セーブ ----------------------
         /// <summary>
         /// データ保存
         /// </summary>
@@ -39,10 +54,20 @@ namespace Komugi
             PlayerPrefsUtility.SaveDict(GIMMICK_DATA_KEY, GimmickManager.Instance.clearFlagDictionary);
         }
 
+        public void SaveHintData()
+        {
+            PlayerPrefsUtility.SaveDict(HINT_DATA_KEY, GimmickManager.Instance.hintPayDictionary);
+        }
+
         public void SaveOption(int bgm, int se)
         {
             PlayerPrefs.SetInt(BGM_KEY, bgm);
             PlayerPrefs.SetInt(SE_KEY, se);
+        }
+
+        public void SaveUserData()
+        {
+            PlayerPrefs.SetString(USER_KEY, JsonMapper.ToJson(userData));
         }
 
         public void SaveDataReset()
@@ -50,7 +75,9 @@ namespace Komugi
             PlayerPrefs.DeleteKey(ITEM_DATA_KEY);
             PlayerPrefs.DeleteKey(GIMMICK_DATA_KEY);
         }
+        #endregion
 
+        #region ---------------------- ロード ----------------------
         /// <summary>
         ///  ギミックデータロード
         /// </summary>
@@ -69,6 +96,11 @@ namespace Komugi
             return PlayerPrefsUtility.LoadDict<int, bool>(ITEM_DATA_KEY);
         }
 
+        public Dictionary<int, bool> LoadHintSaveData()
+        {
+            return PlayerPrefsUtility.LoadDict<int, bool>(HINT_DATA_KEY);
+        }
+
         public int LoadBGMOption()
         {
             return PlayerPrefs.GetInt(BGM_KEY);
@@ -77,6 +109,27 @@ namespace Komugi
         public int LoadSEOption()
         {
             return PlayerPrefs.GetInt(SE_KEY);
+        }
+
+        public void LoadUserData()
+        {
+            if (PlayerPrefs.HasKey(USER_KEY))
+            {
+                userData = JsonMapper.ToObject<UserData>(PlayerPrefs.GetString(USER_KEY));
+            }
+        }
+
+        #endregion
+
+        public void AddCandy(int add)
+        {
+            userData.candyNum += add;
+            SaveUserData();
+        }
+
+        public void SetStageId(int newid)
+        {
+            userData.currentStageId = newid;
         }
     }
 }

@@ -185,6 +185,10 @@ namespace Komugi
 		    // テクスチャ表示
 		    Debug.Log("End  " + Time.time.ToString());
 
+            // ユーザーデータロード
+            DataManager.Instance.LoadUserData();
+            gameManager.currentView = DataManager.Instance.UserSaveData.currentStageId;
+
 		    //最初の画面を出す
 		    ChangeView(gameManager.currentView);
             

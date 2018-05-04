@@ -1,5 +1,20 @@
 ﻿namespace Komugi
 {
+    public struct UserData
+    {
+        /** 最後に止まったステージのID */
+        public int currentStageId;
+
+        /** 所持アメ数 */
+        public int candyNum;
+        
+        public UserData(int sid = 1, int cn = 0)
+        {
+            currentStageId = sid;
+            candyNum = cn;
+        }
+    }
+
     #region ---------------------- StageData ----------------------
     // ステージデータ
     public struct StageData
@@ -75,6 +90,24 @@
 
         /** クリア時に再生するSE */
         public string clearSe;
+    }
+    #endregion
+
+    #region ---------------------- HintData ----------------------
+    public struct HintData
+    {
+        public int hintId;
+
+        /** ヒントタイトル */
+        public string title;
+
+        /** ヒント詳細 */
+        public string detail;
+
+        public int gimmickId;
+
+        /** 解放に必要なアメの数 */
+        public int candyNum;
     }
     #endregion
 }

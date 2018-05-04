@@ -1,0 +1,37 @@
+[
+  {
+    "hintId": 1,
+    "title": "白い\nキャビネットの鍵",
+    "detail": "白いソファーをよく調べてみよう。",
+    "gimmickId": 1,
+    "candyNum": 1
+  },
+  {
+    "hintId": 2,
+    "title": "白いキャビネット\n内金庫の暗号",
+    "detail": "パソコンのある机の上はよく見てみたかな？\n金庫にある3つの色がヒントだよ。",
+    "gimmickId": 2,
+    "candyNum": 1
+  },
+  {
+    "hintId": 3,
+    "title": "白いキャビネット\n内金庫の暗号",
+    "detail": "パソコンのある机の上はよく見てみたかな？\n金庫にある3つの色がヒントだよ。",
+    "gimmickId": 3,
+    "candyNum": 1
+  },
+  {
+    "hintId": 4,
+    "title": "天吊りモニターの\nスイッチ",
+    "detail": "モニターのスイッチを入れるアレが必要だよ。\nアレを使うには電池が必要だよ。",
+    "gimmickId": 4,
+    "candyNum": 3
+  },
+  {
+    "hintId": 5,
+    "title": "天吊りモニターの\n暗号",
+    "detail": "スケスケのアレをモニターに掲げてみよう。",
+    "gimmickId": 5,
+    "candyNum": 2
+  }
+]

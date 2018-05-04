@@ -13,6 +13,9 @@ namespace Komugi
         /** 各ギミックデータ */
         public Dictionary<int, GimmickData> gimmickDictionary { get; private set; }
 
+        /** ギミックのヒントデータ */
+        public Dictionary<int, HintData> hintDictionary { get; private set; }
+
         /** 今選んだアイテム */
         private int selectedItem;
 
@@ -33,6 +36,9 @@ namespace Komugi
         /** 各ギミックのクリア状況 */
         public Dictionary<int, int> clearFlagDictionary { get; private set; }
 
+        /** ヒントの支払い状況 */
+        public Dictionary<int, bool> hintPayDictionary { get; set; }
+
         /** 現在のステージのギミック */
         private IGimmick currentGimmick;
 
@@ -40,7 +46,9 @@ namespace Komugi
         private GimmickManager()
         {
             gimmickDictionary = new Dictionary<int, GimmickData>();
+            hintDictionary = new Dictionary<int, HintData>();
             clearFlagDictionary = DataManager.Instance.LoadGimmickSaveData();
+            hintPayDictionary = DataManager.Instance.LoadHintSaveData();
             Debug.Log("Create GimmickManager instance.");
         }
 
@@ -72,6 +80,16 @@ namespace Komugi
 
                 if (clearFlagDictionary.ContainsKey(data.gimmickId)) { continue; }
                 clearFlagDictionary.Add(data.gimmickId, 0);
+            }
+
+            json = Resources.Load("Data/HintData") as TextAsset;
+            HintData[] hintList = JsonMapper.ToObject<HintData[]>(json.text);
+
+            foreach (HintData data in hintList)
+            {
+                hintDictionary.Add(data.hintId, data);
+                if (hintPayDictionary.ContainsKey(data.hintId)) { continue; }
+                hintPayDictionary.Add(data.hintId, false);
             }
 
             Debug.Log("GimmickData OpenBinary " + Time.time.ToString());
