@@ -76,10 +76,8 @@ namespace Komugi
 
         public void AddContentToMainCanvas(GameObject content, int next, int preiver)
         {
-            content.transform.SetParent(gameObject.transform);
+            content.transform.SetParent(gameObject.transform, false);
             content.transform.SetAsFirstSibling();
-            content.transform.localPosition = Vector3.zero;
-            content.transform.localScale = Vector3.one;
 
             LeftRightPanel.SetActive(next != 0);
             ReturnPanel.SetActive(next == 0 && preiver != 0);
