@@ -108,8 +108,8 @@
     "itemId": 14,
     "itemName": "何かのパーツ",
     "itemDetail": "見覚えのある形だ。",
-    "itemIcon": "small/item_parts1",
-    "itemImage": "large/item_s_parts1"
+    "itemIcon": "small/item_s_parts1",
+    "itemImage": "large/item_parts1"
   },
   {
     "itemId": 15,
