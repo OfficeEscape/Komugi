@@ -50,13 +50,18 @@ namespace Komugi
 
         #region =============================== C# public ===============================
 
+        public bool IsItemDialogOpen()
+        {
+            return dialog.IsOpen;
+        }
+
         /// <summary>
         /// アイテムダイアログを出す
         /// </summary>
         /// <param name="itemId"></param>
-        public void ShowItemGetDailog(int itemId)
+        public void ShowItemGetDailog(int itemId, int itemIndex)
         {
-            dialog.OpenDialog(itemId);
+            dialog.OpenDialog(itemId, itemIndex);
         }
 
         public void OpenCheckDialog(string message, Action<int> callBack = null, bool okOnly = false)
@@ -127,8 +132,8 @@ namespace Komugi
         // アイテムバーにアイテムを追加
         public void AddItemToItemBar(int itemId, bool showDialog = true)
         {
-            itemBar.AddItemImage(itemId);
-            if (showDialog){ ShowItemGetDailog(itemId); }
+            int itemIndex = itemBar.AddItemImage(itemId);
+            if (showDialog){ ShowItemGetDailog(itemId, itemIndex); }
         }
 
         /// <summary>
@@ -140,9 +145,9 @@ namespace Komugi
             itemBar.DeleteItemFromItemBar(itemId);
         }
 
-        public bool ChangeItem(int before, int after)
+        public bool ChangeItem(int before, int after, int itemIndex = -1)
         {
-            return itemBar.ChangeItem(before, after);
+            return itemBar.ChangeItem(before, after, itemIndex);
         }
 
         // リセット
@@ -150,6 +155,11 @@ namespace Komugi
         {
             changeableObjectList = new GameObject[CHANGEABLE_MAX][];
             changeableObjectIndex = new int[10];
+        }
+
+        public void SetItemBarTouchEnable(bool enable)
+        {
+            itemBar.TouchEnable = enable;
         }
 
         #endregion

@@ -69,12 +69,7 @@ namespace Komugi
         {
             PlayerPrefs.SetString(USER_KEY, JsonMapper.ToJson(userData));
         }
-
-        public void SaveDataReset()
-        {
-            PlayerPrefs.DeleteKey(ITEM_DATA_KEY);
-            PlayerPrefs.DeleteKey(GIMMICK_DATA_KEY);
-        }
+        
         #endregion
 
         #region ---------------------- ロード ----------------------
@@ -120,6 +115,14 @@ namespace Komugi
         }
 
         #endregion
+
+        public void SaveDataReset()
+        {
+            PlayerPrefs.DeleteKey(ITEM_DATA_KEY);
+            PlayerPrefs.DeleteKey(GIMMICK_DATA_KEY);
+            PlayerPrefs.DeleteKey(USER_KEY);
+            PlayerPrefs.DeleteKey(HINT_DATA_KEY);
+        }
 
         public void AddCandy(int add)
         {

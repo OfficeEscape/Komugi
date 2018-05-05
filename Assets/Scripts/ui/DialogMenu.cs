@@ -15,29 +15,29 @@ namespace Komugi.UI
         private GameObject content = null;
 
         private bool isLoading = false;
-
+        
         public bool IsOpen { get; private set; }
         
         /// <summary>
         /// アイテムダイアログを出す
         /// </summary>
         /// <param name="itemId"></param>
-        public void OpenDialog(int itemId)
+        public void OpenDialog(int itemId, int itemIndex)
         {
             if (isLoading) { return; }
-
+            
             if (IsOpen)
             {
-                content.GetComponent<ItemDialog>().UpdateItem(ItemManager.Instance.itemDictionary[itemId]);
+                content.GetComponent<ItemDialog>().UpdateItem(ItemManager.Instance.itemDictionary[itemId], itemIndex);
             }
             else
             {
-                StartCoroutine(LoadAsyncDialogCoroutine(itemId));
+                StartCoroutine(LoadAsyncDialogCoroutine(itemId, itemIndex));
             }
         }
 
         // リソース非同期読み込み
-        private IEnumerator LoadAsyncDialogCoroutine(int itemId)
+        private IEnumerator LoadAsyncDialogCoroutine(int itemId, int itemIndex)
         {
             isLoading = true;
             
@@ -61,7 +61,7 @@ namespace Komugi.UI
             if (script != null)
             {
                 script.CloseCallBack = () => { IsOpen = false; };
-                script.UpdateItem(ItemManager.Instance.itemDictionary[itemId]);
+                script.UpdateItem(ItemManager.Instance.itemDictionary[itemId], itemIndex);
             }
 
             content.transform.SetParent(gameObject.transform);

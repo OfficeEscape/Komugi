@@ -16,6 +16,8 @@ namespace Komugi.UI
 
         private ItemData itemData;
 
+        private int itemBarIndex = 0;
+
         public System.Action CloseCallBack = null;
 
         private void Awake()
@@ -34,12 +36,13 @@ namespace Komugi.UI
         /// </summary>
         /// <param name="itemImage"></param>
         /// <param name="itemName"></param>
-        public void UpdateItem(ItemData idata)
+        public void UpdateItem(ItemData idata, int itemIndex)
         {
             itemData = idata;
             ItemImage.sprite = ItemManager.Instance.GetItemImage(itemData.itemId, 1);
             ItemName.text = itemData.itemName;
             ItemImage.enabled = true;
+            itemBarIndex = itemIndex;
         }
 
         /// <summary>
@@ -66,15 +69,14 @@ namespace Komugi.UI
 
             ItemImage.sprite = itemManager.GetItemImage(itemData.changeItem, 1);
             ItemName.text = itemManager.GetItemName(itemData.changeItem);
-            //itemManager.DeleteItem(itemData.itemId);
-
-            //itemManager.AddItem(itemData.changeItem, false);
-            itemManager.ChangeItem(itemData.itemId, itemData.changeItem);
+            
             itemData = itemManager.itemDictionary[itemData.changeItem];
-
+            
             // 変化後のアイテムが自動変化アイテムならもう一度呼び出す
             if (itemData.autoChange == 1)
             {
+                UIManager.Instance.SetItemBarTouchEnable(false);
+
                 ItemImage.raycastTarget = false;
                 Invoke("AutoChangeItem", 1.0f);
             }
@@ -86,7 +88,6 @@ namespace Komugi.UI
         /// </summary>
         private void AutoChangeItem()
         {
-            ItemImage.raycastTarget = true;
             if (itemData.changeItem == 0) { return; }
 
             UIManager.Instance.OpenAlert("アイテムが変化しました");
@@ -95,11 +96,12 @@ namespace Komugi.UI
             var itemManager = ItemManager.Instance;
             ItemImage.sprite = itemManager.GetItemImage(itemData.changeItem, 1);
             ItemName.text = itemManager.GetItemName(itemData.changeItem);
-            //itemManager.DeleteItem(itemData.itemId);
 
-            //itemManager.AddItem(itemData.changeItem, false);
-            itemManager.ChangeItem(itemData.itemId, itemData.changeItem);
+            itemManager.ChangeItem(itemData.itemId, itemData.changeItem, itemBarIndex);
             itemData = itemManager.itemDictionary[itemData.changeItem];
+
+            ItemImage.raycastTarget = true;
+            UIManager.Instance.SetItemBarTouchEnable(true);
 
             GameManager.Instance.PlaySE(AudioConst.SE_ITEM_GET);
         }

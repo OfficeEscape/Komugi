@@ -95,6 +95,12 @@ namespace Komugi
                 return false;
             }
 
+            if (HasItemList[itemId])
+            {
+                Debug.Log("Item Id " + itemId + " is used");
+                return false;
+            }
+
             HasItemList[itemId] = true;
             UIManager.Instance.RemoveItemFromItemBar(itemId);
 
@@ -109,7 +115,7 @@ namespace Komugi
         /// <param name="beforeId"></param>
         /// <param name="afterId"></param>
         /// <returns></returns>
-        public bool ChangeItem(int beforeId, int afterId)
+        public bool ChangeItem(int beforeId, int afterId, int itemIndex)
         {
             HasItemList[beforeId] = true;
 
@@ -121,11 +127,12 @@ namespace Komugi
             {
                 HasItemList.Add(afterId, false);
             }
-            
-            UIManager.Instance.ChangeItem(beforeId, afterId);
+
+            UIManager.Instance.ChangeItem(beforeId, afterId, itemIndex);
 
             // セーブデータ
             DataManager.Instance.SaveData();
+            
             return true;
         }
 

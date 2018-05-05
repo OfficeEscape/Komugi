@@ -44,6 +44,8 @@ namespace Komugi.UI
         /// </summary>
         public Action MenuButtonHandle { get; set; }
 
+        public bool TouchEnable { get; set; }
+
         #region =============================== タップ領域計算用フィールド ===============================
 
         private float touchStart = 0f;
@@ -73,6 +75,8 @@ namespace Komugi.UI
             Debug.Log("itemHeight" + itemHeight);
 
             itemIdList = new List<int>();
+
+            TouchEnable = true;
         }
 
 
@@ -80,7 +84,7 @@ namespace Komugi.UI
         /// アイテムバーに画像を追加
         /// </summary>
         /// <param name="itemId"></param>
-        public void AddItemImage(int itemId)
+        public int AddItemImage(int itemId)
         {
             // ページが埋まったら自動で次のページへ
             if (ItemImages[ItemImages.Length - 1].enabled)
@@ -93,7 +97,7 @@ namespace Komugi.UI
             if (ItemImages[itemNum].enabled)
             {
                 Debug.Log("item " + itemNum + " is Registered");
-                return;
+                return -1;
             }
             
             Sprite itemSprite = ItemManager.Instance.GetItemImage(itemId);
@@ -104,11 +108,15 @@ namespace Komugi.UI
 
             itemIdList.Add(itemId);
             maxPage = itemIdList.Count / ItemImages.Length + 1;
+
+            return itemNum;
         }
 
         // 
         public void OnPointerUp(PointerEventData eventData)
         {
+            if (!TouchEnable) { return; }
+
             int pressIndex = GetPressedItemIndex(eventData.pressPosition);
             if (pressIndex < 0)
             {
@@ -125,7 +133,10 @@ namespace Komugi.UI
             if (selectedIndex == itemIndex)
             {
                 // アイテムダイアログを出す
-                UIManager.Instance.ShowItemGetDailog(itemIdList[itemIndex]);
+                if (!UIManager.Instance.IsItemDialogOpen())
+                {
+                    UIManager.Instance.ShowItemGetDailog(itemIdList[itemIndex], itemIndex);
+                }
             }
             else
             {
@@ -137,12 +148,19 @@ namespace Komugi.UI
                 cursor.localPosition = ItemImages[lastTouchItem].rectTransform.localPosition;
                 if (!cursor.gameObject.activeSelf) { cursor.gameObject.SetActive(true); }
 
+                // アイテムダイアログを出す
+                if (UIManager.Instance.IsItemDialogOpen())
+                {
+                    UIManager.Instance.ShowItemGetDailog(itemIdList[itemIndex], itemIndex);
+                }
+
             }
             
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
+            if (!TouchEnable) { return; }
             // throw new NotImplementedException();
             lastTouchItem = GetPressedItemIndex(eventData.pressPosition);
             Debug.Log("Now Pressed : " + lastTouchItem);
@@ -200,17 +218,17 @@ namespace Komugi.UI
         /// </summary>
         /// <param name="beforeItem"></param>
         /// <param name="afterItem"></param>
-        public bool ChangeItem(int beforeItem, int afterItem)
+        public bool ChangeItem(int beforeItem, int afterItem, int itemIndex)
         {
-            if (lastTouchItem < 0) { Debug.Log("lastTouchItem < 0"); return false; }
-            if (itemIdList[lastTouchItem] != beforeItem) { Debug.Log("Change Item Failed"); return false; }
+            int index = 0 <= itemIndex ? itemIndex : (lastTouchItem + ItemImages.Length * currentPage);
+            if (!ItemImages[index].enabled) { return false; }
 
-            itemIdList[lastTouchItem + ItemImages.Length * currentPage] = afterItem;
+            itemIdList[index] = afterItem;
             GimmickManager.Instance.SelectedItem = afterItem;
             Sprite itemSprite = ItemManager.Instance.GetItemImage(afterItem);
             if (itemSprite != null)
             {
-                ItemImages[lastTouchItem].sprite = itemSprite;
+                ItemImages[index].sprite = itemSprite;
             }
 
             return true;
