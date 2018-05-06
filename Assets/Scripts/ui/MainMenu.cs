@@ -16,6 +16,8 @@ namespace Komugi.UI
         // メインメニューのパス
         private const string MAIN_MENU_PATH = "Prefabs/ui/menu_bar";
 
+        private const string HELP_WINDOW_PATH = "Prefabs/ui/help_window";
+
         private const string SETTING_WINDOW_PATH = "Prefabs/ui/setting_dialog";
 
         private const string HINT_WINDOW_PATH = "Prefabs/ui/hint_window";
@@ -104,6 +106,7 @@ namespace Komugi.UI
             switch ((ButtonType)buttonIndex)
             {
                 case ButtonType.Help:
+                    StartCoroutine(LoadAsyncPrefab(HELP_WINDOW_PATH));
                     break;
                 case ButtonType.Setting:
                     StartCoroutine(LoadAsyncPrefab(SETTING_WINDOW_PATH));

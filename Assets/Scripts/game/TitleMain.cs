@@ -10,10 +10,21 @@ namespace Komugi
         [SerializeField]
         private GameObject GameManagerObj = null;
 
+        [SerializeField]
+        Button startButton = null;
+
+        [SerializeField]
+        Button continueButton = null;
+
         // Use this for initialization
         void Start()
         {
             _canvas = transform.Find("Canvas").gameObject;
+
+            startButton.onClick.AddListener(() => StartButtonHandler());
+            continueButton.onClick.AddListener(() => ContinueButtonHandle());
+            continueButton.gameObject.SetActive(DataManager.Instance.CheckSaveData());
+
             Invoke("PlayBGM", 3f);
 
             if (!Persistence.Created)
@@ -23,7 +34,7 @@ namespace Komugi
             }
         }
         
-        public void startButtonHandler()
+        public void StartButtonHandler()
         {
             Button[] btns = _canvas.GetComponentsInChildren<Button>();
             foreach (Button btn in btns)

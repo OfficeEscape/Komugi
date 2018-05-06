@@ -116,6 +116,11 @@ namespace Komugi
 
         #endregion
 
+        public bool CheckSaveData()
+        {
+            return PlayerPrefs.HasKey(USER_KEY);
+        }
+
         public void SaveDataReset()
         {
             PlayerPrefs.DeleteKey(ITEM_DATA_KEY);
