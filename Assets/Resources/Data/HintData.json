@@ -15,23 +15,100 @@
   },
   {
     "hintId": 3,
-    "title": "白いキャビネット\n内金庫の暗号",
-    "detail": "パソコンのある机の上はよく見てみたかな？\n金庫にある3つの色がヒントだよ。",
+    "title": "天吊りモニターの\nスイッチ",
+    "detail": "モニターのスイッチを入れるアレが必要だよ。\nアレを使うには電池が必要だよ。",
     "gimmickId": 3,
     "candyNum": 1
   },
   {
     "hintId": 4,
-    "title": "天吊りモニターの\nスイッチ",
-    "detail": "モニターのスイッチを入れるアレが必要だよ。\nアレを使うには電池が必要だよ。",
+    "title": "天吊りモニターの\n暗号",
+    "detail": "スケスケのアレをモニターに掲げてみよう。",
     "gimmickId": 4,
-    "candyNum": 3
+    "candyNum": 1
   },
   {
     "hintId": 5,
-    "title": "天吊りモニターの\n暗号",
-    "detail": "スケスケのアレをモニターに掲げてみよう。",
+    "title": "黒い箱の暗号",
+    "detail": "パソコンのある机の上はよく見てみたかな？\n黒い箱に書いてある図形がどこかにあるはず…。",
     "gimmickId": 5,
+    "candyNum": 1
+  },
+  {
+    "hintId": 6,
+    "title": "電話機の暗号1",
+    "detail": "疲れたらトイレ休憩。\n鏡を見て身だしなみを整えよう。",
+    "gimmickId": 6,
+    "candyNum": 1
+  },
+  {
+    "hintId": 7,
+    "title": "電話機の暗号2",
+    "detail": "鏡に映っているということは左右が…？",
+    "gimmickId": 7,
+    "candyNum": 1
+  },
+  {
+    "hintId": 8,
+    "title": "電話機の暗号3",
+    "detail": "靴箱になにやら派手な色の靴が入っているよ。",
+    "gimmickId": 8,
+    "candyNum": 1
+  },
+  {
+    "hintId": 9,
+    "title": "シンク下の\n扉の鍵",
+    "detail": "トイレはよく見てみたかな。\nトイレは換気が大事だよ。",
+    "gimmickId": 9,
+    "candyNum": 1
+  },
+  {
+    "hintId": 10,
+    "title": "シンク下の\n箱の暗号1",
+    "detail": "白いオットマンはチェックしたかな。\n丸いテーブルの上も調べてみよう。",
+    "gimmickId": 10,
+    "candyNum": 1
+  },
+  {
+    "hintId": 11,
+    "title": "シンク下の\n箱の暗号2",
+    "detail": "絵には星…円…いろいろな図形がある。\nbwbwは色の頭文字らしいぞ。",
+    "gimmickId": 11,
     "candyNum": 2
+  },
+  {
+    "hintId": 12,
+    "title": "シンク下の\n箱の暗号3",
+    "detail": "図形を全部英語にすると…？\n女子トイレにヒントがあるぞ。",
+    "gimmickId": 12,
+    "candyNum": 3
+  },
+  {
+    "hintId": 13,
+    "title": "隠れた暗号",
+    "detail": "暗闇で使えるアイテムがあるはず。\n戸締りは大事だよ。",
+    "gimmickId": 13,
+    "candyNum": 1
+  },
+  {
+    "hintId": 14,
+    "title": "エレベーターの\n電源",
+    "detail": "3つのパーツが揃ったら、\nどこかにはめてみよう。",
+    "gimmickId": 14,
+    "candyNum": 1
+  },
+  {
+    "hintId": 15,
+    "title": "エレベーターの\n暗号",
+    "detail": "暗闇の中でこそ輝くものがあるよ。\n明日は雨だから傘が必要だよ。",
+    "gimmickId": 15,
+    "candyNum": 1
+  },
+  {
+    "hintId": 16,
+    "title": "株式会社\nLifeBoxって？",
+    "detail": "2018年11月で創業12年を迎えるIT企業だよ。\nゲーム制作は今作が初めてらしいよ。",
+    "gimmickId": 16,
+    "candyNum": 20
   }
 ]
