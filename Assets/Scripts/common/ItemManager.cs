@@ -149,6 +149,7 @@ namespace Komugi
             if (beforeId == 0) { return false; }
 
             if (!HasItemList.ContainsKey(beforeId)) { return false; }
+            HasItemList[beforeId] = true;
             //if (GimmickManager.Instance.SelectedItem != beforeId) { return false; }
 
             if (HasItemList.ContainsKey(afterId)) { HasItemList[afterId] = false; }

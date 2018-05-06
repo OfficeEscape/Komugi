@@ -16,6 +16,8 @@ namespace Komugi.UI
 
         private ItemData itemData;
 
+        private int originItemId = 0;
+
         private int itemBarIndex = 0;
 
         public System.Action CloseCallBack = null;
@@ -43,6 +45,7 @@ namespace Komugi.UI
             ItemName.text = itemData.itemName;
             ItemImage.enabled = true;
             itemBarIndex = itemIndex;
+            originItemId = itemData.itemId;
         }
 
         /// <summary>
@@ -97,7 +100,7 @@ namespace Komugi.UI
             ItemImage.sprite = itemManager.GetItemImage(itemData.changeItem, 1);
             ItemName.text = itemManager.GetItemName(itemData.changeItem);
 
-            itemManager.ChangeItem(itemData.itemId, itemData.changeItem, itemBarIndex);
+            itemManager.ChangeItem(originItemId, itemData.changeItem, itemBarIndex);
             itemData = itemManager.itemDictionary[itemData.changeItem];
 
             ItemImage.raycastTarget = true;

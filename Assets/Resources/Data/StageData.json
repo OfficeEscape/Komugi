@@ -379,7 +379,7 @@
     "id": 61,
     "prefab": "rouka/rouka_box",
     "gimmickId": 7,
-    "getItem": [ 16 ],
+    "getItem": [ 14 ],
     "preiverStage": 53
   },
   {

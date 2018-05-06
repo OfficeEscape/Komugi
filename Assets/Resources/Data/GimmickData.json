@@ -70,7 +70,7 @@
     "comment": "黒い箱",
     "gimmickId": 11,
     "clearSe": "Open",
-    "gimmickAnswer": [ 1 ]
+    "gimmickAnswer": [ 23 ]
   },
   {
     "comment": "ブラックライト",
@@ -82,8 +82,8 @@
     "comment": "エレベーターのキー行けるかチェック",
     "gimmickId": 13,
     "clearSe": "Open",
-    //"gimmickAnswer": [ 14, 15, 16 ]
-    "gimmickAnswer": [ 17, 20 ]
+    "gimmickAnswer": [ 14, 15, 16 ]
+    //"gimmickAnswer": [ 17, 20 ]
   },
   {
     "comment": "エレベーターのキー",

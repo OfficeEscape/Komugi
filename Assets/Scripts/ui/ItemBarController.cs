@@ -221,6 +221,7 @@ namespace Komugi.UI
         public bool ChangeItem(int beforeItem, int afterItem, int itemIndex)
         {
             int index = 0 <= itemIndex ? itemIndex : (lastTouchItem + ItemImages.Length * currentPage);
+            if (index < 0) { return false; }
             if (!ItemImages[index].enabled) { return false; }
 
             itemIdList[index] = afterItem;
