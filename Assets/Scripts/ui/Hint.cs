@@ -29,7 +29,7 @@ namespace Komugi.UI
 
         private const string AD_KEY = "rewardedVideo";
 
-        private const string CHECK_MESSAGE = "アメを{1}消費します。\nよろしいでしょうか";
+        private const string CHECK_MESSAGE = "アメを{0}消費します。\nよろしいでしょうか";
 
         private const int ROW_BUTTON_MAX = 3;
 

@@ -1,10 +1,13 @@
 ﻿using System;
-using UnityEngine.UI;
+using UnityEngine;
 
 namespace Komugi.Gimmick
 {
     public class ItemCheckGimmick : GimmickBase, IGimmick
     {
+        [SerializeField]
+        bool itemUsed = false;
+
         #region -------------------------------------インターフェースメソッド-------------------------------------
         public GimmickData Data
         {
@@ -61,7 +64,7 @@ namespace Komugi.Gimmick
         {
             foreach (int item in data.gimmickAnswer)
             {
-                if (!ItemManager.Instance.CheckItem(item))
+                if (!ItemManager.Instance.CheckItem(item, itemUsed))
                 {
                     return;
                 }

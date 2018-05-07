@@ -101,6 +101,8 @@ namespace Komugi
                 return false;
             }
 
+            if (itemDictionary[itemId].changeItem > 0) { return false; }
+
             HasItemList[itemId] = true;
             UIManager.Instance.RemoveItemFromItemBar(itemId);
 
@@ -173,9 +175,9 @@ namespace Komugi
         /// </summary>
         /// <param name="itemid"></param>
         /// <returns></returns>
-        public bool CheckItem(int itemid)
+        public bool CheckItem(int itemid, bool used)
         {
-            return HasItemList.ContainsKey(itemid) && !HasItemList[itemid];
+            return HasItemList.ContainsKey(itemid) && (HasItemList[itemid] == used);
         }
 
         // アイテムの画像を返す

@@ -11,6 +11,8 @@ namespace Komugi.Gimmick
 
         private int clearNumber = 0;
 
+        private bool clearFlg = false;
+
         protected GimmickData data;
 
         private void Awake()
@@ -23,12 +25,19 @@ namespace Komugi.Gimmick
         /// </summary>
         private void CheckOpenItem()
         {
-            if (clearNumber >= data.gimmickAnswer.Length) { return; }
-            if (data.gimmickAnswer[clearNumber] == GimmickManager.Instance.SelectedItem)
+            if (clearFlg) { return; }
+
+            for (int i = 0; i < data.gimmickAnswer.Length; i++)
             {
-                openObjects[clearNumber].SetActive(true);
-                clearNumber++;
+                if (data.gimmickAnswer[i] == GimmickManager.Instance.SelectedItem)
+                {
+                    openObjects[i].SetActive(true);
+                    clearNumber += (1 << i);
+
+                    ItemManager.Instance.DeleteItem(data.gimmickAnswer[i]);
+                }
             }
+            
             openAction.Invoke(clearNumber); 
         }
 
@@ -50,7 +59,14 @@ namespace Komugi.Gimmick
         {
             get
             {
-                return clearNumber == data.gimmickAnswer.Length ? 1 : 0;
+                for (int i = 0; i < data.gimmickAnswer.Length; i++)
+                {
+                    if ((clearNumber & (1 << i)) == 0)
+                    {
+                        return 0;
+                    }
+                }
+                return 1;
             }
             set
             {
@@ -80,9 +96,18 @@ namespace Komugi.Gimmick
         /// </summary>
         public void ReleaseGimmick()
         {
-            for (int i = 0; i < clearNumber; i ++)
+            clearFlg = true;
+
+            for (int i = 0; i < data.gimmickAnswer.Length; i++)
             {
-                openObjects[i].SetActive(true);
+                if ((clearNumber & (1 << i)) > 0)
+                {
+                    openObjects[i].SetActive(true);
+                }
+                else
+                {
+                    clearFlg = false;
+                }
             }
         }
 

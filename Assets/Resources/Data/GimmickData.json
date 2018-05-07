@@ -83,7 +83,6 @@
     "gimmickId": 13,
     "clearSe": "Open",
     "gimmickAnswer": [ 14, 15, 16 ]
-    //"gimmickAnswer": [ 17, 20 ]
   },
   {
     "comment": "エレベーターのキー",
@@ -91,5 +90,11 @@
     "clearSe": "Open",
     "clearJump": 68,
     "gimmickAnswer": [ 12, 0, 18, 20, 3, 0, 20, 18, 0, 3, 0, 12]
+  },
+  {
+    "comment": "ロゴパーツ",
+    "gimmickId": 15,
+    "clearSe": "Open",
+    "gimmickAnswer": [ 14, 15, 16 ]
   }
 ]

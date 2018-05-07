@@ -316,7 +316,8 @@
     "comment": "廊下右側",
     "id": 53,
     "prefab": "rouka/01_rightside",
-    "jumpToStage": [ 61,62 ],
+    "gimmickId": 15,
+    "jumpToStage": [ 61, 62 ],
     "preiverStage": 41
   },
   {
@@ -379,7 +380,7 @@
     "id": 61,
     "prefab": "rouka/rouka_box",
     "gimmickId": 7,
-    "getItem": [ 14 ],
+    "getItem": [ 15 ],
     "preiverStage": 53
   },
   {

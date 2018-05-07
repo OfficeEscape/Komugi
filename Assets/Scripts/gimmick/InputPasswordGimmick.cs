@@ -76,7 +76,7 @@ namespace Komugi.Gimmick
             if (clearflag) { return; }
 
             int len = data.gimmickAnswer.Length / MultiAnswerCount;
-            if (inputField.text.Length != data.gimmickAnswer.Length) { return; }
+            if (inputField.text.Length != len) { return; }
 
             int clearFlg = 0;
 
