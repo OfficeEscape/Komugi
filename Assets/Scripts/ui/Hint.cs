@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Advertisements;
 using System.Collections;
 using System.Collections.Generic;
+using Komugi.Ad;
 
 namespace Komugi.UI
 { 
@@ -23,6 +23,8 @@ namespace Komugi.UI
         [SerializeField]
         Text CandyNum = null;
 
+        private MovieRewardAdManager rewardMovie;
+
         private const string HORIZONTAL_GROUP_PATH = "Prefabs/ui/horizontal_group";
 
         private const string HINT_BUTTON_PATH = "Prefabs/ui/hint_btn";
@@ -42,7 +44,17 @@ namespace Komugi.UI
         // Use this for initialization
         void Start ()
         {
-            AdsButton.onClick.AddListener(() => { ShowRewardedAd(); });
+            rewardMovie = GetComponent<MovieRewardAdManager>();
+            rewardMovie.closeCallBack = () => RefushHintButton();
+            rewardMovie.finishCallBack = () =>
+            {
+                Debug.Log("アメ恵んでやろう.");
+                DataManager.Instance.AddCandy(1);
+                CandyNum.text = DataManager.Instance.UserSaveData.candyNum.ToString();
+            };
+
+            // 広告再生ボタン
+            AdsButton.onClick.AddListener(() => { rewardMovie.playRewardMovie(); });
             ReturnButton.onClick.AddListener(() => 
             {
                 if (isLoading) { return; }
@@ -50,7 +62,7 @@ namespace Komugi.UI
             });
 
             CandyNum.text = DataManager.Instance.UserSaveData.candyNum.ToString();
-
+            
             StartCoroutine(LoadAsyncPrefab());
         }
 
@@ -163,6 +175,7 @@ namespace Komugi.UI
             }
         }
 
+        /*
         private void ShowRewardedAd()
         {
             if (Advertisement.IsReady(AD_KEY))
@@ -191,5 +204,6 @@ namespace Komugi.UI
                     break;
             }
         }
+        */
     }
 }
