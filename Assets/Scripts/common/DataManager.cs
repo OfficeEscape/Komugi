@@ -112,10 +112,6 @@ namespace Komugi
             {
                 userData = JsonMapper.ToObject<UserData>(PlayerPrefs.GetString(USER_KEY));
             }
-            else
-            {
-                userData = new UserData(1, 0);
-            }
         }
 
         #endregion
