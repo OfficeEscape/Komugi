@@ -97,9 +97,10 @@ namespace Komugi.Gimmick
             }
             else
             {
-                UIManager.Instance.OpenAlert("パスワードが違います", true);
-                inputField.text = string.Empty;
-                display.text = string.Empty;
+                UIManager.Instance.OpenAlert("パスワードが違います", true, () => {
+                    inputField.text = string.Empty;
+                    display.text = string.Empty;
+                });
             }
 
         }
