@@ -47,8 +47,6 @@ namespace Komugi
         {
             gimmickDictionary = new Dictionary<int, GimmickData>();
             hintDictionary = new Dictionary<int, HintData>();
-            clearFlagDictionary = DataManager.Instance.LoadGimmickSaveData();
-            hintPayDictionary = DataManager.Instance.LoadHintSaveData();
             Debug.Log("Create GimmickManager instance.");
         }
 
@@ -69,14 +67,15 @@ namespace Komugi
 
         public void Deserialization()
         {
-            if (gimmickDictionary.Count > 0) { return; }
-
             TextAsset json = Resources.Load("Data/GimmickData") as TextAsset;
             GimmickData[] gimmickList = JsonMapper.ToObject<GimmickData[]>(json.text);
 
             foreach (GimmickData data in gimmickList)
             {
-                gimmickDictionary.Add(data.gimmickId, data);
+                if (!gimmickDictionary.ContainsKey(data.gimmickId))
+                {
+                    gimmickDictionary.Add(data.gimmickId, data);
+                }
 
                 if (clearFlagDictionary.ContainsKey(data.gimmickId)) { continue; }
                 clearFlagDictionary.Add(data.gimmickId, 0);
@@ -87,11 +86,15 @@ namespace Komugi
 
             foreach (HintData data in hintList)
             {
-                hintDictionary.Add(data.hintId, data);
+                if (!hintDictionary.ContainsKey(data.hintId))
+                {
+                    hintDictionary.Add(data.hintId, data);
+                }
+
                 if (hintPayDictionary.ContainsKey(data.hintId)) { continue; }
                 hintPayDictionary.Add(data.hintId, false);
             }
-
+            
             Debug.Log("GimmickData OpenBinary " + Time.time.ToString());
         }
 
@@ -128,6 +131,12 @@ namespace Komugi
             if (gimmickId == 0) { gimmickId = gimmickDictionary.Count; }
 
             return clearFlagDictionary.ContainsKey(gimmickId) ? clearFlagDictionary[gimmickId] : 0;
+        }
+
+        public void Load()
+        {
+            clearFlagDictionary = DataManager.Instance.LoadGimmickSaveData();
+            hintPayDictionary = DataManager.Instance.LoadHintSaveData();
         }
     }
 }

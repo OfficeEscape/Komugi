@@ -47,6 +47,9 @@ namespace Komugi
             itemManager = ItemManager.Instance;
             gimmickManager = GimmickManager.Instance;
 
+            itemManager.Load();
+            gimmickManager.Load();
+
             // Jasonデータデシリアライズ
             gameManager.Deserialization();
             itemManager.Deserialization();
