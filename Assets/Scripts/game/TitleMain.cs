@@ -50,6 +50,8 @@ namespace Komugi
             {
                 SoundManger.Instance.PlaySe(AudioConst.SE_BUTTON);
             }
+
+            DataManager.Instance.SaveDataReset();
         }
 
         public void ContinueButtonHandle()

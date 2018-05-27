@@ -63,8 +63,7 @@ namespace Komugi
                 }
                 else
                 {
-                    this.enabled = false;
-                    DataManager.Instance.SaveDataReset();
+                    enabled = false;
                     SceneManager.LoadSceneAsync("GameScene");
                 }
             }
