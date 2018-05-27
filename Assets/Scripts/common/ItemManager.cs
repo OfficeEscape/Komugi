@@ -21,7 +21,6 @@ namespace Komugi
         private ItemManager()
         {
             itemDictionary = new Dictionary<int, ItemData>();
-            HasItemList = DataManager.Instance.LoadItemSaveData();
             Debug.Log("Create ItemManager instance.");
         }
 
@@ -47,7 +46,7 @@ namespace Komugi
             {
                 itemDictionary.Add(data.itemId, data);
             }
-
+            
             Debug.Log("ItemData OpenBinary " + Time.time.ToString());
         }
 
@@ -210,6 +209,11 @@ namespace Komugi
             string name = itemDictionary[itemId].itemName;
             Debug.Log("ItemName : " + name);
             return name;
+        }
+
+        public void Load()
+        {
+            HasItemList = DataManager.Instance.LoadItemSaveData();
         }
     }
 }
