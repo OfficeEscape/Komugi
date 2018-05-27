@@ -12,6 +12,8 @@ namespace Komugi
         [SerializeField]
         Text buttonText;
 
+        private const int LAST_GIMMICK = 14;
+
         private readonly string[] RESULT = {"「Space Lab」で\n君も一緒に働かないか？",
                                 "なんとか終電に間に合った…\n良かった！"};
 
@@ -21,7 +23,7 @@ namespace Komugi
         // Use this for initialization
         void Start()
         {
-            int index = GimmickManager.Instance.GetClearProgress() - 1;
+            int index = GimmickManager.Instance.GetClearProgress(LAST_GIMMICK) - 1;
             index = Mathf.Clamp(index, 0, RESULT.Length - 1);
 
             resultText.text = RESULT[index];
