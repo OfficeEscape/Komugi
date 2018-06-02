@@ -226,7 +226,7 @@ namespace Komugi
             }
 
             // ボタンに適切なイベントハンドラを設定する
-            Button[] buttons = currentViewObject.GetComponentsInChildren<Button> ();
+            Button[] buttons = currentViewObject.GetComponentsInChildren<Button>();
 
             // 該当Tagは何個目の情報を入れるDictionary
             Dictionary<string, int> indexDic = new Dictionary<string, int>();

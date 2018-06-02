@@ -25,6 +25,12 @@ namespace Komugi.Gimmick
         [SerializeField]
         int MultiAnswerCount = 1;
 
+        [SerializeField]
+        string keyClickSe = string.Empty;
+
+        [SerializeField]
+        InputField.ContentType type = InputField.ContentType.Alphanumeric;
+
         //bool autoCheck = true;
 
         private const string SPACE = "     ";
@@ -33,7 +39,7 @@ namespace Komugi.Gimmick
 
         private void Start()
         {
-            inputField.contentType = InputField.ContentType.EmailAddress;
+            inputField.contentType = type;
             inputField.caretBlinkRate = 1;
             inputField.onEndEdit.AddListener((t) => OnEditEnd(t));
 
@@ -97,6 +103,7 @@ namespace Komugi.Gimmick
             }
             else
             {
+                SoundManger.Instance.PlaySe(AudioConst.SE_ELEVATOR_FAIL);
                 UIManager.Instance.OpenAlert("パスワードが違います", true, () => {
                     inputField.text = string.Empty;
                     display.text = string.Empty;

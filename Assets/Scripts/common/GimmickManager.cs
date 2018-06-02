@@ -120,7 +120,10 @@ namespace Komugi
                 });
             }
 
-            GameManager.Instance.PlaySE(currentGimmick.Data.clearSe);
+            if (currentGimmick.Data.clearSe.Length > 0)
+            {
+                GameManager.Instance.PlaySE(currentGimmick.Data.clearSe);
+            }
 
             // データ保存
             DataManager.Instance.SaveData();

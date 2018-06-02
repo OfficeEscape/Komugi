@@ -82,7 +82,7 @@ namespace Komugi
         public void AddContentToMainCanvas(GameObject content, int next, int preiver)
         {
             content.transform.SetParent(gameObject.transform, false);
-            content.transform.SetAsFirstSibling();
+            content.transform.SetSiblingIndex(1);
 
             LeftRightPanel.SetActive(next != 0);
             ReturnPanel.SetActive(next == 0 && preiver != 0);

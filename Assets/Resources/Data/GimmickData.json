@@ -2,13 +2,13 @@
   {
     "comment": "キャビ鍵を使って金庫をあける",
     "gimmickId": 1,
-    "clearSe": "Open",
+    "clearSe": "",
     "gimmickAnswer": [ 4 ]
   },
   {
     "comment": "操作パネル",
     "gimmickId": 2,
-    "clearSe": "Open",
+    "clearSe": "",
     "clearJump": 25,
     "autoJump": true,
     "gimmickAnswer": [ 6, 8, 3 ]
@@ -16,34 +16,34 @@
   {
     "comment": "モニター",
     "gimmickId": 3,
-    "clearSe": "Open",
+    "clearSe": "",
     "gimmickAnswer": [ 24, 3 ]
   },
   {
     "comment": "ガラスケース",
     "gimmickId": 4,
-    "clearSe": "Open",
+    "clearSe": "",
     "clearJump": 7,
     "gimmickAnswer": [ 2, 3, 3 ]
   },
   {
     "comment": "セキュリティカードを使ってガラスドアを開く",
     "gimmickId": 5,
-    "clearSe": "Open",
+    "clearSe": "decision3",
     "clearJump": 1,
     "gimmickAnswer": [ 13 ]
   },
   {
     "comment": "ダイアルキーでブラックボックスを開く",
     "gimmickId": 6,
-    "clearSe": "Open",
+    "clearSe": "",
     "clearJump": 11,
     "gimmickAnswer": [ 1, 7, 8 ]
   },
   {
     "comment": "電話",
     "gimmickId": 7,
-    "clearSe": "Open",
+    "clearSe": "door-wood-knock1",
     "clearJump": 62,
     //"gimmickAnswer": [ 2, 5, 3, 3, 1, 4, 2, 5, 4 ]
     "gimmickAnswer": [ 1, 1, 1, 1, 1, 1, 1, 1, 1 ]
@@ -51,51 +51,51 @@
   {
     "comment": "どっかのカギを使ってシンク下を開ける",
     "gimmickId": 8,
-    "clearSe": "Open",
+    "clearSe": "",
     "gimmickAnswer": [ 21 ]
   },
   {
     "comment": "シンク下の鍵を使用して水道の下を開ける",
     "gimmickId": 9,
-    "clearSe": "Open",
+    "clearSe": "tap3",
     "gimmickAnswer": [ 20 ]
   },
   {
     "comment": "暗号ボックス",
     "gimmickId": 10,
-    "clearSe": "Open",
+    "clearSe": "",
     "clearJump": 50,
     "gimmickAnswer": [ 2, 8, 1, 5 ]
   },
   {
-    "comment": "黒い箱",
+    "comment": "雑巾で汚れをふき取る",
     "gimmickId": 11,
-    "clearSe": "Open",
+    "clearSe": "towel-wipe-body1",
     "gimmickAnswer": [ 23 ]
   },
   {
     "comment": "ブラックライト",
     "gimmickId": 12,
-    "clearSe": "Open",
+    "clearSe": "",
     "gimmickAnswer": [ 2 ]
   },
   {
     "comment": "エレベーターのキー行けるかチェック",
     "gimmickId": 13,
-    "clearSe": "Open",
+    "clearSe": "",
     "gimmickAnswer": [ 14, 15, 16 ]
   },
   {
     "comment": "エレベーターのキー",
     "gimmickId": 14,
-    "clearSe": "Open",
+    "clearSe": "success",
     "clearJump": 68,
     "gimmickAnswer": [ 12, 0, 18, 20, 3, 0, 20, 18, 0, 3, 0, 12]
   },
   {
     "comment": "ロゴパーツ",
     "gimmickId": 15,
-    "clearSe": "Open",
+    "clearSe": "button30",
     "gimmickAnswer": [ 14, 15, 16 ]
   }
 ]
