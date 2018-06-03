@@ -114,7 +114,7 @@ namespace Komugi
             clearFlagDictionary[currentGimmick.Data.gimmickId] = progress;
             if (currentGimmick.Data.clearJump != 0)
             {
-                UIManager.Instance.OpenAlert("ゴゴゴゴゴゴゴ。。。", true, () =>
+                UIManager.Instance.OpenAlert("", true, () =>
                 {
                     GameMain.Instance.JumpView(currentGimmick.Data.clearJump);
                 });

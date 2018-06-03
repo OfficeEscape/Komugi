@@ -49,6 +49,11 @@ namespace Komugi.UI
                 script.SetAlertText(message);
             }
 
+            if (message.Length == 0)
+            {
+                content.transform.GetChild(0).gameObject.SetActive(false);
+            }
+
             content.transform.SetParent(gameObject.transform);
 
             if (autoDestoryFlg)
