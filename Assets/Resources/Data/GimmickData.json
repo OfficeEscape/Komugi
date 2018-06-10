@@ -29,7 +29,7 @@
   {
     "comment": "ガラスケース",
     "gimmickId": 4,
-    "clearMessage": "これでカードが手に入るぞ"
+    "clearMessage": "これでカードが手に入るぞ",
     "clearSe": "Openkey",
     "clearJump": 7,
     "clearStep": 1,
