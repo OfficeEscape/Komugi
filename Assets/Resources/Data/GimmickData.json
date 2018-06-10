@@ -29,8 +29,8 @@
   {
     "comment": "ガラスケース",
     "gimmickId": 4,
-    "clearMessage": "C.D.Dはこの会社の\nデザイン部署の名前だ",
-    "clearSe": "nc99392",
+    "clearMessage": "これでカードが手に入るぞ"
+    "clearSe": "Openkey",
     "clearJump": 7,
     "clearStep": 1,
     "gimmickAnswer": [ 2, 3, 3 ]
