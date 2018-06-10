@@ -18,7 +18,7 @@
   {
     "comment": "モニター",
     "gimmickId": 3,
-    "clearMessage": "C.D.Dはこの会社の\nデザイン部署の名前だ"
+    "clearMessage": "C.D.Dはこの会社の\nデザイン部署の名前だ",
     "clearSe": "nc99392",
     "clearMessage": "ゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴ",
     "clearStep": 3,
@@ -27,7 +27,7 @@
   {
     "comment": "ガラスケース",
     "gimmickId": 4,
-    "clearMessage": "C.D.Dはこの会社の\nデザイン部署の名前だ"
+    "clearMessage": "C.D.Dはこの会社の\nデザイン部署の名前だ",
     "clearSe": "nc99392",
     "clearJump": 7,
     "clearStep": 1,
