@@ -2,15 +2,13 @@
   {
     "comment": "キャビ鍵を使って金庫をあける",
     "gimmickId": 1,
-    "clearSe": "",
-    "clearMessage": "ゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴ",
-    "gimmickAnswer": [ 4 ]
+    "clearSe": "key-in2",
+     "gimmickAnswer": [ 4 ]
   },
   {
     "comment": "操作パネル",
     "gimmickId": 2,
-    "clearSe": "",
-    "clearMessage": "ゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴ",
+    "clearSe": "Openkey",
     "clearJump": 25,
     "autoJump": true,
     "gimmickAnswer": [ 6, 8, 3 ]
@@ -18,15 +16,8 @@
   {
     "comment": "モニター",
     "gimmickId": 3,
-    "clearSe": "",
-    "clearMessage": "ゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴ",
-    "gimmickAnswer": [ 24, 3 ]
-  },
-  {
-    "comment": "ガラスケース",
-    "gimmickId": 4,
-    "clearSe": "",
-    "clearMessage": "ゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴ",
+    "clearMessage": "C.D.Dはこの会社の\nデザイン部署の名前だ"
+    "clearSe": "nc99392",
     "clearJump": 7,
     "gimmickAnswer": [ 2, 3, 3 ]
   },
@@ -34,15 +25,15 @@
     "comment": "セキュリティカードを使ってガラスドアを開く",
     "gimmickId": 5,
     "clearSe": "decision3",
-    "clearMessage": "ゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴ",
+    "clearMessage": "ドアが開いた！",
     "clearJump": 1,
     "gimmickAnswer": [ 13 ]
   },
   {
     "comment": "ダイアルキーでブラックボックスを開く",
     "gimmickId": 6,
-    "clearSe": "",
-    "clearMessage": "ゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴ",
+    "clearSe": "Openkey",
+	"clearMessage": "箱が開いた！",
     "clearJump": 11,
     "gimmickAnswer": [ 1, 7, 8 ]
   },
@@ -50,7 +41,7 @@
     "comment": "電話",
     "gimmickId": 7,
     "clearSe": "door-wood-knock1",
-    "clearMessage": "ゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴ",
+    "clearMessage": "なにか近くで音がしたぞ！",
     "clearJump": 62,
     "gimmickAnswer": [ 2, 5, 3, 3, 1, 4, 2, 5, 4 ]
     //"gimmickAnswer": [ 1, 1, 1, 1, 1, 1, 1, 1, 1 ]
@@ -58,22 +49,21 @@
   {
     "comment": "どっかのカギを使ってシンク下を開ける",
     "gimmickId": 8,
-    "clearSe": "",
-    "clearMessage": "ゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴ",
+    "clearSe": "door-wood-knock1",
+	"clearMessage": "扉が開いた！",
     "gimmickAnswer": [ 21 ]
   },
   {
     "comment": "シンク下の鍵を使用して水道の下を開ける",
     "gimmickId": 9,
     "clearSe": "tap3",
-    "clearMessage": "ゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴ",
     "gimmickAnswer": [ 20 ]
   },
   {
     "comment": "暗号ボックス",
     "gimmickId": 10,
-    "clearSe": "",
-    "clearMessage": "ゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴ",
+    "clearSe": "Openkey",
+    "clearMessage": "箱が開いた！",
     "clearJump": 50,
     "gimmickAnswer": [ 2, 8, 1, 5 ]
   },
@@ -81,14 +71,13 @@
     "comment": "雑巾で汚れをふき取る",
     "gimmickId": 11,
     "clearSe": "towel-wipe-body1",
-    "clearMessage": "ゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴ",
+    "clearMessage": "なにか書いてあるぞ。\n誰が落書きしたんだろう？",
     "gimmickAnswer": [ 23 ]
   },
   {
     "comment": "ブラックライト",
     "gimmickId": 12,
-    "clearSe": "",
-    "clearMessage": "ゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴ",
+    "clearMessage": "文字が浮かんできた…。",
     "gimmickAnswer": [ 2 ]
   },
   {
@@ -102,7 +91,7 @@
     "comment": "エレベーターのキー",
     "gimmickId": 14,
     "clearSe": "success",
-    "clearMessage": "ゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴ",
+    "clearMessage": "やった！これでエレベーターが動くぞ！",
     "clearJump": 68,
     "gimmickAnswer": [ 12, 0, 18, 20, 3, 0, 20, 18, 0, 3, 0, 12]
   },
@@ -110,7 +99,7 @@
     "comment": "ロゴパーツ",
     "gimmickId": 15,
     "clearSe": "button30",
-    "clearMessage": "ゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴ",
+    "clearMessage": "近くで音がしたぞ",
     "gimmickAnswer": [ 14, 15, 16 ]
   }
 ]
