@@ -3,8 +3,9 @@
     "comment": "キャビ鍵を使って金庫をあける",
     "gimmickId": 1,
     "clearSe": "key-in2",
+    "clearMessage": "",
     "clearStep": 1,
-     "gimmickAnswer": [ 4 ]
+    "gimmickAnswer": [ 4 ]
   },
   {
     "comment": "操作パネル",
@@ -12,6 +13,7 @@
     "clearSe": "Openkey",
     "clearJump": 25,
     "autoJump": true,
+    "clearMessage": "",
     "clearStep": 1,
     "gimmickAnswer": [ 6, 8, 3 ]
   },
@@ -73,6 +75,7 @@
     "comment": "シンク下の鍵を使用して水道の下を開ける",
     "gimmickId": 9,
     "clearSe": "tap3",
+    "clearMessage": "",
     "clearStep": 1,
     "gimmickAnswer": [ 20 ]
   },
@@ -104,7 +107,7 @@
     "comment": "エレベーターのキー行けるかチェック",
     "gimmickId": 13,
     "clearSe": "",
-    "clearMessage": "ゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴゴ",
+    "clearMessage": "",
     "clearStep": 1,
     "gimmickAnswer": [ 14, 15, 16 ]
   },
