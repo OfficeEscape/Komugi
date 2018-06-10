@@ -50,6 +50,7 @@ namespace Komugi.Ad
         {
             SoundManger.Instance.BgmOff = 1;
 #if UNITY_EDITOR
+            Debug.Log("yield return null");
             yield return null;
 #elif UNITY_IOS
         while (!adutil.isPreparedMovieReward()) {
@@ -59,11 +60,13 @@ namespace Komugi.Ad
         adutil.playMovieReward();
 #else
         //リワード動画の準備ができるまでWaitして再生開始
-
+        
+        resultText.text = "adutil.isPreparedMovieReward() : " + adutil.isPreparedMovieReward();
         while (!adutil.isPreparedMovieReward()) {
             yield return new WaitForSeconds(0.2f);
         }
-
+        
+        resultText.text = "adutil.playMovieReward(); ";
         adutil.playMovieReward();
 #endif
         }

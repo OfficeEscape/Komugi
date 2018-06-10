@@ -67,6 +67,9 @@
             android:name="com.glossomads.sdk.GlossomBillboardAdActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
+        <activity android:name="com.glossomads.View.GlossomAdsFullScreen" 
+		    android:configChanges="keyboardHidden|orientation|screenSize" 
+		    android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
 
 		<!-- AppLovin -->
 		<activity android:name="com.applovin.adview.AppLovinInterstitialActivity" android:configChanges="orientation|screenSize"/>
