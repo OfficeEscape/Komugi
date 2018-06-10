@@ -112,7 +112,12 @@ namespace Komugi
         public void SetGimmickClearFlg(int progress = 1)
         {
             clearFlagDictionary[currentGimmick.Data.gimmickId] = progress;
-            
+
+            // データ保存
+            DataManager.Instance.SaveData();
+
+            if (progress != currentGimmick.Data.clearStep) { return; }
+
             UIManager.Instance.OpenAlert(currentGimmick.Data.clearMessage, true, () =>
             {
                 if (currentGimmick.Data.clearJump != 0)
@@ -125,9 +130,6 @@ namespace Komugi
             {
                 GameManager.Instance.PlaySE(currentGimmick.Data.clearSe);
             }
-
-            // データ保存
-            DataManager.Instance.SaveData();
         }
 
         public int GetClearProgress(int gimmickId = 0)

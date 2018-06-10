@@ -93,6 +93,9 @@
 
         /** クリア時の文言 */
         public string clearMessage;
+
+        /** クリア番号 */
+        public int clearStep;
     }
     #endregion
 
