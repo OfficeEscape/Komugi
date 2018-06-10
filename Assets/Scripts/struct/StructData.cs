@@ -90,6 +90,9 @@
 
         /** クリア時に再生するSE */
         public string clearSe;
+
+        /** クリア時の文言 */
+        public string clearMessage;
     }
     #endregion
 
