@@ -20,6 +20,8 @@ namespace Komugi
 
         private const int LAST_GIMMICK = 14;
 
+        private const string SHARE_IMAGE_FILE = "share.jpg";
+
         private readonly string[] RESULT = {"エレベーターで1階に降り\n外に出ることができた。\n\n暗号を社長の名字にするなんて\n不用心だなぁ…\n明日変えておこう。\n\n終電にも間に合ったし、\n無事、家に帰れるぞ！",
                                 "エレベーターのドアが開いたが\nボタンを押しても反応がない…\n\n非常ボタンを押したら\n警備員さんが来てくれて\n外に出ることができた。\n\n終電には間に合わなかったけど、\nとりあえず脱出できて良かった…。"};
 
@@ -50,7 +52,7 @@ namespace Komugi
       
         public void Share()
         {
-            share.Share(tweetText);
+            share.Share(tweetText, "", SHARE_IMAGE_FILE);
         }
     }
 }
