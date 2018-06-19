@@ -242,7 +242,7 @@ namespace Komugi
                     indexDic.Add(buttons[i].tag, 0);
                 }
 
-			    SetButtonAction (buttons[i].tag, ref buttons[i], indexDic[buttons[i].tag]);
+			    SetButtonAction (buttons[i].tag, ref buttons[i], indexDic[buttons[i].tag], sceneId);
                 SetObjectVisible (buttons[i].tag, ref buttons[i], indexDic[buttons[i].tag], sceneId);
 
             }
@@ -278,7 +278,7 @@ namespace Komugi
         }
 
         // ボタンにクリックアクションを設定する
-        private void SetButtonAction(string tag, ref Button button, int index)
+        private void SetButtonAction(string tag, ref Button button, int index, int sceneid)
 	    {
 		    if (!functionDictionary.ContainsKey (tag)) 
 		    {
@@ -286,8 +286,9 @@ namespace Komugi
 			    return;
 		    }
 
+            int uid = sceneid * 1000 + index;
             var builder = new StringBuilder();
-            builder.AppendFormat("{0}To{1}", tag, index);
+            builder.AppendFormat("{0}To{1}_{2}", tag, index, uid);
             button.name = builder.ToString();
 
             UnityAction<int, string> action = functionDictionary[tag];
