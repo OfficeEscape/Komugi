@@ -47,7 +47,7 @@ namespace Komugi.Ad
         /// <returns></returns>
         IEnumerator StartMovie()
         {
-            SoundManger.Instance.BgmOff = 1;
+            //SoundManger.Instance.BgmOff = 1;
 #if UNITY_EDITOR
             Debug.Log("yield return null");
             yield return null;
@@ -89,7 +89,7 @@ namespace Komugi.Ad
                     sceneState = SCENE_STATE.END;
                     break;
                 case SCENE_STATE.END:
-                    SoundManger.Instance.BgmOff = 0;
+                    //SoundManger.Instance.BgmOff = 0;
                     break;
             }
         }
