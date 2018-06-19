@@ -116,7 +116,7 @@ namespace Komugi
             // データ保存
             DataManager.Instance.SaveData();
 
-            if (progress != currentGimmick.Data.clearStep) { return; }
+            if (progress < currentGimmick.Data.clearStep) { return; }
 
             UIManager.Instance.OpenAlert(currentGimmick.Data.clearMessage, true, () =>
             {
