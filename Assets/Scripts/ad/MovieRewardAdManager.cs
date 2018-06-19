@@ -5,25 +5,24 @@ using UnityEngine.UI;
 
 namespace Komugi.Ad
 {
-    public class MovieRewardAdManager : MonoBehaviour
+    public class MovieRewardAdManager : SingletonMonoBehaviour<MovieRewardAdManager>
     {
         private AdfurikunMovieRewardUtility adutil;
         private bool initialized = false;
         private enum SCENE_STATE { MAIN, QUIT_WAIT, QUIT, END };
         private SCENE_STATE sceneState = SCENE_STATE.MAIN;
 
-        [SerializeField]
-        private GameObject movieSrcObject;
-
-        [SerializeField]
-        private Text resultText;
-
         public Action closeCallBack = null;
 
         public Action finishCallBack = null;
 
-        public void Awake()
+        override protected void Awake()
         {
+            // 子クラスでAwakeを使う場合は
+            // 必ず親クラスのAwakeをCallして
+            // 複数のGameObjectにアタッチされないようにします.
+            base.Awake();
+            
             if (adutil == null) { adutil = GameObject.Find("AdfurikunMovieRewardUtility").GetComponent<AdfurikunMovieRewardUtility>(); }
         }
 
@@ -61,12 +60,12 @@ namespace Komugi.Ad
 #else
         //リワード動画の準備ができるまでWaitして再生開始
         
-        resultText.text = "adutil.isPreparedMovieReward() : " + adutil.isPreparedMovieReward();
+        Debug.Log("adutil.isPreparedMovieReward() : " + adutil.isPreparedMovieReward());
         while (!adutil.isPreparedMovieReward()) {
             yield return new WaitForSeconds(0.2f);
         }
         
-        resultText.text = "adutil.playMovieReward(); ";
+        Debug.Log("adutil.playMovieReward(); ");
         adutil.playMovieReward();
 #endif
         }
@@ -77,7 +76,7 @@ namespace Komugi.Ad
             if (!initialized)
             {
                 initialized = true;
-                adutil.setMovieRewardSrcObject(movieSrcObject);
+                adutil.setMovieRewardSrcObject(gameObject);
             }
             switch (this.sceneState)
             {
@@ -106,16 +105,16 @@ namespace Komugi.Ad
             {
                 case AdfurikunMovieRewardUtility.ADF_MovieStatus.PrepareSuccess:
                     //"準備完了"
-                    resultText.text += "リワード動画：準備完了\n";
+                    Debug.Log("リワード動画：準備完了");
                     break;
                 case AdfurikunMovieRewardUtility.ADF_MovieStatus.StartPlaying:
                     //"再生開始"
-                    resultText.text += "リワード動画：再生開始\n";
+                    Debug.Log("リワード動画：再生開始");
                     break;
                 case AdfurikunMovieRewardUtility.ADF_MovieStatus.FinishedPlaying:
                     //"再生完了"
                     Screen.orientation = ScreenOrientation.Portrait;
-                    resultText.text += "リワード動画：再生完了\n";
+                    Debug.Log("リワード動画：再生完了");
                     //ここで報酬を付与します
                     if (finishCallBack != null)
                     {
@@ -125,19 +124,19 @@ namespace Komugi.Ad
                 case AdfurikunMovieRewardUtility.ADF_MovieStatus.FailedPlaying:
                     //"再生失敗"
                     Screen.orientation = ScreenOrientation.Portrait;
-                    resultText.text += "リワード動画：再生失敗\n";
+                    Debug.Log("リワード動画：再生失敗");
                     break;
                 case AdfurikunMovieRewardUtility.ADF_MovieStatus.AdClose:
                     //"動画を閉じた"
                     Screen.orientation = ScreenOrientation.Portrait;
-                    resultText.text += "リワード動画：動画を閉じた\n";
+                    Debug.Log("リワード動画：動画を閉じた");
                     if (closeCallBack != null)
                     {
                         closeCallBack.Invoke();
                     }
                     break;
                 default:
-                    resultText.text += "リワード動画：その他\n";
+                    Debug.Log("リワード動画：その他");
                     return;
             }
         }

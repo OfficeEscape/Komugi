@@ -23,8 +23,6 @@ namespace Komugi.UI
         [SerializeField]
         Text CandyNum = null;
 
-        private MovieRewardAdManager rewardMovie;
-
         private const string HORIZONTAL_GROUP_PATH = "Prefabs/ui/horizontal_group";
 
         private const string HINT_BUTTON_PATH = "Prefabs/ui/hint_btn";
@@ -44,9 +42,8 @@ namespace Komugi.UI
         // Use this for initialization
         void Start ()
         {
-            rewardMovie = GetComponent<MovieRewardAdManager>();
-            rewardMovie.closeCallBack = () => RefushHintButton();
-            rewardMovie.finishCallBack = () =>
+            MovieRewardAdManager.Instance.closeCallBack = () => RefushHintButton();
+            MovieRewardAdManager.Instance.finishCallBack = () =>
             {
                 Debug.Log("アメ恵んでやろう.");
                 DataManager.Instance.AddCandy(1);
@@ -54,7 +51,7 @@ namespace Komugi.UI
             };
 
             // 広告再生ボタン
-            AdsButton.onClick.AddListener(() => { rewardMovie.playRewardMovie(); });
+            AdsButton.onClick.AddListener(() => { MovieRewardAdManager.Instance.playRewardMovie(); });
             ReturnButton.onClick.AddListener(() => 
             {
                 if (isLoading) { return; }
