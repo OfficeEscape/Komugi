@@ -10,7 +10,7 @@
   },
   {
     "itemId": 2,
-    "itemName": "懐中電灯（電池あり）",
+    "itemName": "懐中電灯",
     "itemDetail": "ブラックライトの懐中電灯だ。",
     "changeItem": 7,
     "itemIcon": "small/item_s_flashlight",
@@ -32,7 +32,7 @@
   },
   {
     "itemId": 5,
-    "itemName": "リモコン（電池なし）",
+    "itemName": "リモコン",
     "itemDetail": "リモコンらしき物体",
     "changeItem": 6,
     "itemIcon": "small/item_s_remocon",
@@ -40,7 +40,7 @@
   },
   {
     "itemId": 6,
-    "itemName": "リモコン（電池なし）",
+    "itemName": "リモコン",
     "itemDetail": "リモコンのけつ",
     "changeItem": 11,
     "itemIcon": "small/item_s_remocon",
@@ -48,7 +48,7 @@
   },
   {
     "itemId": 7,
-    "itemName": "懐中電灯（電池あり）",
+    "itemName": "懐中電灯",
     "itemDetail": "尻を向かれた懐中電灯",
     "changeItem": 8,
     "itemIcon": "small/item_s_flashlight",
@@ -56,7 +56,7 @@
   },
   {
     "itemId": 8,
-    "itemName": "懐中電灯（電池あり）",
+    "itemName": "懐中電灯",
     "itemDetail": "尻を向かれ、パンツも脱がされた懐中電灯",
     "changeItem": 9,
     "triggerItem": 10,
@@ -65,7 +65,7 @@
   },
   {
     "itemId": 9,
-    "itemName": "懐中電灯（電池なし）",
+    "itemName": "懐中電灯",
     "itemDetail": "電池を無残に抜かれ、もはや息をしていない懐中電灯",
     "changeItem": 28,
     "autoChange": 1,
@@ -81,7 +81,7 @@
   },
   {
     "itemId": 11,
-    "itemName": "リモコン（電池なし）",
+    "itemName": "リモコン",
     "itemDetail": "リモコンのパンツ",
     "changeItem": 12,
     "triggerItem": -10,
@@ -90,7 +90,7 @@
   },
   {
     "itemId": 12,
-    "itemName": "リモコン（電池あり）",
+    "itemName": "リモコン",
     "itemDetail": "電池を突っ込まれたリモコン",
     "changeItem": 24,
     "autoChange":1,
@@ -170,7 +170,7 @@
   },
   {
     "itemId": 24,
-    "itemName": "リモコン（電池あり）",
+    "itemName": "リモコン",
     "itemDetail": "リモコンらしき物体",
     "changeItem": 25,
     "itemIcon": "small/item_s_remocon",
@@ -178,7 +178,7 @@
   },
   {
     "itemId": 25,
-    "itemName": "リモコン（電池あり）",
+    "itemName": "リモコン",
     "itemDetail": "リモコンのけつ",
     "changeItem": 26,
     "itemIcon": "small/item_s_remocon",
@@ -186,7 +186,7 @@
   },
   {
     "itemId": 26,
-    "itemName": "リモコン（電池あり）",
+    "itemName": "リモコン",
     "itemDetail": "リモコンのパンツ",
     "changeItem": 27,
     "triggerItem": 10,
@@ -195,7 +195,7 @@
   },
   {
     "itemId": 27,
-    "itemName": "リモコン（電池あり）",
+    "itemName": "リモコン",
     "itemDetail": "リモコンのパンツ",
     "changeItem": 5,
     "autoChange": 1,
@@ -204,7 +204,7 @@
   },
   {
     "itemId": 28,
-    "itemName": "懐中電灯（電池なし）",
+    "itemName": "懐中電灯",
     "itemDetail": "ブラックライトの懐中電灯だ。",
     "changeItem": 29,
     "itemIcon": "small/item_s_flashlight",
@@ -212,7 +212,7 @@
   },
   {
     "itemId": 29,
-    "itemName": "懐中電灯（電池なし）",
+    "itemName": "懐中電灯",
     "itemDetail": "尻を向かれた懐中電灯",
     "changeItem": 30,
     "itemIcon": "small/item_s_flashlight",
@@ -220,7 +220,7 @@
   },
   {
     "itemId": 30,
-    "itemName": "懐中電灯（電池なし）",
+    "itemName": "懐中電灯",
     "itemDetail": "電池を無残に抜かれ、もはや息をしていない懐中電灯",
     "changeItem": 31,
     "triggerItem": -10,
@@ -229,7 +229,7 @@
   },
   {
     "itemId": 31,
-    "itemName": "懐中電灯（電池あり）",
+    "itemName": "懐中電灯",
     "itemDetail": "電池を戻した懐中電灯",
     "changeItem": 2,
     "autoChange": 1,
