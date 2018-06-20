@@ -125,10 +125,11 @@
     "itemIcon": "small/item_s_parts3",
     "itemImage": "large/item_parts3"
   }, 
-   {
+  {
     "itemId": 17,
     "itemName": "メモ",
     "itemDetail": "なにかのデザイン案だろうか。",
+    "changeItem": 32,
     "itemIcon": "small/item_s_angou",
     "itemImage": "large/item_angou"
   },
@@ -235,5 +236,13 @@
     "autoChange": 1,
     "itemIcon": "small/item_s_flashlight",
     "itemImage": "large/item_flashlight4"
+  },
+  {
+    "itemId": 32,
+    "itemName": "メモ（拡大）",
+    "itemDetail": "なにかのデザイン案だろうか。",
+    "changeItem": 17,
+    "itemIcon": "small/item_s_angou",
+    "itemImage": "large/item_angou"
   }
 ]

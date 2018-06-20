@@ -118,7 +118,7 @@ namespace Komugi
 
             if (progress < currentGimmick.Data.clearStep) { return; }
 
-            UIManager.Instance.OpenAlert(currentGimmick.Data.clearMessage, true, () =>
+            UIManager.Instance.OpenAlert(currentGimmick.Data.clearMessage, false, () =>
             {
                 if (currentGimmick.Data.clearJump != 0)
                 {

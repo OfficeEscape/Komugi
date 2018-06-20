@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Komugi.UI
 {
@@ -44,10 +45,9 @@ namespace Komugi.UI
             content = Instantiate(resReq.asset as GameObject, gameObject.transform);
             Alert script = content.GetComponent<Alert>();
 
-            if (script != null)
-            {
-                script.SetAlertText(message);
-            }
+            if (script == null) { yield break; }
+
+            script.SetAlertText(message);
 
             if (message.Length == 0)
             {
@@ -59,12 +59,21 @@ namespace Komugi.UI
             if (autoDestoryFlg)
             {
                 yield return new WaitForSeconds(LIFT_TIME);
-                Destroy(content);
-                content = null;
-                IsOpen = false;
-
-                if (callback != null) { callback.Invoke(); }
+                
             }
+            else
+            {
+                bool close = false;
+                script.closeAction = () => { close = true; };
+
+                yield return new WaitUntil(() =>  close == true);
+            }
+
+            Destroy(content);
+            content = null;
+            IsOpen = false;
+
+            if (callback != null) { callback.Invoke(); }
         }
     }
 }
