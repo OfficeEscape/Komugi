@@ -32,10 +32,10 @@ namespace Komugi.Community
             //Shareする
             SocialConnector.SocialConnector.Share(text, URL, imagePath);
             */
+            
+            string streamAssetsImagePath = System.IO.Path.Combine(Application.streamingAssetsPath, imageFile);
 
-            string streamAssetsImagePath = Application.streamingAssetsPath + imageFile;
-
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
 
 #if UNITY_ANDROID
             WWW www = new WWW(streamAssetsImagePath); // ローカルファイルを読む
