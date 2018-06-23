@@ -86,7 +86,11 @@ namespace Komugi
 
             LeftRightPanel.SetActive(next != 0);
             ReturnPanel.SetActive(next == 0 && preiver != 0);
-            
+        }
+
+        public void AddContentToMainCanvas(GameObject content)
+        {
+            content.transform.SetParent(gameObject.transform, false);
         }
 
         // 画像の切り替え

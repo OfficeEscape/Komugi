@@ -12,6 +12,8 @@ namespace Komugi
         [SerializeField]
         GameObject LoadingAnime = null;
 
+        private const string TUTORIAL_PATH = "Prefabs/ui/infomation_hint";
+
         #region =============================== フィールド ===============================
         /** ゲームマネージャー */
         private GameManager gameManager;
@@ -168,6 +170,24 @@ namespace Komugi
 
             }
         }
+
+        private void ShowTotorial()
+        {
+            GameObject obj = Resources.Load(TUTORIAL_PATH, typeof(GameObject)) as GameObject;
+            GameObject tutorial = Instantiate(obj) as GameObject;
+
+            Button btn = tutorial.GetComponentInChildren<Button>();
+            if (btn != null)
+            {
+                UIManager.Instance.AddContentToMainCanvas(tutorial);
+                btn.onClick.AddListener(() =>
+                {
+                    Destroy(tutorial);
+                    DataManager.Instance.SaveTutorialStep(1);
+                }
+                );
+            }
+        }
         
 	    #endregion
 
@@ -197,6 +217,12 @@ namespace Komugi
             
             // ローディング画面を消す
             LoadingAnime.SetActive(false);
+
+            int tutorialId = DataManager.Instance.LoadTutorialStep();
+            if (tutorialId == 0)
+            {
+                ShowTotorial();
+            }
         }
 
         // ステージ変更
@@ -305,7 +331,7 @@ namespace Komugi
 	    // ちょっとやり方見苦しいが。。これ以上いい方法思いつかない。。
 	    private void InitButtonFunction()
 	    {
-		    functionDictionary.Add ("Jump", JumpView);
+		    functionDictionary.Add("Jump", JumpView);
             functionDictionary.Add("Item", GetItem);
             functionDictionary.Add("Change", ChangeItem);
 	    }

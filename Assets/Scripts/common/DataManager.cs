@@ -35,6 +35,8 @@ namespace Komugi
 
         private static readonly string USER_KEY = "user";
 
+        private static readonly string TUTORIAL_STEP = "TutorialStep";
+
         private UserData userData;
 
         public UserData UserSaveData { get { return userData; } }
@@ -70,6 +72,11 @@ namespace Komugi
             PlayerPrefs.SetString(USER_KEY, JsonMapper.ToJson(userData));
         }
         
+        public void SaveTutorialStep(int step)
+        {
+            PlayerPrefs.SetInt(TUTORIAL_STEP, step);
+        }
+
         #endregion
 
         #region ---------------------- ロード ----------------------
@@ -116,6 +123,11 @@ namespace Komugi
             {
                 userData = new UserData(1, 0);
             }
+        }
+
+        public int LoadTutorialStep()
+        {
+            return PlayerPrefs.GetInt(TUTORIAL_STEP);
         }
 
         #endregion
