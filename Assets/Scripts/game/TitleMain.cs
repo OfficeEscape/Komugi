@@ -16,6 +16,9 @@ namespace Komugi
         [SerializeField]
         Button continueButton = null;
 
+        [SerializeField]
+        Button creditButton = null;
+
         // Use this for initialization
         void Start()
         {
@@ -24,6 +27,7 @@ namespace Komugi
             startButton.onClick.AddListener(() => StartButtonHandler());
             continueButton.onClick.AddListener(() => ContinueButtonHandle());
             continueButton.gameObject.SetActive(DataManager.Instance.CheckSaveData());
+            creditButton.onClick.AddListener(() => CreditButtonHandle());
 
             Invoke("PlayBGM", 3f);
 
@@ -57,6 +61,20 @@ namespace Komugi
         public void ContinueButtonHandle()
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("GameScene");
+        }
+
+        public void CreditButtonHandle()
+        {
+            GameObject obj = Resources.Load("Prefabs/ui/credit", typeof(GameObject)) as GameObject;
+            GameObject credit = Instantiate(obj) as GameObject;
+
+            Button btn = credit.GetComponent<Button>();
+            if (btn != null)
+            {
+                credit.transform.SetParent(_canvas.transform, false);
+                btn.onClick.AddListener(() => Destroy(credit));
+            }
+            
         }
 
 
