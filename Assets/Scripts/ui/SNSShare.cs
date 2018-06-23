@@ -46,7 +46,7 @@ namespace Komugi.Community
             SocialConnector.SocialConnector.Share(msg, url, imagePath);
 #else
         // iOSなら直接StreamAssetsが読める
-        SocialConnector.SocialConnector.Share(text, url, streamAssetsImagePath);
+        SocialConnector.SocialConnector.Share(msg, url, streamAssetsImagePath);
         yield break;
 #endif
         }
