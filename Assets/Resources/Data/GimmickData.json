@@ -13,7 +13,7 @@
     "clearSe": "Openkey",
     "clearJump": 25,
     "autoJump": true,
-    "clearMessage": "",
+    "clearMessage": "暗号が解けたぞ！",
     "clearStep": 1,
     "gimmickAnswer": [ 6, 8, 3 ]
   },
