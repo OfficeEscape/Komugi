@@ -1,12 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 using UnityEngine.SceneManagement;
 
 namespace Komugi
 {
     public class Opening : MonoBehaviour
     {
+        [SerializeField]
+        private Transform ScenarioContent = null;
+
+        [SerializeField]
+        private Color TextColor;
+
+        private const float SPEED = 0.03f;
 
         private readonly string[] SYNOPSIS = {"ここは御徒町にあるオフィス、",
                                 "「Space Lab」",
@@ -16,21 +22,12 @@ namespace Komugi
                                 "早くここから脱出しなければ"};
 
         private Image _bg;
-
-        private Text _synopsis;
-
-        private int _count = 0;
-        private int _line = 0;
-        private string completeText = "";
+        
 
         // Use this for initialization
         void Start()
         {
             _bg = GetComponent<Image>();
-            _synopsis = GetComponentInChildren<Text>();
-            _bg.color = new Color(_bg.color.r, _bg.color.g, _bg.color.b, 0f);
-            _count = 0;
-            _line = 0;
         }
 
         // Update is called once per frame
@@ -38,34 +35,13 @@ namespace Komugi
         {
             if (_bg.color.a < 1f)
             {
-                float alpha = Mathf.Lerp(0f, 100f, Time.time) / 100f;
+                float alpha = _bg.color.a + SPEED;
                 _bg.color = new Color(_bg.color.r, _bg.color.g, _bg.color.b, alpha);
             }
             else
             {
-                if (_line < SYNOPSIS.Length)
-                {
-                    string nowText = SYNOPSIS[_line];
-                    _count++;
-                    int index = _count / 6;
-
-                    if (index <= nowText.Length)
-                    {
-                        _synopsis.text = completeText + nowText.Substring(0, index);
-                    }
-                    else
-                    {
-                        _synopsis.text = _synopsis.text + "\n";
-                        _line++;
-                        _count = 0;
-                        completeText = _synopsis.text;
-                    }
-                }
-                else
-                {
-                    enabled = false;
-                    SceneManager.LoadSceneAsync("GameScene");
-                }
+                enabled = false;
+                UI.ScenarioPlayer.PlayScenario(SYNOPSIS, ScenarioContent, TextColor, () => SceneManager.LoadScene("GameScene"));
             }
         }
     }
