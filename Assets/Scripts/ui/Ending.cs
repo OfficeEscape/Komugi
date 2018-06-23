@@ -48,6 +48,8 @@ namespace Komugi
             share = GetComponent<SNSShare>();
 
             shareButton.onClick.AddListener(() => Share());
+
+            SoundManger.Instance.PlayBgm(AudioConst.BGM_ENDING);
         }
       
         public void Share()
