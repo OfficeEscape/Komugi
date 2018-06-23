@@ -119,12 +119,11 @@ namespace Komugi
                 changeableObjectList[index][i] = child;
 
                 Button btn = child.GetComponent<Button>();
-                if (btn == null)
+                if (btn != null)
                 {
-                    Debug.LogError("Button Component is not attach!!");
+                    btn.onClick.AddListener(() => SwitchObject(index, child.name));
                 }
-
-                btn.onClick.AddListener(() => SwitchObject(index, child.name));
+                
                 if (i != 0) { child.SetActive(false); }
             }
         }
