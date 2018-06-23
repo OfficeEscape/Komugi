@@ -34,7 +34,7 @@ namespace Komugi
         }
 
         // Update is called once per frame
-        void Update()
+        void FixedUpdate()
         {
             if (_bg.color.a < 1f)
             {
