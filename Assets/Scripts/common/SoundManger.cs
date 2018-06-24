@@ -154,6 +154,19 @@ namespace Komugi
             bgmSource.clip = null;
         }
 
+        //-----------------------------------------------------------------------------
+        public void PauseBgm(bool pause)
+        {
+            if (pause)
+            {
+                bgmSource.Pause();
+            }
+            else
+            {
+                bgmSource.Play();
+            }
+        }
+
         //------------------------------------------------------------------------------
         public void PlaySe(string name)
         {

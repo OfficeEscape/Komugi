@@ -47,15 +47,14 @@ namespace Komugi.Ad
         /// <returns></returns>
         IEnumerator StartMovie()
         {
-            //SoundManger.Instance.BgmOff = 1;
 #if UNITY_EDITOR
-            Debug.Log("yield return null");
             yield return null;
 #elif UNITY_IOS
         while (!adutil.isPreparedMovieReward()) {
             yield return new WaitForSeconds(0.2f);
         }
-            
+
+        SoundManger.Instance.PauseBgm(true);
         adutil.playMovieReward();
 #else
         //リワード動画の準備ができるまでWaitして再生開始
@@ -89,7 +88,6 @@ namespace Komugi.Ad
                     sceneState = SCENE_STATE.END;
                     break;
                 case SCENE_STATE.END:
-                    //SoundManger.Instance.BgmOff = 0;
                     break;
             }
         }
@@ -134,6 +132,7 @@ namespace Komugi.Ad
                     {
                         closeCallBack.Invoke();
                     }
+                    SoundManger.Instance.PauseBgm(false);
                     break;
                 default:
                     Debug.Log("リワード動画：その他");
