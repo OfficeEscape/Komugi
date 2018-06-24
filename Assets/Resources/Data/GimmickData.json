@@ -3,7 +3,7 @@
     "comment": "キャビ鍵を使って金庫をあける",
     "gimmickId": 1,
     "clearSe": "key-in2",
-    "clearMessage": "",
+    "clearMessage": "扉が開いた！",
     "clearStep": 1,
     "gimmickAnswer": [ 4 ]
   },
