@@ -11,6 +11,7 @@ namespace Komugi.UI
         protected override void Start()
         {
             base.Start();
+            if (clickSe == string.Empty) { return; }
             onClick.AddListener(() => SoundManger.Instance.PlaySe(clickSe));
         }
         
