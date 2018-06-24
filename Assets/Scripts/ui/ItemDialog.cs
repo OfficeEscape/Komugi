@@ -33,6 +33,13 @@ namespace Komugi.UI
             ItemImage.GetComponent<Button>().onClick.AddListener(() => ChangeItem());
         }
 
+        private void SetItem(int itemid, string itemname)
+        {
+            ItemImage.sprite = ItemManager.Instance.GetItemImage(itemid, 1);
+            ItemName.text = itemname;
+            ItemImage.SetNativeSize();
+        }
+
         /// <summary>
         ///  アイテムの情報を更新
         /// </summary>
@@ -41,8 +48,7 @@ namespace Komugi.UI
         public void UpdateItem(ItemData idata, int itemIndex)
         {
             itemData = idata;
-            ItemImage.sprite = ItemManager.Instance.GetItemImage(itemData.itemId, 1);
-            ItemName.text = itemData.itemName;
+            SetItem(itemData.itemId, itemData.itemName);
             ItemImage.enabled = true;
             itemBarIndex = itemIndex;
             originItemId = itemData.itemId;
@@ -69,10 +75,9 @@ namespace Komugi.UI
                     if (!itemManager.DeleteItem( Mathf.Abs(triggerItem)) ) { return; }
                 }
             }
-
-            ItemImage.sprite = itemManager.GetItemImage(itemData.changeItem, 1);
-            ItemName.text = itemManager.GetItemName(itemData.changeItem);
             
+            SetItem(itemData.changeItem, itemManager.GetItemName(itemData.changeItem));
+
             itemData = itemManager.itemDictionary[itemData.changeItem];
             
             // 変化後のアイテムが自動変化アイテムならもう一度呼び出す
@@ -97,8 +102,7 @@ namespace Komugi.UI
 
             // ほかのアイテムが必要としない前提で変化
             var itemManager = ItemManager.Instance;
-            ItemImage.sprite = itemManager.GetItemImage(itemData.changeItem, 1);
-            ItemName.text = itemManager.GetItemName(itemData.changeItem);
+            SetItem(itemData.changeItem, itemManager.GetItemName(itemData.changeItem));
 
             itemManager.ChangeItem(originItemId, itemData.changeItem, itemBarIndex);
             itemData = itemManager.itemDictionary[itemData.changeItem];
