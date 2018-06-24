@@ -73,8 +73,8 @@
   {
     "comment": "シンク下の鍵を使用して水道の下を開ける",
     "gimmickId": 9,
-    "clearSe": "tap3",
-    "clearMessage": "",
+    "clearSe": "running_in_a_house",
+    "clearMessage": "水道の元栓が開いたぞ。",
     "clearStep": 1,
     "gimmickAnswer": [ 20 ]
   },
