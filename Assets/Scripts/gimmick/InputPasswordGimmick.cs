@@ -26,9 +26,6 @@ namespace Komugi.Gimmick
         int MultiAnswerCount = 1;
 
         [SerializeField]
-        string keyClickSe = string.Empty;
-
-        [SerializeField]
         InputField.ContentType type = InputField.ContentType.Alphanumeric;
 
         //bool autoCheck = true;
@@ -48,7 +45,6 @@ namespace Komugi.Gimmick
             {
                 openButton.onClick.AddListener(() => CheckPassWord());
                 //autoCheck = false;
-                GameManager.Instance.PlaySE(AudioConst.SE_INPUT_OPEN);
             }
             else
             {
