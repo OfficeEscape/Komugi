@@ -48,7 +48,7 @@ namespace Komugi.Gimmick
             }
             else
             {
-                inputField.onValueChanged.AddListener((pw) => CheckPassWord());
+                inputField.onEndEdit.AddListener((pw) => CheckPassWord());
             }
         }
 

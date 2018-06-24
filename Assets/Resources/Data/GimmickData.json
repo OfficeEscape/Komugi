@@ -99,6 +99,7 @@
     "comment": "ブラックライト",
     "gimmickId": 12,
     "clearMessage": "文字が浮かんできた…。",
+    "clearSe": "",
     "clearStep": 1,
     "gimmickAnswer": [ 2 ]
   },
