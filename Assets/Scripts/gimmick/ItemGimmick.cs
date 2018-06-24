@@ -1,10 +1,14 @@
 ﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Komugi.Gimmick
 {
     public class ItemGimmick : GimmickBase, IGimmick
     {
+        [SerializeField]
+        private string faildSe = string.Empty;
+
         #region -------------------------------------インターフェースメソッド-------------------------------------
         public GimmickData Data
         {
@@ -74,6 +78,13 @@ namespace Komugi.Gimmick
                 ReleaseGimmick();
                 openAction.Invoke(1);
                 ItemManager.Instance.DeleteItem(data.gimmickAnswer[0]);
+            }
+            else
+            {
+                if (faildSe != string.Empty)
+                {
+                    SoundManger.Instance.PlaySe(faildSe);
+                }
             }
         }
     }

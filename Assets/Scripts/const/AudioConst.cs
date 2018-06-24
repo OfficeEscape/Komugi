@@ -19,6 +19,8 @@
         public static readonly string SE_TEN_KEY = "click03";
         public static readonly string SE_TEN_KEY_OPEN = "Openkey";
 
+        public static readonly string GIMMICK_OPEN_FAILD = "faild";
+
         public static readonly string SE_SWITCH_SE = "running_in_a_house";
 
         //扉を開錠していない状態でドアをタップした時の音(共通)
