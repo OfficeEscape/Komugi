@@ -71,7 +71,7 @@
     "gimmickAnswer": [ 21 ]
   },
   {
-    "comment": "シンク下の鍵を使用して水道の下を開ける",
+    "comment": "ハンドルを使用して水道の下を開ける",
     "gimmickId": 9,
     "clearSe": "tap3",
     "clearMessage": "",
