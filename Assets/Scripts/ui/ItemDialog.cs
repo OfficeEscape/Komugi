@@ -21,7 +21,7 @@ namespace Komugi.UI
         private int itemBarIndex = 0;
 
         public System.Action CloseCallBack = null;
-
+        
         private void Awake()
         {
             CloseButton.onClick.AddListener(() =>
@@ -84,7 +84,7 @@ namespace Komugi.UI
             if (itemData.autoChange == 1)
             {
                 UIManager.Instance.SetItemBarTouchEnable(false);
-
+                CloseButton.enabled = false;
                 ItemImage.raycastTarget = false;
                 Invoke("AutoChangeItem", 1.0f);
             }
@@ -111,6 +111,8 @@ namespace Komugi.UI
             UIManager.Instance.SetItemBarTouchEnable(true);
 
             GameManager.Instance.PlaySE(AudioConst.SE_ITEM_GET);
+
+            CloseButton.enabled = true;
         }
     }
 }
