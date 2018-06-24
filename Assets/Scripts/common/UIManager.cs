@@ -10,6 +10,8 @@ namespace Komugi
         // 画像切り替え可能オブジェクト最大数
         private const int CHANGEABLE_MAX = 10;
 
+        private const int LAYER_SE_OVERWRITE = 8;
+
         [SerializeField]
         private ItemBarController itemBar;
 
@@ -96,8 +98,6 @@ namespace Komugi
         // 画像の切り替え
         public void SwitchObject(int index, string name)
         {
-            GameManager.Instance.PlaySE(AudioConst.SE_SWITCH_SE);
-
             changeableObjectIndex[index]++;
             if (changeableObjectIndex[index] >= changeableObjectList[index].Length) changeableObjectIndex[index] = 0;
 
@@ -107,6 +107,10 @@ namespace Komugi
             }
             GameObject obj = changeableObjectList[index][changeableObjectIndex[index]];
             obj.SetActive(true);
+            if (obj.layer != LAYER_SE_OVERWRITE)
+            {
+                GameManager.Instance.PlaySE(AudioConst.SE_SWITCH_SE);
+            }
 
             Debug.Log("SwitchObject : " + index + "   Active : " + changeableObjectIndex[index]);
         }
