@@ -200,8 +200,7 @@ namespace Komugi.UI
         /// </summary>
         public void DeleteItemFromItemBar(int itemId)
         {
-            if (lastTouchItem < 0) { Debug.Log("lastTouchItem < 0"); return; }
-            if (itemIdList[lastTouchItem + currentPage * ItemImages.Length] == itemId)
+            if (lastTouchItem != -1 && itemIdList[lastTouchItem + currentPage * ItemImages.Length] == itemId)
             {
                 cursor.gameObject.SetActive(false);
                 GimmickManager.Instance.SelectedItem = 0;
