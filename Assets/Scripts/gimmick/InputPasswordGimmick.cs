@@ -6,12 +6,15 @@ namespace Komugi.Gimmick
 {
     public class InputPasswordGimmick : GimmickBase, IGimmick
     {
+        private const string SPACE = "     ";
+        private const string ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+        //private const string ALPHABET1 = "abc def ghi jkl mno pqr stu vwx yz";
 
         [SerializeField]
         InputField inputField;
 
         [SerializeField]
-        Text display;
+        GameObject[] display;
 
         [SerializeField]
         Button inputButton;
@@ -28,31 +31,33 @@ namespace Komugi.Gimmick
         [SerializeField]
         InputField.ContentType type = InputField.ContentType.Alphanumeric;
 
-        //bool autoCheck = true;
+        bool autoCheck = true;
 
-        private const string SPACE = "     ";
-        private const string ALPHABET = "abcdefghijklmnopqrstuvwxyz";
-        //private const string ALPHABET1 = "abc def ghi jkl mno pqr stu vwx yz";
+        private int clearNum = 0;
 
         private void Start()
         {
             inputField.contentType = type;
             inputField.caretBlinkRate = 1;
-            inputField.onEndEdit.AddListener((t) => OnEditEnd(t));
+            //inputField.onEndEdit.AddListener((t) => OnEditEnd(t));
 
             inputButton.onClick.AddListener(() => inputField.ActivateInputField());
+            
+            inputField.onEndEdit.AddListener((pw) => CheckPassWord());
+
             if (openButton)
             {
-                openButton.onClick.AddListener(() => CheckPassWord());
-                //autoCheck = false;
-            }
-            else
-            {
-                inputField.onEndEdit.AddListener((pw) => CheckPassWord());
+                openButton.onClick.AddListener(() =>
+                {
+                    ReleaseGimmick();
+                    openAction.Invoke(clearNum);
+                });
+
+                autoCheck = false;
             }
         }
 
-        private void OnEditEnd(string pw)
+        /*private void OnEditEnd(string pw)
         {
             var tempText = new System.Text.StringBuilder(10);
 
@@ -68,7 +73,7 @@ namespace Komugi.Gimmick
             }
 
             display.text = formatstr.ToString();
-        }
+        }*/
 
         /// <summary>
         /// 現在入力した数字を確認
@@ -77,10 +82,19 @@ namespace Komugi.Gimmick
         {
             if (clearflag) { return; }
 
-            int len = data.gimmickAnswer.Length / MultiAnswerCount;
-            if (inputField.text.Length != len) { return; }
+            clearNum = 0;
 
-            int clearFlg = 0;
+            int len = data.gimmickAnswer.Length / MultiAnswerCount;
+            if (inputField.text.Length != len)
+            {
+                SoundManger.Instance.PlaySe(AudioConst.SE_ELEVATOR_FAIL);
+                UIManager.Instance.OpenAlert("パスワードが違います", true, () => {
+                    inputField.text = string.Empty;
+                    //display.text = string.Empty;
+                });
+                return;
+            }
+            
 
             for (int i = 0; i < MultiAnswerCount; i++)
             {
@@ -88,21 +102,29 @@ namespace Komugi.Gimmick
                 Array.Copy(data.gimmickAnswer, i * len, ans, 0, len);
                 if (StringCompare(ans))
                 {
-                    clearFlg = i + 1;
+                    clearNum = i + 1;
                 }
             }
             
-            if (clearFlg > 0)
+            if (clearNum > 0)
             {
-                ReleaseGimmick();
-                openAction.Invoke(clearFlg);
+                if (autoCheck)
+                {
+                    ReleaseGimmick();
+                    openAction.Invoke(clearNum);
+                }
+
+                if (display.Length > clearNum - 1)
+                {
+                    display[clearNum - 1].SetActive(true);
+                }
             }
             else
             {
                 SoundManger.Instance.PlaySe(AudioConst.SE_ELEVATOR_FAIL);
                 UIManager.Instance.OpenAlert("パスワードが違います", true, () => {
                     inputField.text = string.Empty;
-                    display.text = string.Empty;
+                    //display.text = string.Empty;
                 });
             }
 

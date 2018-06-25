@@ -237,7 +237,7 @@ namespace Komugi
 
             if (currentViewObject == null)
             {
-                Debug.Log ("Failed to Create View Object. ID : " + gameManager.currentView);
+                Debug.Log ("Failed to Create View Object. ID : " + sceneId);
                 return false;
             }
 
@@ -276,6 +276,7 @@ namespace Komugi
             // ルートキャンパスへ追加
             UIManager.Instance.AddContentToMainCanvas(currentViewObject, gameManager.GetNextStageId(1, sceneId), gameManager.GetNextStageId(-1, sceneId));
             Debug.Log("Change Scene to " + prefab.name + "   SceneID : " + sceneId);
+            DataManager.Instance.SetStageId(sceneId);
 
             return true;
 	    }

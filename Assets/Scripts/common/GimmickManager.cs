@@ -115,6 +115,7 @@ namespace Komugi
 
             // データ保存
             DataManager.Instance.SaveData();
+            DataManager.Instance.SaveUserData();
 
             if (progress < currentGimmick.Data.clearStep) { return; }
 
@@ -142,6 +143,11 @@ namespace Komugi
         public void Load()
         {
             clearFlagDictionary = DataManager.Instance.LoadGimmickSaveData();
+            if (clearFlagDictionary.ContainsKey(GameDefine.LAST_GIMMICK) && clearFlagDictionary[GameDefine.LAST_GIMMICK] > 0)
+            {
+                clearFlagDictionary[GameDefine.LAST_GIMMICK] = 0;
+            }
+
             hintPayDictionary = DataManager.Instance.LoadHintSaveData();
         }
     }

@@ -29,8 +29,6 @@ namespace Komugi
 
         private SNSShare share;
 
-        private const int LAST_GIMMICK = 14;
-
         private const float SPEED = 0.03f;
 
         private const string SHARE_IMAGE_FILE = "share.png";
@@ -75,7 +73,7 @@ namespace Komugi
         // Use this for initialization
         void Start()
         {
-            int index = GimmickManager.Instance.GetClearProgress(LAST_GIMMICK) - 1;
+            int index = GimmickManager.Instance.GetClearProgress(GameDefine.LAST_GIMMICK) - 1;
             index = Mathf.Clamp(index, 0, END_SCENARIO.Length - 1);
             //int index = 0;
 

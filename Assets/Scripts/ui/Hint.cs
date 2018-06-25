@@ -48,6 +48,7 @@ namespace Komugi.UI
                 Debug.Log("アメ恵んでやろう.");
                 DataManager.Instance.AddCandy(1);
                 CandyNum.text = DataManager.Instance.UserSaveData.candyNum.ToString();
+                DataManager.Instance.SaveUserData();
             };
 
             // 広告再生ボタン
@@ -171,36 +172,6 @@ namespace Komugi.UI
                     DataManager.Instance.UserSaveData.candyNum);
             }
         }
-
-        /*
-        private void ShowRewardedAd()
-        {
-            if (Advertisement.IsReady(AD_KEY))
-            {
-                var options = new ShowOptions { resultCallback = HandleShowResult };
-                Advertisement.Show(AD_KEY, options);
-            }
-            
-        }
-
-        private void HandleShowResult(ShowResult result)
-        {
-            switch (result)
-            {
-                case ShowResult.Finished:
-                    Debug.Log("アメ恵んでやろう.");
-                    DataManager.Instance.AddCandy(1);
-                    CandyNum.text = DataManager.Instance.UserSaveData.candyNum.ToString();
-                    RefushHintButton();
-                    break;
-                case ShowResult.Skipped:
-                    Debug.Log("スキップしやがったなコノヤロー.");
-                    break;
-                case ShowResult.Failed:
-                    Debug.LogError("失敗したみたい.");
-                    break;
-            }
-        }
-        */
+        
     }
 }
