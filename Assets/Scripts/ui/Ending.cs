@@ -101,6 +101,7 @@ namespace Komugi
             }
             else
             {
+                MaskImage.raycastTarget = false;
                 enabled = false;
             }
         }
