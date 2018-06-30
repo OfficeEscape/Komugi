@@ -17,7 +17,21 @@ namespace Komugi.UI
         private bool isLoading = false;
         
         public bool IsOpen { get; private set; }
-        
+
+        public void OpenDialog(int itemIndex)
+        {
+            if (isLoading) { return; }
+
+            if (IsOpen)
+            {
+                content.GetComponent<ItemDialog>().UpdateItem(itemIndex);
+            }
+            else
+            {
+                return;
+            }
+        }
+
         /// <summary>
         /// アイテムダイアログを出す
         /// </summary>

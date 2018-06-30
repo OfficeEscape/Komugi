@@ -204,10 +204,26 @@ namespace Komugi.UI
             {
                 cursor.gameObject.SetActive(false);
                 GimmickManager.Instance.SelectedItem = 0;
-                selectedIndex = -1;
             }
-            
+
+            int oldSelectedId = itemIdList[selectedIndex];
             itemIdList.Remove(itemId);
+            int newSelectedId = selectedIndex < itemIdList.Count ? itemIdList[selectedIndex] : -1;
+
+            if (oldSelectedId != newSelectedId)
+            {
+                // アイテムダイアログを出す
+                if (UIManager.Instance.IsItemDialogOpen())
+                {
+                    selectedIndex--;
+                    UIManager.Instance.UpdateItemDailog(selectedIndex);
+                }
+                else
+                {
+                    selectedIndex = -1;
+                }
+            }
+
             lastTouchItem = -1;
             RefreshItem();
         }

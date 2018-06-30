@@ -13,6 +13,8 @@ namespace Komugi
             // 必ず親クラスのAwakeをCallして
             // 複数のGameObjectにアタッチされないようにします.
             base.Awake();
+
+            DataManager.Instance.SaveDataReset();
         }
 
         public void AddAllItem()

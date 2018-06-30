@@ -71,6 +71,11 @@ namespace Komugi
             dialog.OpenCheckDialog(message, callBack, okOnly);
         }
 
+        public void UpdateItemDailog(int itemIndex)
+        {
+            dialog.OpenDialog(itemIndex);
+        }
+
         /// <summary>
         /// アラートを出す
         /// </summary>

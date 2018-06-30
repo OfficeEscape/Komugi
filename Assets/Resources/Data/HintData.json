@@ -106,9 +106,16 @@
   },
   {
     "hintId": 16,
+    "title": "extra",
+    "detail": "",
+    "gimmickId": 0,
+    "candyNum": 0
+  },
+  {
+    "hintId": 17,
     "title": "株式会社\nLifeBoxって？",
     "detail": "2018年11月で創業12年を迎えるIT企業だよ。\nゲーム制作は今作が初めてらしいよ。",
-    "gimmickId": 16,
+    "gimmickId": 0,
     "candyNum": 20
   }
 ]

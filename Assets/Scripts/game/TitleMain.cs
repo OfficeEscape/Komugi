@@ -19,6 +19,9 @@ namespace Komugi
         [SerializeField]
         Button creditButton = null;
 
+        [SerializeField]
+        Button exitButton = null;
+
         // Use this for initialization
         void Start()
         {
@@ -28,6 +31,7 @@ namespace Komugi
             continueButton.onClick.AddListener(() => ContinueButtonHandle());
             continueButton.gameObject.SetActive(DataManager.Instance.CheckSaveData());
             creditButton.onClick.AddListener(() => CreditButtonHandle());
+            exitButton.onClick.AddListener(() => Application.Quit());
 
             Invoke("PlayBGM", 3f);
 

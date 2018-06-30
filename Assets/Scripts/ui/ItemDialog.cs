@@ -54,6 +54,11 @@ namespace Komugi.UI
             originItemId = itemData.itemId;
         }
 
+        public void UpdateItem(int itemIndex)
+        {
+            itemBarIndex = itemIndex;
+        }
+
         /// <summary>
         /// アイテムを変化させる
         /// </summary>
