@@ -84,6 +84,7 @@
     "comment": "オットマン",
     "id": 12,
     "prefab": "office/ottoman",
+    "gimmickId": 11,
     "preiverStage": 2,
     "jumpToStage": [ 28 ]
   },
