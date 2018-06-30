@@ -81,6 +81,7 @@ namespace Komugi.Gimmick
         private void CheckPassWord()
         {
             if (clearflag) { return; }
+            if (inputField.text == string.Empty) { return; }
 
             clearNum = 0;
 
@@ -90,7 +91,6 @@ namespace Komugi.Gimmick
                 SoundManger.Instance.PlaySe(AudioConst.SE_ELEVATOR_FAIL);
                 UIManager.Instance.OpenAlert("パスワードが違います", true, () => {
                     inputField.text = string.Empty;
-                    //display.text = string.Empty;
                 });
                 return;
             }
@@ -124,7 +124,6 @@ namespace Komugi.Gimmick
                 SoundManger.Instance.PlaySe(AudioConst.SE_ELEVATOR_FAIL);
                 UIManager.Instance.OpenAlert("パスワードが違います", true, () => {
                     inputField.text = string.Empty;
-                    //display.text = string.Empty;
                 });
             }
 
