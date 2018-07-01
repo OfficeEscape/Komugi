@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Komugi.UI
@@ -113,6 +114,9 @@ namespace Komugi.UI
                     break;
                 case ButtonType.Hint:
                     StartCoroutine(LoadAsyncPrefab(HINT_WINDOW_PATH));
+                    break;
+                case ButtonType.Return:
+                    GameManager.Instance.OnReturnToTitle();
                     break;
             }
 

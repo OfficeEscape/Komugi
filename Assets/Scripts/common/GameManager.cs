@@ -132,5 +132,12 @@ namespace Komugi
                 SoundManger.Instance.PlaySe(se);
             }
         }
+
+        public void OnReturnToTitle()
+        {
+            DataManager.Instance.SetStageId(currentView);
+            DataManager.Instance.SaveUserData();
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("TitleScene");
+        }
     }
 }
