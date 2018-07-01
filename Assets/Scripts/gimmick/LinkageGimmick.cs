@@ -27,18 +27,23 @@ namespace Komugi.Gimmick
         {
             if (clearFlg) { return; }
 
+            bool callOpenAction = false;
+
             for (int i = 0; i < data.gimmickAnswer.Length; i++)
             {
                 if (data.gimmickAnswer[i] == GimmickManager.Instance.SelectedItem)
                 {
+                    if (openObjects[i].activeSelf) { return; }
+
                     openObjects[i].SetActive(true);
                     clearNumber += (1 << i);
 
                     ItemManager.Instance.DeleteItem(data.gimmickAnswer[i]);
+                    callOpenAction = true;
                 }
             }
             
-            openAction.Invoke(clearNumber); 
+            if (callOpenAction) { openAction.Invoke(clearNumber); }
         }
 
         #region -------------------------------------インターフェースメソッド-------------------------------------
