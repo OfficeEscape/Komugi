@@ -24,6 +24,8 @@ namespace Komugi.UI
 
         private const string HINT_WINDOW_PATH = "Prefabs/ui/hint_window";
 
+        private const string RETURN_DIALOG = "タイトルに戻ります。\nよろしいですか";
+
         private GameObject content = null;
 
         private GameObject childcontent = null;
@@ -108,20 +110,32 @@ namespace Komugi.UI
             {
                 case ButtonType.Help:
                     StartCoroutine(LoadAsyncPrefab(HELP_WINDOW_PATH));
+                    //Destroy(content);
                     break;
                 case ButtonType.Setting:
                     StartCoroutine(LoadAsyncPrefab(SETTING_WINDOW_PATH));
+                    //Destroy(content);
                     break;
                 case ButtonType.Hint:
                     StartCoroutine(LoadAsyncPrefab(HINT_WINDOW_PATH));
+                    //Destroy(content);
                     break;
                 case ButtonType.Return:
-                    GameManager.Instance.OnReturnToTitle();
+                    UIManager.Instance.OpenCheckDialog(RETURN_DIALOG, ReturnTitleCallBack);
                     break;
                 case ButtonType.Close:
+                    Destroy(content);
                     break;
             }
-            Destroy(content);
+        }
+
+        private void ReturnTitleCallBack(int res)
+        {
+            if (res == (int)CheckDialog.ResultType.OK)
+            {
+                GameManager.Instance.OnReturnToTitle();
+                Destroy(content);
+            }
         }
     }
 }
