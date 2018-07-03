@@ -143,6 +143,7 @@ namespace Komugi
 
         public void OnReturnToTitle()
         {
+            Resources.UnloadUnusedAssets();
             DataManager.Instance.SetStageId(currentView);
             DataManager.Instance.SaveUserData();
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("TitleScene");
