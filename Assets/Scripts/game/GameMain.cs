@@ -91,7 +91,7 @@ namespace Komugi
 	    // 特定のステージへジャンプ
 	    public void JumpView(int buttonIndex, string buttonName)
 	    {
-            Debug.Log(" Click Button " + buttonName);
+            DebugLogger.Log(" Click Button " + buttonName);
             int jumpTo = gameManager.GetJumpToStageId(buttonIndex);
 
 		    if (gameManager.stageDictionary.ContainsKey (jumpTo)) 
@@ -121,7 +121,7 @@ namespace Komugi
         // アイテムゲット
         public void GetItem(int itemIndex, string ItemName)
         {
-            Debug.Log(" Click Item Name : " + ItemName);
+            DebugLogger.Log(" Click Item Name : " + ItemName);
 
             int itemId = gameManager.GetStageItemId(itemIndex);
             if (itemId == 0) { return; }
@@ -156,7 +156,7 @@ namespace Komugi
         /// <param name="ItemName"></param>
         private void ChangeItem(int itemIndex, string ItemName)
         {
-            Debug.Log(" Click Item Name : " + ItemName);
+            DebugLogger.Log(" Click Item Name : " + ItemName);
 
             int itemId = gameManager.GetStageItemId(itemIndex);
             if (itemId == 0) { return; }
@@ -199,17 +199,16 @@ namespace Komugi
 	    // リソース非同期読み込み
 	    private IEnumerator LoadAsyncStageCoroutine(string filePath)
 	    {
-		    // リソースの非同期読込開始
-		    /*ResourceRequest resReq = Resources.LoadAsync(filePath);
+            // リソースの非同期読込開始
+            /*ResourceRequest resReq = Resources.LoadAsync(filePath);
 		    // 終わるまで待つ
 		    while (resReq.isDone == false)
 		    {
-			    Debug.Log("Loading progress:" + resReq.progress.ToString());
 			    yield return 0;
 		    }
             
 		    // 終了時間を表示
-		    Debug.Log("End  " + Time.time.ToString());*/
+		    DebugLogger.Log("End  " + Time.time.ToString());*/
 
             // ユーザーデータロード
             DataManager.Instance.LoadUserData();
@@ -239,7 +238,7 @@ namespace Komugi
 
             if (currentViewObject == null)
             {
-                Debug.Log ("Failed to Create View Object. ID : " + sceneId);
+                DebugLogger.Log ("Failed to Create View Object. ID : " + sceneId);
                 return false;
             }
 
@@ -277,7 +276,7 @@ namespace Komugi
 
             // ルートキャンパスへ追加
             UIManager.Instance.AddContentToMainCanvas(currentViewObject, gameManager.GetNextStageId(1, sceneId), gameManager.GetNextStageId(-1, sceneId));
-            Debug.Log("Change Scene to " + prefab.name + "   SceneID : " + sceneId);
+            DebugLogger.Log("Change Scene to " + prefab.name + "   SceneID : " + sceneId);
             DataManager.Instance.SetStageId(sceneId);
 
             return true;
@@ -297,7 +296,7 @@ namespace Komugi
 
                     bool visible = !itemManager.HasItemList.ContainsKey(itemList[index]);
                     button.gameObject.SetActive(visible);
-                    Debug.Log("button.gameObject.SetActive " + visible);
+                    DebugLogger.Log("button.gameObject.SetActive " + visible);
                     break;
                 case "Switch":
 
@@ -311,7 +310,7 @@ namespace Komugi
 	    {
 		    if (!functionDictionary.ContainsKey (tag)) 
 		    {
-			    Debug.Log ("Tag Function : " + tag + " is Unregistered");
+                DebugLogger.Log ("Tag Function : " + tag + " is Unregistered");
 			    return;
 		    }
 

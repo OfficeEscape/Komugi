@@ -22,7 +22,6 @@ namespace Komugi
             foreach (ItemData item in ItemManager.Instance.itemDictionary.Values)
             {
                 ItemManager.Instance.AddItem(item.itemId, false);
-                Debug.Log("Add Item :" + item.itemId);
             }
         }
         

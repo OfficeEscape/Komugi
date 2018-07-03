@@ -49,7 +49,7 @@ namespace Komugi.UI
             MovieRewardAdManager.Instance.closeCallBack = () => RefushHintButton();
             MovieRewardAdManager.Instance.finishCallBack = () =>
             {
-                Debug.Log("アメ恵んでやろう.");
+                DebugLogger.Log("アメ恵んでやろう.");
                 DataManager.Instance.AddCandy(1);
                 CandyNum.text = DataManager.Instance.UserSaveData.candyNum.ToString();
                 DataManager.Instance.SaveUserData();
@@ -78,11 +78,11 @@ namespace Komugi.UI
             // 終わるまで待つ
             while (resReq.isDone == false)
             {
-                Debug.Log("Loading " + HORIZONTAL_GROUP_PATH + " progress:" + resReq.progress.ToString());
+                DebugLogger.Log("Loading " + HORIZONTAL_GROUP_PATH + " progress:" + resReq.progress.ToString());
                 yield return 0;
             }
 
-            Debug.Log("Loading " + HORIZONTAL_GROUP_PATH + " End  " + Time.time.ToString());
+            DebugLogger.Log("Loading " + HORIZONTAL_GROUP_PATH + " End  " + Time.time.ToString());
 
             //メインメニューを出す
             //GameObject rowObj = Instantiate(resReq.asset as GameObject, gameObject.transform);
@@ -104,7 +104,7 @@ namespace Komugi.UI
             // 終わるまで待つ
             while (resReq.isDone == false)
             {
-                Debug.Log("Loading " + EXTRA_PATH + " progress:" + resReq.progress.ToString());
+                DebugLogger.Log("Loading " + EXTRA_PATH + " progress:" + resReq.progress.ToString());
                 yield return 0;
             }
 

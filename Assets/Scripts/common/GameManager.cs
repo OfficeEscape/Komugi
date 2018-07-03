@@ -24,7 +24,6 @@ namespace Komugi
         private GameManager()
         {
             stageDictionary = new Dictionary<int, StageData>();
-            Debug.Log("Create GameManager instance.");
         }
 
         public static GameManager Instance
@@ -49,7 +48,6 @@ namespace Komugi
             // 終わるまで待つ
             while (resReq.isDone == false)
             {
-                Debug.Log("Loading Dialog progress:" + resReq.progress.ToString());
                 yield return 0;
             }
 
@@ -78,8 +76,9 @@ namespace Komugi
 
             if (nextId == 0)
             {
-                Debug.Log(stageDictionary[id].prefab + " Has Not Next Stage ID");
+                DebugLogger.Log(stageDictionary[id].prefab + " Has Not Next Stage ID");
             }
+
             return nextId;
         }
 
@@ -88,7 +87,7 @@ namespace Komugi
         {
             if (index >= stageDictionary[currentView].jumpToStage.Length)
             {
-                Debug.Log("Has not jumpIndex");
+                DebugLogger.Log("Has not jumpIndex");
                 return 0;
             }
             int jumpTo = stageDictionary[currentView].jumpToStage[index];
@@ -103,7 +102,7 @@ namespace Komugi
 
             if (index >= stageDictionary[id].getItem.Length)
             {
-                Debug.Log("Item Get error");
+                DebugLogger.Log("Item Get error");
                 return 0;
             }
 

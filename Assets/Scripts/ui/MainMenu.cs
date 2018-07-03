@@ -52,11 +52,11 @@ namespace Komugi.UI
             // 終わるまで待つ
             while (resReq.isDone == false)
             {
-                Debug.Log("Loading MainMenu progress:" + resReq.progress.ToString());
+                DebugLogger.Log("Loading MainMenu progress:" + resReq.progress.ToString());
                 yield return 0;
             }
             // テクスチャ表示
-            Debug.Log("Loading MainMenu End  " + Time.time.ToString());
+            DebugLogger.Log("Loading MainMenu End  " + Time.time.ToString());
 
             //メインメニューを出す
             content = Instantiate(resReq.asset as GameObject, gameObject.transform);
@@ -81,11 +81,11 @@ namespace Komugi.UI
             // 終わるまで待つ
             while (resReq.isDone == false)
             {
-                Debug.Log("Loading " + path + " progress:" + resReq.progress.ToString());
+                DebugLogger.Log("Loading " + path + " progress:" + resReq.progress.ToString());
                 yield return 0;
             }
-           
-            Debug.Log("Loading " + path + " End  " + Time.time.ToString());
+
+            DebugLogger.Log("Loading " + path + " End  " + Time.time.ToString());
 
             //メインメニューを出す
             childcontent = Instantiate(resReq.asset as GameObject, gameObject.transform);

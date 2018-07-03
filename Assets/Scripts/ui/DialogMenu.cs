@@ -60,11 +60,11 @@ namespace Komugi.UI
             // 終わるまで待つ
             while (resReq.isDone == false)
             {
-                Debug.Log("Loading Dialog progress:" + resReq.progress.ToString());
+                DebugLogger.Log("Loading Dialog progress:" + resReq.progress.ToString());
                 yield return 0;
             }
             // テクスチャ表示
-            Debug.Log("Loading Dialog End  " + Time.time.ToString());
+            DebugLogger.Log("Loading Dialog End  " + Time.time.ToString());
 
             IsOpen = true;
 
@@ -105,11 +105,11 @@ namespace Komugi.UI
             // 終わるまで待つ
             while (resReq.isDone == false)
             {
-                Debug.Log("Loading Dialog progress:" + resReq.progress.ToString());
+                DebugLogger.Log("Loading Dialog progress:" + resReq.progress.ToString());
                 yield return 0;
             }
             // テクスチャ表示
-            Debug.Log("Loading Dialog End  " + Time.time.ToString());
+            DebugLogger.Log("Loading Dialog End  " + Time.time.ToString());
 
             //ダイアログを出す
             content = Instantiate(resReq.asset as GameObject, gameObject.transform, false);

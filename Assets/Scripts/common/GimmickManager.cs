@@ -30,7 +30,7 @@ namespace Komugi
             set
             {
                 selectedItem = value;
-                Debug.Log("selectedItem : " + selectedItem);
+                DebugLogger.Log("selectedItem : " + selectedItem);
             }
         }
 
@@ -48,7 +48,6 @@ namespace Komugi
         {
             gimmickDictionary = new Dictionary<int, GimmickData>();
             hintDictionary = new Dictionary<int, HintData>();
-            Debug.Log("Create GimmickManager instance.");
         }
 
         public static GimmickManager Instance
@@ -73,7 +72,6 @@ namespace Komugi
             // 終わるまで待つ
             while (resReq.isDone == false)
             {
-                Debug.Log("Loading Dialog progress:" + resReq.progress.ToString());
                 yield return 0;
             }
 
@@ -104,8 +102,6 @@ namespace Komugi
                 if (hintPayDictionary.ContainsKey(data.hintId)) { continue; }
                 hintPayDictionary.Add(data.hintId, false);
             }
-            
-            Debug.Log("GimmickData OpenBinary " + Time.time.ToString());
         }
 
         public void SetupGimmick(ref GameObject stageObject, int gimmickId)

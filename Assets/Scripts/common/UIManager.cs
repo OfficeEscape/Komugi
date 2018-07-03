@@ -117,7 +117,7 @@ namespace Komugi
                 GameManager.Instance.PlaySE(AudioConst.SE_SWITCH_SE);
             }
 
-            Debug.Log("SwitchObject : " + index + "   Active : " + changeableObjectIndex[index]);
+            DebugLogger.Log("SwitchObject : " + index + "   Active : " + changeableObjectIndex[index]);
         }
 
         // 切り替えるゲームオブジェクトをリストに登録

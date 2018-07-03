@@ -59,12 +59,10 @@ namespace Komugi.Ad
 #else
         //リワード動画の準備ができるまでWaitして再生開始
         
-        Debug.Log("adutil.isPreparedMovieReward() : " + adutil.isPreparedMovieReward());
         while (!adutil.isPreparedMovieReward()) {
             yield return new WaitForSeconds(0.2f);
         }
         
-        Debug.Log("adutil.playMovieReward(); ");
         adutil.playMovieReward();
 #endif
         }
@@ -103,16 +101,13 @@ namespace Komugi.Ad
             {
                 case AdfurikunMovieRewardUtility.ADF_MovieStatus.PrepareSuccess:
                     //"準備完了"
-                    Debug.Log("リワード動画：準備完了");
                     break;
                 case AdfurikunMovieRewardUtility.ADF_MovieStatus.StartPlaying:
                     //"再生開始"
-                    Debug.Log("リワード動画：再生開始");
                     break;
                 case AdfurikunMovieRewardUtility.ADF_MovieStatus.FinishedPlaying:
                     //"再生完了"
                     Screen.orientation = ScreenOrientation.Portrait;
-                    Debug.Log("リワード動画：再生完了");
                     //ここで報酬を付与します
                     if (finishCallBack != null)
                     {
@@ -122,12 +117,10 @@ namespace Komugi.Ad
                 case AdfurikunMovieRewardUtility.ADF_MovieStatus.FailedPlaying:
                     //"再生失敗"
                     Screen.orientation = ScreenOrientation.Portrait;
-                    Debug.Log("リワード動画：再生失敗");
                     break;
                 case AdfurikunMovieRewardUtility.ADF_MovieStatus.AdClose:
                     //"動画を閉じた"
                     Screen.orientation = ScreenOrientation.Portrait;
-                    Debug.Log("リワード動画：動画を閉じた");
                     if (closeCallBack != null)
                     {
                         closeCallBack.Invoke();
@@ -135,7 +128,6 @@ namespace Komugi.Ad
                     SoundManger.Instance.PauseBgm(false);
                     break;
                 default:
-                    Debug.Log("リワード動画：その他");
                     return;
             }
         }
