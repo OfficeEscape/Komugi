@@ -12,6 +12,7 @@ namespace Komugi.UI
             Setting,
             Hint,
             Return,
+            Close,
         };
 
         // メインメニューのパス
@@ -100,8 +101,7 @@ namespace Komugi.UI
         {
             if (childcontent != null) { Destroy(childcontent); }
             if (isLoading) { return; }
-
-            Destroy(content);
+            
             IsOpen = false;
 
             switch ((ButtonType)buttonIndex)
@@ -118,8 +118,10 @@ namespace Komugi.UI
                 case ButtonType.Return:
                     GameManager.Instance.OnReturnToTitle();
                     break;
+                case ButtonType.Close:
+                    break;
             }
-
+            Destroy(content);
         }
     }
 }
