@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using LitJson;
+using System.Collections;
 
 namespace Komugi
 {
@@ -39,19 +40,26 @@ namespace Komugi
 
 
         // JsonDataをデシリアライズ
-        public void Deserialization()
+        public IEnumerator Deserialization()
         {
-            if (stageDictionary.Count > 0) { return; }
+            if (stageDictionary.Count > 0) { yield break; }
 
-            TextAsset json = Resources.Load("Data/StageData") as TextAsset;
+            // リソースの非同期読込開始
+            ResourceRequest resReq = Resources.LoadAsync("Data/StageData");
+            // 終わるまで待つ
+            while (resReq.isDone == false)
+            {
+                Debug.Log("Loading Dialog progress:" + resReq.progress.ToString());
+                yield return 0;
+            }
+
+            TextAsset json = resReq.asset as TextAsset;
             StageData[] stageList = JsonMapper.ToObject<StageData[]>(json.text);
 
             foreach (StageData data in stageList)
             {
                 stageDictionary.Add(data.id, data);
             }
-
-            Debug.Log("StageData OpenBinary " + Time.time.ToString());
         }
 
         // ステージのプレハブを取得

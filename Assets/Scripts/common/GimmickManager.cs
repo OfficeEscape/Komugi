@@ -1,5 +1,6 @@
 ﻿using Komugi.Gimmick;
 using LitJson;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -65,9 +66,18 @@ namespace Komugi
             currentGimmick = null;
         }
 
-        public void Deserialization()
+        public IEnumerator Deserialization()
         {
-            TextAsset json = Resources.Load("Data/GimmickData") as TextAsset;
+            // リソースの非同期読込開始
+            ResourceRequest resReq = Resources.LoadAsync("Data/GimmickData");
+            // 終わるまで待つ
+            while (resReq.isDone == false)
+            {
+                Debug.Log("Loading Dialog progress:" + resReq.progress.ToString());
+                yield return 0;
+            }
+
+            TextAsset json = resReq.asset as TextAsset;
             GimmickData[] gimmickList = JsonMapper.ToObject<GimmickData[]>(json.text);
 
             foreach (GimmickData data in gimmickList)

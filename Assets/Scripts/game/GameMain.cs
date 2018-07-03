@@ -43,7 +43,7 @@ namespace Komugi
         }
 
         // Use this for initialization
-        void Start () 
+        private IEnumerator Start () 
 	    {
             gameManager = GameManager.Instance;
             itemManager = ItemManager.Instance;
@@ -53,18 +53,21 @@ namespace Komugi
             gimmickManager.Load();
 
             // Jasonデータデシリアライズ
-            gameManager.Deserialization();
-            itemManager.Deserialization();
-            gimmickManager.Deserialization();
-
-            InitButtonFunction ();
+            yield return gameManager.Deserialization();
+            yield return itemManager.Deserialization();
+            yield return gimmickManager.Deserialization();
+            
             //リソースフォルダのデータを非同期に読み込む
-            StartCoroutine(LoadAsyncStageCoroutine("Prefabs"));
+            yield return LoadAsyncStageCoroutine("Prefabs");
 
+            InitButtonFunction();
             itemManager.AddItemSaveData();
 
             gameManager.PlayBGM(AudioConst.BGM_MAIN);
-	    }
+
+            // ローディング画面を消す
+            LoadingAnime.SetActive(false);
+        }
 
 	    #endregion
 
@@ -197,7 +200,7 @@ namespace Komugi
 	    private IEnumerator LoadAsyncStageCoroutine(string filePath)
 	    {
 		    // リソースの非同期読込開始
-		    ResourceRequest resReq = Resources.LoadAsync(filePath);
+		    /*ResourceRequest resReq = Resources.LoadAsync(filePath);
 		    // 終わるまで待つ
 		    while (resReq.isDone == false)
 		    {
@@ -205,8 +208,8 @@ namespace Komugi
 			    yield return 0;
 		    }
             
-		    // テクスチャ表示
-		    Debug.Log("End  " + Time.time.ToString());
+		    // 終了時間を表示
+		    Debug.Log("End  " + Time.time.ToString());*/
 
             // ユーザーデータロード
             DataManager.Instance.LoadUserData();
@@ -215,14 +218,13 @@ namespace Komugi
 		    //最初の画面を出す
 		    ChangeView(gameManager.currentView);
             
-            // ローディング画面を消す
-            LoadingAnime.SetActive(false);
-
             int tutorialId = DataManager.Instance.LoadTutorialStep();
             if (tutorialId == 0)
             {
                 ShowTotorial();
             }
+
+            yield break;
         }
 
         // ステージ変更
