@@ -17,7 +17,7 @@ namespace Komugi
                     instance = (T)FindObjectOfType(t);
                     if (instance == null)
                     {
-                        Debug.LogError(t + " をアタッチしているGameObjectはありません");
+                        DebugLogger.LogError(t + " をアタッチしているGameObjectはありません");
                     }
                 }
 
@@ -33,7 +33,7 @@ namespace Komugi
             {
                 Destroy(this);
                 //Destroy(this.gameObject);
-                Debug.LogError(
+                DebugLogger.LogError(
                     typeof(T) +
                     " は既に他のGameObjectにアタッチされているため、コンポーネントを破棄しました." +
                     " アタッチされているGameObjectは " + Instance.gameObject.name + " です.");

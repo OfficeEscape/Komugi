@@ -59,7 +59,7 @@ namespace Komugi.Gimmick
             int len = answerdata.Length;
             if (len != data.gimmickAnswer.Length)
             {
-                Debug.LogWarning("Tenkey Length Error");
+                DebugLogger.LogWarning("Tenkey Length Error");
                 return;
             }
 

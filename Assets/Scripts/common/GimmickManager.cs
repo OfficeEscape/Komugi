@@ -1,5 +1,6 @@
 ﻿using Komugi.Gimmick;
 using LitJson;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,7 +30,7 @@ namespace Komugi
             set
             {
                 selectedItem = value;
-                Debug.Log("selectedItem : " + selectedItem);
+                DebugLogger.Log("selectedItem : " + selectedItem);
             }
         }
 
@@ -47,7 +48,6 @@ namespace Komugi
         {
             gimmickDictionary = new Dictionary<int, GimmickData>();
             hintDictionary = new Dictionary<int, HintData>();
-            Debug.Log("Create GimmickManager instance.");
         }
 
         public static GimmickManager Instance
@@ -65,9 +65,17 @@ namespace Komugi
             currentGimmick = null;
         }
 
-        public void Deserialization()
+        public IEnumerator Deserialization()
         {
-            TextAsset json = Resources.Load("Data/GimmickData") as TextAsset;
+            // リソースの非同期読込開始
+            ResourceRequest resReq = Resources.LoadAsync("Data/GimmickData");
+            // 終わるまで待つ
+            while (resReq.isDone == false)
+            {
+                yield return 0;
+            }
+
+            TextAsset json = resReq.asset as TextAsset;
             GimmickData[] gimmickList = JsonMapper.ToObject<GimmickData[]>(json.text);
 
             foreach (GimmickData data in gimmickList)
@@ -94,8 +102,6 @@ namespace Komugi
                 if (hintPayDictionary.ContainsKey(data.hintId)) { continue; }
                 hintPayDictionary.Add(data.hintId, false);
             }
-            
-            Debug.Log("GimmickData OpenBinary " + Time.time.ToString());
         }
 
         public void SetupGimmick(ref GameObject stageObject, int gimmickId)

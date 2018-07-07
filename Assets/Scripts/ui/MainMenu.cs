@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Komugi.UI
@@ -11,6 +12,7 @@ namespace Komugi.UI
             Setting,
             Hint,
             Return,
+            Close,
         };
 
         // メインメニューのパス
@@ -21,6 +23,8 @@ namespace Komugi.UI
         private const string SETTING_WINDOW_PATH = "Prefabs/ui/setting_dialog";
 
         private const string HINT_WINDOW_PATH = "Prefabs/ui/hint_window";
+
+        private const string RETURN_DIALOG = "タイトルに戻ります。\nよろしいですか";
 
         private GameObject content = null;
 
@@ -48,11 +52,11 @@ namespace Komugi.UI
             // 終わるまで待つ
             while (resReq.isDone == false)
             {
-                Debug.Log("Loading MainMenu progress:" + resReq.progress.ToString());
+                DebugLogger.Log("Loading MainMenu progress:" + resReq.progress.ToString());
                 yield return 0;
             }
             // テクスチャ表示
-            Debug.Log("Loading MainMenu End  " + Time.time.ToString());
+            DebugLogger.Log("Loading MainMenu End  " + Time.time.ToString());
 
             //メインメニューを出す
             content = Instantiate(resReq.asset as GameObject, gameObject.transform);
@@ -77,11 +81,11 @@ namespace Komugi.UI
             // 終わるまで待つ
             while (resReq.isDone == false)
             {
-                Debug.Log("Loading " + path + " progress:" + resReq.progress.ToString());
+                DebugLogger.Log("Loading " + path + " progress:" + resReq.progress.ToString());
                 yield return 0;
             }
-           
-            Debug.Log("Loading " + path + " End  " + Time.time.ToString());
+
+            DebugLogger.Log("Loading " + path + " End  " + Time.time.ToString());
 
             //メインメニューを出す
             childcontent = Instantiate(resReq.asset as GameObject, gameObject.transform);
@@ -99,23 +103,39 @@ namespace Komugi.UI
         {
             if (childcontent != null) { Destroy(childcontent); }
             if (isLoading) { return; }
-
-            Destroy(content);
+            
             IsOpen = false;
 
             switch ((ButtonType)buttonIndex)
             {
                 case ButtonType.Help:
                     StartCoroutine(LoadAsyncPrefab(HELP_WINDOW_PATH));
+                    //Destroy(content);
                     break;
                 case ButtonType.Setting:
                     StartCoroutine(LoadAsyncPrefab(SETTING_WINDOW_PATH));
+                    //Destroy(content);
                     break;
                 case ButtonType.Hint:
                     StartCoroutine(LoadAsyncPrefab(HINT_WINDOW_PATH));
+                    //Destroy(content);
+                    break;
+                case ButtonType.Return:
+                    UIManager.Instance.OpenCheckDialog(RETURN_DIALOG, ReturnTitleCallBack);
+                    break;
+                case ButtonType.Close:
+                    Destroy(content);
                     break;
             }
+        }
 
+        private void ReturnTitleCallBack(int res)
+        {
+            if (res == (int)CheckDialog.ResultType.OK)
+            {
+                GameManager.Instance.OnReturnToTitle();
+                Destroy(content);
+            }
         }
     }
 }

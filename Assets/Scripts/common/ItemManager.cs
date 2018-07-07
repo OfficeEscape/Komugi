@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using LitJson;
+using System.Collections;
 
 namespace Komugi
 {
@@ -21,7 +22,6 @@ namespace Komugi
         private ItemManager()
         {
             itemDictionary = new Dictionary<int, ItemData>();
-            Debug.Log("Create ItemManager instance.");
         }
 
         public static ItemManager Instance
@@ -35,19 +35,25 @@ namespace Komugi
             }
         }
 
-        public void Deserialization()
+        public IEnumerator Deserialization()
         {
-            if (itemDictionary.Count > 0) { return; }
+            if (itemDictionary.Count > 0) { yield break; }
 
-            TextAsset json = Resources.Load("Data/ItemData") as TextAsset;
+            // リソースの非同期読込開始
+            ResourceRequest resReq = Resources.LoadAsync("Data/ItemData");
+            // 終わるまで待つ
+            while (resReq.isDone == false)
+            {
+                yield return 0;
+            }
+
+            TextAsset json = resReq.asset as TextAsset;
             ItemData[] itemList = JsonMapper.ToObject<ItemData[]>(json.text);
 
             foreach (ItemData data in itemList)
             {
                 itemDictionary.Add(data.itemId, data);
             }
-            
-            Debug.Log("ItemData OpenBinary " + Time.time.ToString());
         }
 
         public void AddItemSaveData()
@@ -90,13 +96,13 @@ namespace Komugi
         {
             if (!HasItemList.ContainsKey(itemId))
             {
-                Debug.Log("Item Id " + itemId + " is not Have");
+                DebugLogger.Log("Item Id " + itemId + " is not Have");
                 return false;
             }
 
             if (HasItemList[itemId])
             {
-                Debug.Log("Item Id " + itemId + " is used");
+                DebugLogger.Log("Item Id " + itemId + " is used");
                 return false;
             }
 
@@ -151,7 +157,7 @@ namespace Komugi
 
             if (!HasItemList.ContainsKey(beforeId)) { return false; }
             HasItemList[beforeId] = true;
-            //if (GimmickManager.Instance.SelectedItem != beforeId) { return false; }
+            if (GimmickManager.Instance.SelectedItem != beforeId) { return false; }
 
             if (HasItemList.ContainsKey(afterId)) { HasItemList[afterId] = false; }
             else { HasItemList.Add(afterId, false); }
@@ -185,17 +191,17 @@ namespace Komugi
         {
             if (!itemDictionary.ContainsKey(itemId))
             {
-                Debug.Log("Item Load error");
+                DebugLogger.Log("Item Load error");
             }
 
             string path = size == 0 ? itemDictionary[itemId].itemIcon : itemDictionary[itemId].itemImage;
             var builder = new System.Text.StringBuilder();
             builder.AppendFormat("{0}{1}", itemPath, path);
-            Debug.Log("Item Path = " + builder.ToString());
+            DebugLogger.Log("Item Path = " + builder.ToString());
 
             Sprite itemSprite = Resources.Load<Sprite>(builder.ToString());
 
-            if (itemSprite == null) { Debug.Log("ItemId :" + itemId +" Road Failed"); }
+            if (itemSprite == null) { DebugLogger.Log("ItemId :" + itemId +" Road Failed"); }
             return itemSprite;
         }
 
@@ -207,7 +213,7 @@ namespace Komugi
                 return "Item Load error";
             }
             string name = itemDictionary[itemId].itemName;
-            Debug.Log("ItemName : " + name);
+            DebugLogger.Log("ItemName : " + name);
             return name;
         }
 

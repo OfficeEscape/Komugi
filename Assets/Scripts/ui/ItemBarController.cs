@@ -65,14 +65,14 @@ namespace Komugi.UI
             float heightRatio = Screen.height / 1920f;
 
             float currentMargin = MARGIN * widthRatio;
-            Debug.Log("currentMargin" + currentMargin);
+            DebugLogger.Log("currentMargin" + currentMargin);
             touchStart = currentMargin;
             touchEnd = Screen.width - currentMargin;
             float wd = Screen.width - (currentMargin * 2f);
             itemWidth = wd / (float)COLUMN;
-            Debug.Log("itemWidth" + itemWidth);
+            DebugLogger.Log("itemWidth" + itemWidth);
             itemHeight = 384f * heightRatio / (float)ROW;
-            Debug.Log("itemHeight" + itemHeight);
+            DebugLogger.Log("itemHeight" + itemHeight);
 
             itemIdList = new List<int>();
 
@@ -96,7 +96,7 @@ namespace Komugi.UI
             int itemNum = itemIdList.Count - (currentPage * ItemImages.Length);
             if (ItemImages[itemNum].enabled)
             {
-                Debug.Log("item " + itemNum + " is Registered");
+                DebugLogger.Log("item " + itemNum + " is Registered");
                 return -1;
             }
             
@@ -141,7 +141,7 @@ namespace Komugi.UI
             else
             {
                 // アイテムを使うモード
-                Debug.Log("Use Item");
+                DebugLogger.Log("Use Item");
                 selectedIndex = itemIndex;
                 GimmickManager.Instance.SelectedItem = itemIdList[itemIndex];
                 cursor.name = itemIndex.ToString();
@@ -163,7 +163,7 @@ namespace Komugi.UI
             if (!TouchEnable) { return; }
             // throw new NotImplementedException();
             lastTouchItem = GetPressedItemIndex(eventData.pressPosition);
-            Debug.Log("Now Pressed : " + lastTouchItem);
+            DebugLogger.Log("Now Pressed : " + lastTouchItem);
         }
 
         #region =============================== C# private ===============================
@@ -314,7 +314,6 @@ namespace Komugi.UI
             if (pressPosition.x < touchStart && y >= 1)
             {
                 // ←が押された
-                Debug.Log("←が押された");
                 int nextPage = currentPage - 1;
                 nextPage = Mathf.Clamp(nextPage, 0, maxPage);
                 if (nextPage != currentPage)
@@ -326,8 +325,6 @@ namespace Komugi.UI
             {
                 if (y >= 1)
                 {
-                    // →押された
-                    Debug.Log("→が押された");
                     int nextPage = currentPage + 1;
                     nextPage = Mathf.Clamp(nextPage, 0, maxPage);
                     if (nextPage != currentPage)
@@ -339,7 +336,7 @@ namespace Komugi.UI
                 {
                     // メニューボタン押された
                     //CheatManager.Instance.AddAllItem();
-                    Debug.Log("メニューボタン押された");
+                    DebugLogger.Log("メニューボタン押された");
 
                     if (MenuButtonHandle != null)
                     {

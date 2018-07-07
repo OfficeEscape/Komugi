@@ -35,11 +35,11 @@ namespace Komugi.UI
             // 終わるまで待つ
             while (resReq.isDone == false)
             {
-                Debug.Log("Loading Alert progress:" + resReq.progress.ToString());
+                DebugLogger.Log("Loading Alert progress:" + resReq.progress.ToString());
                 yield return 0;
             }
             // テクスチャ表示
-            Debug.Log("Loading Alert End  " + Time.time.ToString());
+            DebugLogger.Log("Loading Alert End  " + Time.time.ToString());
 
             //アラートを出す
             content = Instantiate(resReq.asset as GameObject, gameObject.transform);

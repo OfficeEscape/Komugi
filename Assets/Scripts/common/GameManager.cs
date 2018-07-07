@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using LitJson;
+using System.Collections;
 
 namespace Komugi
 {
@@ -23,7 +24,6 @@ namespace Komugi
         private GameManager()
         {
             stageDictionary = new Dictionary<int, StageData>();
-            Debug.Log("Create GameManager instance.");
         }
 
         public static GameManager Instance
@@ -39,19 +39,25 @@ namespace Komugi
 
 
         // JsonDataをデシリアライズ
-        public void Deserialization()
+        public IEnumerator Deserialization()
         {
-            if (stageDictionary.Count > 0) { return; }
+            if (stageDictionary.Count > 0) { yield break; }
 
-            TextAsset json = Resources.Load("Data/StageData") as TextAsset;
+            // リソースの非同期読込開始
+            ResourceRequest resReq = Resources.LoadAsync("Data/StageData");
+            // 終わるまで待つ
+            while (resReq.isDone == false)
+            {
+                yield return 0;
+            }
+
+            TextAsset json = resReq.asset as TextAsset;
             StageData[] stageList = JsonMapper.ToObject<StageData[]>(json.text);
 
             foreach (StageData data in stageList)
             {
                 stageDictionary.Add(data.id, data);
             }
-
-            Debug.Log("StageData OpenBinary " + Time.time.ToString());
         }
 
         // ステージのプレハブを取得
@@ -70,8 +76,9 @@ namespace Komugi
 
             if (nextId == 0)
             {
-                Debug.Log(stageDictionary[id].prefab + " Has Not Next Stage ID");
+                DebugLogger.Log(stageDictionary[id].prefab + " Has Not Next Stage ID");
             }
+
             return nextId;
         }
 
@@ -80,7 +87,7 @@ namespace Komugi
         {
             if (index >= stageDictionary[currentView].jumpToStage.Length)
             {
-                Debug.Log("Has not jumpIndex");
+                DebugLogger.Log("Has not jumpIndex");
                 return 0;
             }
             int jumpTo = stageDictionary[currentView].jumpToStage[index];
@@ -95,7 +102,7 @@ namespace Komugi
 
             if (index >= stageDictionary[id].getItem.Length)
             {
-                Debug.Log("Item Get error");
+                DebugLogger.Log("Item Get error");
                 return 0;
             }
 
@@ -131,6 +138,14 @@ namespace Komugi
             {
                 SoundManger.Instance.PlaySe(se);
             }
+        }
+
+        public void OnReturnToTitle()
+        {
+            Resources.UnloadUnusedAssets();
+            DataManager.Instance.SetStageId(currentView);
+            DataManager.Instance.SaveUserData();
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("TitleScene");
         }
     }
 }

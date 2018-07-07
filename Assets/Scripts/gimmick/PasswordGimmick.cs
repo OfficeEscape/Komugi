@@ -46,7 +46,7 @@ namespace Komugi.Gimmick
 
             if (inputPosition >= currentNum.Length) { return; }
             string num = btn.name;
-            Debug.Log("Push " + num);
+            DebugLogger.Log("Push " + num);
             currentNum[inputPosition] = int.Parse(num);
 
             display.text = string.Format("{0}{1}{2}", display.text, num, SPACE);
