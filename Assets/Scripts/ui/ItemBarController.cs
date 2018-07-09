@@ -23,6 +23,9 @@ namespace Komugi.UI
         [SerializeField]
         // カーソル
         private RectTransform cursor;
+
+        [SerializeField]
+        private GameObject pagingObject = null;
         
         // アイテムIDの配列
         private List<int> itemIdList;
@@ -75,6 +78,7 @@ namespace Komugi.UI
             DebugLogger.Log("itemHeight" + itemHeight);
 
             itemIdList = new List<int>();
+            pagingObject.SetActive(false);
 
             TouchEnable = true;
         }
@@ -108,6 +112,7 @@ namespace Komugi.UI
 
             itemIdList.Add(itemId);
             maxPage = itemIdList.Count / ItemImages.Length + 1;
+            pagingObject.SetActive(maxPage > 1);
 
             return itemNum;
         }
@@ -281,12 +286,14 @@ namespace Komugi.UI
         /// </summary>
         private void ChangePage(int nextPage)
         {
-            ResetPage();
+            if (currentPage + nextPage >= maxPage || currentPage + nextPage < 0) { return; }
 
             int start = nextPage * ItemImages.Length;
             int end = start + ItemImages.Length;
             end = Mathf.Clamp(end, 0, itemIdList.Count);
 
+            ResetPage();
+            
             int imageIndex = 0;
             for (int i = start; i < end; i++)
             {
