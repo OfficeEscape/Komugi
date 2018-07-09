@@ -142,6 +142,7 @@ namespace Komugi
 
         public void OnReturnToTitle()
         {
+            SoundManger.Instance.StopBgm();
             Resources.UnloadUnusedAssets();
             DataManager.Instance.SetStageId(currentView);
             DataManager.Instance.SaveUserData();
