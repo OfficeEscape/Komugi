@@ -48,6 +48,7 @@ namespace Komugi.Ad
         IEnumerator StartMovie()
         {
 #if UNITY_EDITOR
+            finishCallBack.Invoke();
             yield return null;
 #elif UNITY_IOS
         while (!adutil.isPreparedMovieReward()) {

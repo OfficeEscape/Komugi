@@ -165,7 +165,7 @@ namespace Komugi.UI
         {
             if (!GimmickManager.Instance.hintDictionary.ContainsKey(data.hintId)) { return; }
             
-            if (GimmickManager.Instance.hintPayDictionary[data.hintId] || GimmickManager.Instance.clearFlagDictionary[data.gimmickId] > 0)
+            if (GimmickManager.Instance.hintPayDictionary[data.hintId] || GimmickManager.Instance.GetClearProgress(data.gimmickId) > 0)
             {
                 HintDetail.text = data.detail;
 
