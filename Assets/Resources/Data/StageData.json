@@ -272,6 +272,7 @@
     "comment": "シンク下",
     "id": 48,
     "prefab": "mtgspace/sink_under",
+    "gimmickId": 9,
     "jumpToStage": [ 49,50 ],
     "preiverStage": 44
   },

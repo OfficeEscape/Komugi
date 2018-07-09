@@ -34,6 +34,8 @@ namespace Komugi.UI
 
         private bool isLoading = false;
 
+        private int selected = -1;
+
         /// <summary>
         /// メインメニューを開く
         /// </summary>
@@ -101,8 +103,9 @@ namespace Komugi.UI
         /// <param name="buttonIndex">押されたボタン番号</param>
         private void OnMenuButtonClick(int buttonIndex)
         {
-            if (childcontent != null) { Destroy(childcontent); }
+            if (buttonIndex == selected) { return; }
             if (isLoading) { return; }
+            if (childcontent != null) { Destroy(childcontent); }
             
             IsOpen = false;
 
@@ -127,6 +130,8 @@ namespace Komugi.UI
                     Destroy(content);
                     break;
             }
+
+            selected = buttonIndex;
         }
 
         private void ReturnTitleCallBack(int res)
