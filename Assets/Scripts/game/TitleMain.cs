@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using Komugi.UI;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Komugi
 {
     public class TitleMain : MonoBehaviour
     {
-        private GameObject _canvas;
+        private const string START_DIALOG = "現在の進行データを破棄しますが\nよろしいですか";
 
         [SerializeField]
         private GameObject GameManagerObj = null;
@@ -22,6 +23,10 @@ namespace Komugi
         [SerializeField]
         Button exitButton = null;
 
+        private GameObject _canvas;
+
+        private DialogMenu dialog;
+
         // Use this for initialization
         void Start()
         {
@@ -32,6 +37,8 @@ namespace Komugi
             continueButton.gameObject.SetActive(DataManager.Instance.CheckSaveData());
             creditButton.onClick.AddListener(() => CreditButtonHandle());
             exitButton.onClick.AddListener(() => Application.Quit());
+
+            dialog = _canvas.AddComponent<DialogMenu>();
 
             Invoke("PlayBGM", 3f);
 
@@ -44,22 +51,14 @@ namespace Komugi
         
         public void StartButtonHandler()
         {
-            Button[] btns = _canvas.GetComponentsInChildren<Button>();
-            foreach (Button btn in btns)
+            if (continueButton.gameObject.activeSelf)
             {
-                btn.enabled = false;
+                dialog.OpenCheckDialog(START_DIALOG, StartSequence);
             }
-
-            Animator animator = _canvas.GetComponent<Animator>();
-            animator.Play("startAnimation");
-            Invoke("createOpening", 1f);
-
-            if (SoundManger.Instance != null)
+            else
             {
-                SoundManger.Instance.PlaySe(AudioConst.SE_BUTTON);
+                StartSequence((int)CheckDialog.ResultType.OK);
             }
-
-            DataManager.Instance.SaveDataReset();
         }
 
         public void ContinueButtonHandle()
@@ -95,6 +94,31 @@ namespace Komugi
             {
                 SoundManger.Instance.PlayBgm(AudioConst.BGM_OPENING);
             }
+        }
+
+        private void StartSequence(int res)
+        {
+            if (res == (int)CheckDialog.ResultType.CANCEL)
+            {
+                return;
+            }
+
+            Button[] btns = _canvas.GetComponentsInChildren<Button>();
+            foreach (Button btn in btns)
+            {
+                btn.enabled = false;
+            }
+
+            Animator animator = _canvas.GetComponent<Animator>();
+            animator.Play("startAnimation");
+            Invoke("createOpening", 1f);
+
+            if (SoundManger.Instance != null)
+            {
+                SoundManger.Instance.PlaySe(AudioConst.SE_BUTTON);
+            }
+
+            DataManager.Instance.SaveDataReset();
         }
     }
 }
