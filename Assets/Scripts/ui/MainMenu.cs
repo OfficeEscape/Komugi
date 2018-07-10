@@ -103,7 +103,7 @@ namespace Komugi.UI
         /// <param name="buttonIndex">押されたボタン番号</param>
         private void OnMenuButtonClick(int buttonIndex)
         {
-            if (buttonIndex == selected) { return; }
+            if (childcontent != null && buttonIndex == selected) { return; }
             if (isLoading) { return; }
             if (childcontent != null) { Destroy(childcontent); }
             

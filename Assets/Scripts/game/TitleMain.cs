@@ -83,7 +83,7 @@ namespace Komugi
 
         private void createOpening()
         {
-            GameObject obj = Resources.Load("Prefabs/office/opening", typeof(GameObject)) as GameObject;
+            GameObject obj = Resources.Load("Prefabs/ui/opening", typeof(GameObject)) as GameObject;
             GameObject opening = Instantiate(obj) as GameObject;
             opening.transform.SetParent(_canvas.transform, false);
         }

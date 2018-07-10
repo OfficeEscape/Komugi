@@ -12,6 +12,9 @@ namespace Komugi
         [SerializeField]
         private Color TextColor;
 
+        [SerializeField]
+        private Button nextButton = null;
+
         private const float SPEED = 0.03f;
 
         private readonly string[] SYNOPSIS = {"ここは御徒町にあるオフィス、",
@@ -19,7 +22,8 @@ namespace Komugi
                                 "目が覚めると誰もいない",
                                 "オフィスに閉じ込められていた。",
                                 "もうすぐ終電の時間だ。",
-                                "早くここから脱出しなければ"};
+                                "早くここから脱出しなければ",
+                                "   "};
 
         private Image _bg;
         
@@ -28,6 +32,9 @@ namespace Komugi
         void Start()
         {
             _bg = GetComponent<Image>();
+
+            nextButton.onClick.AddListener(() => SceneManager.LoadScene("GameScene"));
+            nextButton.gameObject.SetActive(false);
         }
 
         // Update is called once per frame
@@ -41,8 +48,13 @@ namespace Komugi
             else
             {
                 enabled = false;
-                UI.ScenarioPlayer.PlayScenario(SYNOPSIS, ScenarioContent, TextColor, () => SceneManager.LoadScene("GameScene"));
+                UI.ScenarioPlayer.PlayScenario(SYNOPSIS, ScenarioContent, TextColor, OnScenarioEnd);
             }
+        }
+
+        private void OnScenarioEnd()
+        {
+            nextButton.gameObject.SetActive(true);
         }
     }
 }
