@@ -6,7 +6,7 @@ namespace Komugi
 {
     public class TitleMain : MonoBehaviour
     {
-        private const string START_DIALOG = "現在の進行データを破棄しますが\nよろしいですか";
+        private const string START_DIALOG = "最初からやり直しになります\nよろしいですか";
 
         [SerializeField]
         private GameObject GameManagerObj = null;
