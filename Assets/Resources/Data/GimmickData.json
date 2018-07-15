@@ -48,7 +48,6 @@
     "gimmickId": 6,
     "clearSe": "Openkey",
     "clearMessage": "箱が開いた！",
-    "clearJump": 11,
     "clearStep": 1,
     "gimmickAnswer": [ 1, 7, 8 ]
   },
