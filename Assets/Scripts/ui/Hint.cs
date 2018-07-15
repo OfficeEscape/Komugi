@@ -127,7 +127,6 @@ namespace Komugi.UI
 
         private int CreateHintList(int row, GameObject rowObj, GameObject buttonObj, int offset)
         {
-            int breakIndex = 0;
             for (int i = 0; i < row; i++)
             {
                 GameObject rowClone = Instantiate(rowObj, ScrollContent, false);
@@ -141,8 +140,7 @@ namespace Komugi.UI
 
                     if (data.title == EXTRA_TITLE)
                     {
-                        breakIndex = index;
-                        break;
+                        return index;
                     }
 
                     GameObject btnClone = Instantiate(buttonObj, rowClone.transform, false);
@@ -157,7 +155,7 @@ namespace Komugi.UI
                 }
             }
 
-            return breakIndex;
+            return 0;
         }
 
         // アメを使う
