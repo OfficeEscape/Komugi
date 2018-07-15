@@ -83,36 +83,50 @@
     "gimmickId": 10,
     "candyNum": 3
   },
-  {
+   {
     "hintId": 13,
+    "title": "白いスツールの\n汚れ",
+    "detail": "泥汚れには水ぶきが有効だよ。",
+    "gimmickId": 11,
+    "candyNum": 1
+  },
+   {
+    "hintId": 14,
+    "title": "水の出し方",
+    "detail": "元栓がシンクの下にあるようだよ。",
+    "gimmickId": 9,
+    "candyNum": 1
+  },
+  {
+    "hintId": 15,
     "title": "エレベーターの\n暗号1",
     "detail": "暗闇で使えるアイテムがあるはず。\n消灯は大事だよ。",
     "gimmickId": 14,
     "candyNum": 1
   },
   {
-    "hintId": 14,
-    "title": "エレベーターの\n電源",
-    "detail": "3つのパーツが揃ったら、\nどこかにはめてみよう。",
-    "gimmickId": 13,
-    "candyNum": 1
-  },
-  {
-    "hintId": 15,
+    "hintId": 16,
     "title": "エレベーターの\n暗号2",
     "detail": "暗闇の中でこそ輝くものがあるよ。\n明日は雨だから傘が必要だよ。",
     "gimmickId": 14,
     "candyNum": 1
   },
   {
-    "hintId": 16,
+    "hintId": 17,
+    "title": "エレベーターの\n電源",
+    "detail": "3つのパーツが揃ったら、\nどこかにはめてみよう。",
+    "gimmickId": 13,
+    "candyNum": 1
+  },
+  {
+    "hintId": 18,
     "title": "extra",
     "detail": "",
     "gimmickId": 0,
     "candyNum": 0
   },
   {
-    "hintId": 17,
+    "hintId": 19,
     "title": "株式会社\nLifeBoxって？",
     "detail": "2018年11月で創業12年を迎えるIT企業だよ。\nゲーム制作は今作が初めてらしいよ。",
     "gimmickId": 99,
