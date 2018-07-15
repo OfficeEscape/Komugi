@@ -125,6 +125,11 @@ namespace Komugi
 
             if (progress < currentGimmick.Data.clearStep) { return; }
 
+            if (currentGimmick.Data.clearSe.Length > 0)
+            {
+                GameManager.Instance.PlaySE(currentGimmick.Data.clearSe);
+            }
+
             UIManager.Instance.OpenAlert(currentGimmick.Data.clearMessage, false, () =>
             {
                 if (currentGimmick.Data.clearJump != 0)
@@ -132,11 +137,6 @@ namespace Komugi
                     GameMain.Instance.JumpView(currentGimmick.Data.clearJump);
                 }
             });
-
-            if (currentGimmick.Data.clearSe.Length > 0)
-            {
-                GameManager.Instance.PlaySE(currentGimmick.Data.clearSe);
-            }
         }
 
         public int GetClearProgress(int gimmickId = 0)
