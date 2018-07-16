@@ -146,6 +146,17 @@ namespace Komugi
             return clearFlagDictionary.ContainsKey(gimmickId) ? clearFlagDictionary[gimmickId] : 0;
         }
 
+        public bool GetClear(int gimmickId = 0)
+        {
+            if (gimmickId == 0) { gimmickId = gimmickDictionary.Count; }
+
+            if (!gimmickDictionary.ContainsKey(gimmickId)) { return false; }
+
+            int clearStep = gimmickDictionary[gimmickId].clearStep;
+
+            return clearFlagDictionary.ContainsKey(gimmickId) ? clearFlagDictionary[gimmickId] >= clearStep : false;
+        }
+
         public void Load()
         {
             clearFlagDictionary = DataManager.Instance.LoadGimmickSaveData();

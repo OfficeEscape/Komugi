@@ -146,7 +146,7 @@ namespace Komugi.UI
                     GameObject btnClone = Instantiate(buttonObj, rowClone.transform, false);
                     HintButton script = btnClone.GetComponent<HintButton>();
                     script.SetData(GimmickManager.Instance.hintDictionary[index],
-                        GimmickManager.Instance.GetClearProgress(data.gimmickId) > 0,
+                        GimmickManager.Instance.GetClear(data.gimmickId),
                         GimmickManager.Instance.hintPayDictionary[data.hintId],
                         DataManager.Instance.UserSaveData.candyNum);
                     script.clickHandle = OnHintClick;
@@ -163,7 +163,7 @@ namespace Komugi.UI
         {
             if (!GimmickManager.Instance.hintDictionary.ContainsKey(data.hintId)) { return; }
             
-            if (GimmickManager.Instance.hintPayDictionary[data.hintId] || GimmickManager.Instance.GetClearProgress(data.gimmickId) > 0)
+            if (GimmickManager.Instance.hintPayDictionary[data.hintId] || GimmickManager.Instance.GetClear(data.gimmickId))
             {
                 HintDetail.text = data.detail;
 
