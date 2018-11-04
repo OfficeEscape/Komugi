@@ -68,7 +68,7 @@ namespace Komugi
             }
         };
 
-        private readonly string TWEET_FORMAT = "実在するオフィスをモデルとした脱出ゲーム\n『スペースラボからの脱出』{0}をクリアしました！\n▼ダウンロードはこちら\nIOS\nhttps://apple.co/2JHneK7　\nAndroid\nhttp://bit.ly/2y2aysI\n#脱出ゲーム";
+        private readonly string TWEET_FORMAT = "実在するオフィスをモデルとした脱出ゲーム\n『スペースラボからの脱出』{0}をクリアしました！\n▼ダウンロードはこちら\nIOS\nhttps://apple.co/2JHneK7　\nAndroid\nhttp://bit.ly/2D2E4zC\n#脱出ゲーム";
 
         private string tweetText = string.Empty;
 
