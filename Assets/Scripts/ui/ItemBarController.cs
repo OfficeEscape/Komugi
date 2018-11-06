@@ -130,6 +130,7 @@ namespace Komugi.UI
             }
             
             if (pressIndex != lastTouchItem) { return; }
+            if (pressIndex < 0 || pressIndex >= ItemImages.Length) { return; }
             if (!ItemImages[pressIndex].enabled) { return; }
 
             int itemIndex = lastTouchItem + currentPage * ItemImages.Length;
@@ -211,9 +212,9 @@ namespace Komugi.UI
                 GimmickManager.Instance.SelectedItem = 0;
             }
 
-            int oldSelectedId = itemIdList[selectedIndex];
+            int oldSelectedId = (selectedIndex >= 0 && selectedIndex < itemIdList.Count) ? itemIdList[selectedIndex] : -1;
             itemIdList.Remove(itemId);
-            int newSelectedId = selectedIndex < itemIdList.Count ? itemIdList[selectedIndex] : -1;
+            int newSelectedId = (selectedIndex >= 0 && selectedIndex < itemIdList.Count) ? itemIdList[selectedIndex] : -1;
 
             if (oldSelectedId != newSelectedId)
             {
