@@ -20,6 +20,8 @@ namespace Komugi.UI
 
         private int itemBarIndex = 0;
 
+        public static int ItemId = 0;
+
         public System.Action CloseCallBack = null;
         
         private void Awake()
@@ -52,6 +54,7 @@ namespace Komugi.UI
             ItemImage.enabled = true;
             itemBarIndex = itemIndex;
             originItemId = itemData.itemId;
+            ItemId = itemData.itemId;
         }
 
         public void UpdateItem(int itemIndex)

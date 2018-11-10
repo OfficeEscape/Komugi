@@ -114,6 +114,15 @@ namespace Komugi.UI
             maxPage = itemIdList.Count / ItemImages.Length + 1;
             pagingObject.SetActive(maxPage > 1);
 
+            /*if (selectedIndex == -1) { selectedIndex = itemNum; }
+
+            selectedIndex = itemNum;
+            lastTouchItem = itemNum;
+            GimmickManager.Instance.SelectedItem = itemId;
+            cursor.name = itemNum.ToString();
+            cursor.localPosition = ItemImages[itemNum].rectTransform.localPosition;
+            if (!cursor.gameObject.activeSelf) { cursor.gameObject.SetActive(true); }*/
+
             return itemNum;
         }
 
@@ -230,6 +239,15 @@ namespace Komugi.UI
                 }
             }
 
+            if (selectedIndex == -1)
+            {
+                if (UIManager.Instance.IsItemDialogOpen())
+                {
+                    int index = GetItemIndex(ItemDialog.ItemId);
+                    if (index > 0) { UIManager.Instance.UpdateItemDailog(index); }
+                }
+            }
+
             lastTouchItem = -1;
             RefreshItem();
         }
@@ -243,6 +261,11 @@ namespace Komugi.UI
         {
             int index = 0 <= itemIndex ? itemIndex : (lastTouchItem + ItemImages.Length * currentPage);
             if (index < 0) { return false; }
+            /*if (!ItemImages[index].enabled || itemIdList.Count <= itemIndex || itemIdList[itemIndex] != beforeItem)
+            {
+                index = GetItemIndex(beforeItem);
+                if (index < 0) { return false; }
+            }*/
             if (!ItemImages[index].enabled) { return false; }
 
             itemIdList[index] = afterItem;
@@ -359,6 +382,24 @@ namespace Komugi.UI
             ItemImages[index].sprite = img;
             ItemImages[index].enabled = true;
             ItemImages[index].SetNativeSize();
+        }
+
+        protected int GetItemIndex(int itemId)
+        {
+            int start = currentPage * ItemImages.Length;
+            int end = start + ItemImages.Length;
+            end = Mathf.Clamp(end, 0, itemIdList.Count);
+
+            for (int i = start; i < end; i++)
+            {
+                // カーソルの位置を更新
+                if (itemId == itemIdList[i])
+                {
+                    return i;
+                }
+            }
+
+            return -1;
         }
 
         #endregion
