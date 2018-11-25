@@ -12,6 +12,8 @@ namespace Komugi
 
         private const int LAYER_SE_OVERWRITE = 8;
 
+        private const float STANDARD_ASPECT = 1.8f;
+
         [SerializeField]
         private ItemBarController itemBar;
 
@@ -44,6 +46,16 @@ namespace Komugi
             dialog = gameObject.AddComponent<DialogMenu>();
 
             itemBar.MenuButtonHandle = () => { mainMenu.OpenMainMenu(); };
+
+            // iPhoneX対応
+            CanvasScaler canvasScaler = GetComponent<CanvasScaler>();
+
+            if (canvasScaler != null)
+            {
+                float currentAspect = Screen.width / Screen.height;
+                // 1 Height 0 Width
+                canvasScaler.matchWidthOrHeight = currentAspect < STANDARD_ASPECT ? 1.0f : 0.0f;
+            }
         }
 
         #region =============================== C# private ===============================
