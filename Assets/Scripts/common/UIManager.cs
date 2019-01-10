@@ -12,7 +12,7 @@ namespace Komugi
 
         private const int LAYER_SE_OVERWRITE = 8;
 
-        private const float STANDARD_ASPECT = 1.8f;
+        private const float STANDARD_ASPECT = 0.56f;
 
         [SerializeField]
         private ItemBarController itemBar;
@@ -52,9 +52,9 @@ namespace Komugi
 
             if (canvasScaler != null)
             {
-                float currentAspect = Screen.width / Screen.height;
+                float currentAspect = (float)Screen.width / Screen.height;
                 // 1 Height 0 Width
-                canvasScaler.matchWidthOrHeight = currentAspect < STANDARD_ASPECT ? 1.0f : 0.0f;
+                canvasScaler.matchWidthOrHeight = currentAspect < STANDARD_ASPECT ? 0.0f : 1.0f;
             }
         }
 
