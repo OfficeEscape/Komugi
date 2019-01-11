@@ -34,6 +34,8 @@ namespace Komugi
 
         private int[] changeableObjectIndex;
 
+        public bool NewAspect { get; private set; }
+
         override protected void Awake()
         {
             // 子クラスでAwakeを使う場合は
@@ -54,7 +56,20 @@ namespace Komugi
             {
                 float currentAspect = (float)Screen.width / Screen.height;
                 // 1 Height 0 Width
-                canvasScaler.matchWidthOrHeight = currentAspect < STANDARD_ASPECT ? 0.0f : 1.0f;
+
+                // 縦長端末の場合
+                if (currentAspect < STANDARD_ASPECT)
+                {
+                    canvasScaler.matchWidthOrHeight = 0.0f;
+                    itemBar.SetItemBarOffset();
+                    NewAspect = true;
+                }
+                else    //横長or標準
+                {
+                    canvasScaler.matchWidthOrHeight = 1.0f;
+                    NewAspect = false;
+                }
+                
             }
         }
 

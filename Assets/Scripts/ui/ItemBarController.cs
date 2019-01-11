@@ -42,6 +42,8 @@ namespace Komugi.UI
         // 選択中のアイテムのインデックス
         private int selectedIndex = -1;
 
+        private float offsetY = 0.0f;
+
         /// <summary>
         /// メニューボタン押されたら
         /// </summary>
@@ -83,6 +85,16 @@ namespace Komugi.UI
             TouchEnable = true;
         }
 
+        public void SetItemBarOffset()
+        {
+            RectTransform rectTransform = GetComponent<RectTransform>();
+            if (rectTransform == null) { return; }
+
+            rectTransform.anchorMin = new Vector2(0f, 0.75f);
+            rectTransform.anchorMax = new Vector2(1f, 0.95f);
+
+            offsetY = Screen.height * 0.05f;
+        }
 
         /// <summary>
         /// アイテムバーに画像を追加
@@ -201,7 +213,7 @@ namespace Komugi.UI
             if ( pressPosition.x >= touchStart && pressPosition.x <= touchEnd)
             {
                 int x = Mathf.FloorToInt((pressPosition.x - touchStart) / itemWidth);
-                float pressY = Screen.height - pressPosition.y;
+                float pressY = Screen.height - pressPosition.y - offsetY;
                 int y = Mathf.FloorToInt(pressY / itemHeight);
                 index = x + y * COLUMN;
             }

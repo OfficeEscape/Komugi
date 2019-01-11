@@ -65,6 +65,17 @@ namespace Komugi.UI
 
             content.transform.SetParent(gameObject.transform, false);
 
+            if (UIManager.Instance.NewAspect)
+            {
+                RectTransform rectTransform = content.GetComponent<RectTransform>();
+
+                if (rectTransform != null)
+                {
+                    rectTransform.anchorMin = new Vector2(0f, 0.75f);
+                    rectTransform.anchorMax = new Vector2(1f, 0.95f);
+                }
+            }
+
             Menu script = content.GetComponent<Menu>();
             if (script != null)
             {
@@ -93,7 +104,7 @@ namespace Komugi.UI
             childcontent = Instantiate(resReq.asset as GameObject, gameObject.transform);
 
             childcontent.transform.SetParent(gameObject.transform, false);
-
+            
             isLoading = false;
         }
 
