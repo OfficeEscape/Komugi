@@ -49,7 +49,7 @@ namespace Komugi.UI
             MovieRewardAdManager.Instance.closeCallBack = () => RefushHintButton();
             MovieRewardAdManager.Instance.finishCallBack = () =>
             {
-                DebugLogger.Log("アメ恵んでやろう.");
+                DebugLogger.Log("アメを恵んでやろう.");
                 DataManager.Instance.AddCandy(1);
                 CandyNum.text = DataManager.Instance.UserSaveData.candyNum.ToString();
                 DataManager.Instance.SaveUserData();
