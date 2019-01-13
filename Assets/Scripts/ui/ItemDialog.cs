@@ -110,10 +110,12 @@ namespace Komugi.UI
 
             // ほかのアイテムが必要としない前提で変化
             var itemManager = ItemManager.Instance;
-            SetItem(itemData.changeItem, itemManager.GetItemName(itemData.changeItem));
+            //SetItem(itemData.changeItem, itemManager.GetItemName(itemData.changeItem));
 
             itemManager.ChangeItem(originItemId, itemData.changeItem, itemBarIndex);
-            itemData = itemManager.itemDictionary[itemData.changeItem];
+            //itemData = itemManager.itemDictionary[itemData.changeItem];
+
+            UpdateItem(itemManager.itemDictionary[itemData.changeItem], itemBarIndex);
 
             ItemImage.raycastTarget = true;
             UIManager.Instance.SetItemBarTouchEnable(true);
